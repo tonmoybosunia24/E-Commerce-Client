@@ -10,7 +10,7 @@ const AuthProviders = ({ children }) => {
        const [user, setUser] = useState(null)
        const [loading, setLoading] = useState(false)
 
-       const AuthValue = {user, setUser, loading, setLoading}
+       const AuthValue = { user, setUser, loading, setLoading }
 
        return (
               <AuthContext.Provider value={AuthValue}>

@@ -4,17 +4,17 @@ import { Navigate, useLocation } from "react-router";
 
 const PrivateRoutes = () => {
 
-       const {user, loading} = useContext(AuthContext)
+       const { user, loading } = useContext(AuthContext)
        const location = useLocation()
 
-       if(loading){
+       if (loading) {
               return <span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>;
        }
-       else if(user){
+       else if (user) {
               return children;
        }
 
-       return <Navigate state={{from: location}} replace to='/login'></Navigate>
+       return <Navigate state={{ from: location }} replace to='/login'></Navigate>
 };
 
 export default PrivateRoutes;
