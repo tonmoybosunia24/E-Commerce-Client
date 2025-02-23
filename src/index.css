@@ -2,10 +2,12 @@
 @plugin "daisyui";
 
 @theme {
+       /* ------------------Fonts----------------- */
        --font-logo: "Moon Dance", "serif";
        --font-primary: "Merriweather", "serif";
        --font-secondary: "Cinzel", "serif";
-       --color-*: initial;
+       /* ------------------Colors----------------- */
+       --color-white: #FFF;
        --color-greenish: #F2F7F5;
        --color-mint: #E8F6EC;
        --color-teal-dark: #0B7A6F;

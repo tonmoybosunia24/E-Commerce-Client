@@ -2,7 +2,7 @@ import { Outlet } from "react-router";
 
 const Root = () => {
        return (
-              <div>
+              <div className="bg-greenish font-primary min-h-screen">
                      <Outlet></Outlet>
               </div>
        );
