@@ -1,2 +1,12 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@theme {
+       --font-logo: "Moon Dance", "serif";
+       --font-primary: "Merriweather", "serif";
+       --font-secondary: "Cinzel", "serif";
+       --color-*: initial;
+       --color-greenish: #F2F7F5;
+       --color-mint: #E8F6EC;
+       --color-teal-dark: #0B7A6F;
+}
