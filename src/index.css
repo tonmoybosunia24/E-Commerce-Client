@@ -5,7 +5,9 @@
        /* ----------------Fonts--------------- */
        --font-Roboto: "Roboto", 'sans-serif';
        /* ----------------Colors-------------- */
-       --color-*: initial;
+
        --color-white: #fff;
+       --color-aliceBlue: #F5F0F0;
+       --color-charcoalGray: #666666;
        --color-Radical: #ff5252;
 }

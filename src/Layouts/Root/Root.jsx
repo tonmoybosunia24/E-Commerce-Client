@@ -2,7 +2,7 @@ import { Outlet } from "react-router";
 
 const Root = () => {
        return (
-              <div>
+              <div className="font-Roboto">
                      <Outlet></Outlet>
               </div>
        );
