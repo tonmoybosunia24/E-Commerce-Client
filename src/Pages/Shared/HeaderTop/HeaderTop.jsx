@@ -26,14 +26,14 @@ const HeaderTop = () => {
                                    <p className='hidden lg:block border-r border-gray-300 pr-2'>Order Tracking</p>
                                    <div className="relative lg:hidden border-r border-gray-300 pr-2">
                                           <div onClick={() => setQuickLinksOpen(!quickLinksOpen)} tabIndex={0} role="button" className="flex items-center gap-0.5 cursor-pointer ">USD {quickLinksOpen ? <IoIosArrowUp /> : <IoIosArrowDown />} </div>
-                                          <ul tabIndex={0} className={`absolute left-1/2 transform  -translate-x-1/2 z-1 w-40 p-2 shadow-md mt-2 transition-all delay-75 duration-500 ease-in-out ${quickLinksOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"} border border-t-0 border-gray-300`}>
+                                          <ul tabIndex={0} className={`absolute left-1/2 transform  -translate-x-1/2 z-1 w-40 p-2 shadow-md mt-3 transition-all delay-75 duration-500 ease-in-out bg-white ${quickLinksOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"} border border-t-0 border-gray-300`}>
                                                  <li className='hover:text-Radical cursor-pointer'><a>Help Center</a></li>
                                                  <li className='hover:text-Radical cursor-pointer'><a>Order Tracking</a></li>
                                           </ul>
                                    </div>
                                    <div className="relative border-r border-gray-300 pr-2">
                                           <div onClick={() => setLanguageOpen(!languageOpen)} tabIndex={0} role="button" className="flex items-center gap-1 cursor-pointer"> <img src={english} alt="" /> English {languageOpen ? <IoIosArrowUp /> : <IoIosArrowDown />} </div>
-                                          <ul tabIndex={0} className={`absolute left-1/2 transform  -translate-x-1/2 z-1 w-40 p-2 shadow-md mt-2 transition-all delay-75 duration-500 ease-in-out ${languageOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"} border border-t-0 border-gray-300 space-y-1`}>
+                                          <ul tabIndex={0} className={`absolute left-1/2 transform  -translate-x-1/2 z-10 w-40 p-2 shadow-md mt-3 transition-all delay-75 duration-500 ease-in-out bg-white ${languageOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"} border border-t-0 border-gray-300 space-y-1`}>
                                                  <li className='flex items-center gap-1 hover:text-Radical cursor-pointer'> <img src={english} alt="" /> <a>English</a></li>
                                                  <li className='flex items-center gap-1 hover:text-Radical cursor-pointer'> <img src={francais} alt="" /> <a>Francais</a></li>
                                                  <li className='flex items-center gap-1 hover:text-Radical cursor-pointer'> <img src={espanol} alt="" /> <a>Espanol</a></li>
@@ -48,7 +48,7 @@ const HeaderTop = () => {
                                    </div>
                                    <div className="relative">
                                           <div onClick={() => setCurrencyOpen(!currencyOpen)} tabIndex={0} role="button" className="flex items-center gap-0.5 cursor-pointer ">USD {currencyOpen ? <IoIosArrowUp /> : <IoIosArrowDown />} </div>
-                                          <ul tabIndex={0} className={`absolute left-1/2 transform  -translate-x-1/2 z-1 w-40 p-2 shadow-md mt-2 transition-all delay-75 duration-500 ease-in-out ${currencyOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"} border border-t-0 border-gray-300`}>
+                                          <ul tabIndex={0} className={`absolute left-1/2 transform  -translate-x-1/2 z-1 w-40 p-2 shadow-md mt-3 transition-all delay-75 duration-500 ease-in-out bg-white ${currencyOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"} border border-t-0 border-gray-300`}>
                                                  <li className='hover:text-Radical cursor-pointer'><a>EUR</a></li>
                                                  <li className='hover:text-Radical cursor-pointer'><a>USD</a></li>
                                           </ul>
