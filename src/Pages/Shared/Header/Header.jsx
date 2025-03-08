@@ -1,15 +1,16 @@
 import { Link } from 'react-router';
 import logo from '../../../assets/Logo/Logo-2.jpg'
-import { IoIosGitCompare, IoIosHeartEmpty } from 'react-icons/io';
 import { PiShoppingCartLight } from 'react-icons/pi';
 import { LiaUserSolid } from 'react-icons/lia';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import { IoIosGitCompare, IoIosHeartEmpty } from 'react-icons/io';
 
 const Header = () => {
        return (
-              <header className='px-5 lg:px-20 py-5 border border-gray-300'>
+              <header className='px-5 md:px-10 lg:px-20 py-5 border border-gray-300'>
                      <div className='flex justify-between items-center'>
                             <div className='flex items-center gap-2'>
+                                   {/* ----------------Header Drawer--------------- */}
                                    <div className="drawer lg:hidden">
                                           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                                           <div className="drawer-content">
@@ -25,21 +26,23 @@ const Header = () => {
                                    </div>
                                    <img className='w-36 lg:w-full' src={logo} alt="" />
                             </div>
-                            <div className='hidden lg:flex flex-grow justify-center items-center gap-3 z-10'>
+                            <div className='hidden md:flex lg:flex lg:flex-grow justify-center items-center gap-3 -z-10'>
                                    <input type="text" placeholder="Search Products Here.." className="input input-md focus:outline-none" />
                                    <button className='bg-Radical hover:bg-black text-white rounded-sm px-5 py-2'>SEARCH</button>
                             </div>
                             <div className='flex items-center gap-2 lg:gap-3'>
+                                   {/* --------------------Login/Register Routes---------------- */}
                                    <div className='border-r px-3 border-gray-300 hidden lg:block'>
-                                          <Link to='/login'>Login</Link> / <Link to='/register'>Register</Link>
+                                          <Link className='hover:text-Radical' to='/login'>Login</Link> / <Link className='hover:text-Radical' to='/register'>Register</Link>
                                    </div>
-                                   <div className='lg:hidden'>
-                                          <LiaUserSolid className='text-2xl' />
-                                   </div>
+                                   {/* --------------------Header Icons------------------ */}
                                    <div className='flex gap-2 lg:gap-3'>
+                                          <div className='lg:hidden'>
+                                                 <LiaUserSolid className='text-2xl' />
+                                          </div>
                                           <div className="indicator -z-10">
                                                  <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">0</span>
-                                                 <button className="text-2xl"><IoIosGitCompare /></button>
+                                                 <button className='text-2xl'><IoIosGitCompare /></button>
                                           </div>
                                           <div className="indicator -z-10">
                                                  <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">0</span>
@@ -52,7 +55,8 @@ const Header = () => {
                                    </div>
                             </div>
                      </div>
-                     <div className='flex gap-3 lg:hidden mt-3'>
+                     {/* ------------------Phone Search---------------- */}
+                     <div className='flex gap-3 md:hidden lg:hidden mt-3'>
                             <input type="text" placeholder="Search Products Here.." className="input input-md focus:outline-none -z-10" />
                             <button className='bg-Radical hover:bg-black text-white rounded-sm px-5 py-2'>SEARCH</button>
                      </div>
