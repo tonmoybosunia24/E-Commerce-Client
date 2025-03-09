@@ -4,10 +4,15 @@ import { PiShoppingCartLight } from 'react-icons/pi';
 import { LiaUserSolid } from 'react-icons/lia';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoIosGitCompare, IoIosHeartEmpty } from 'react-icons/io';
+import { AuthContext } from '../../../Providers/AuthProviders';
+import { useContext } from 'react';
 
 const Header = () => {
+
+       const { Links } = useContext(AuthContext)
+
        return (
-              <header className='px-5 md:px-10 lg:px-20 py-5 border border-gray-300'>
+              <header className='px-5 md:px-10 lg:px-20 py-5 border-b border-gray-300'>
                      <div className='flex justify-between items-center'>
                             <div className='flex items-center gap-2'>
                                    {/* ----------------Header Drawer--------------- */}
@@ -16,11 +21,10 @@ const Header = () => {
                                           <div className="drawer-content">
                                                  <label htmlFor="my-drawer" className="drawer-button"><RxHamburgerMenu className='text-2xl' /></label>
                                           </div>
-                                          <div className="drawer-side">
+                                          <div className="drawer-side z-10">
                                                  <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-                                                 <ul className="menu bg-white text-base-content min-h-full w-64 md:w-96 z-20 p-4">
-                                                        <li><a className='hover:bg-white'>Sidebar Item 1</a></li>
-                                                        <li><a className='hover:bg-white'>Sidebar Item 2</a></li>
+                                                 <ul className="menu bg-white text-base-content min-h-full w-64 md:w-96 p-4">
+                                                        {Links}
                                                  </ul>
                                           </div>
                                    </div>
@@ -54,11 +58,6 @@ const Header = () => {
                                           </div>
                                    </div>
                             </div>
-                     </div>
-                     {/* ------------------Phone Search---------------- */}
-                     <div className='flex gap-3 md:hidden lg:hidden mt-3'>
-                            <input type="text" placeholder="Search Products Here.." className="input input-md focus:outline-none -z-10" />
-                            <button className='bg-Radical hover:bg-black text-white rounded-sm px-5 py-2'>SEARCH</button>
                      </div>
               </header>
        );

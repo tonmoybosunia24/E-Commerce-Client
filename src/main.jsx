@@ -9,11 +9,13 @@ import { ToastContainer, Zoom } from 'react-toastify'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProviders>
-      <HelmetProvider>
-        <RouterProvider router={Routes}></RouterProvider>
-        <ToastContainer position="top-center" autoClose={3000} hideProgressBar newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored" transition={Zoom} />
-      </HelmetProvider>
-    </AuthProviders>
+    <div className='lg:max-w-screen-xl mx-auto'>
+      <AuthProviders>
+        <HelmetProvider>
+          <RouterProvider router={Routes}></RouterProvider>
+          <ToastContainer position="top-center" autoClose={3000} hideProgressBar newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored" transition={Zoom} />
+        </HelmetProvider>
+      </AuthProviders>
+    </div>
   </StrictMode>,
 );

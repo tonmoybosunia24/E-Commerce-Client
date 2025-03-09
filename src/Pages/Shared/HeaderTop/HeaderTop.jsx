@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 // Language Menu Images
 import english from '../../../assets/Icons/English.jpg'
@@ -36,7 +36,7 @@ const HeaderTop = () => {
                                    {/* ---------------------Language Dropdown Menu----------------- */}
                                    <div className="relative border-r border-gray-300 pr-2">
                                           <div onClick={() => setLanguageOpen(!languageOpen)} tabIndex={0} role="button" className="flex items-center gap-1 cursor-pointer"> <img src={english} alt="" /> English {languageOpen ? <IoIosArrowUp /> : <IoIosArrowDown />} </div>
-                                          <ul tabIndex={0} className={`absolute left-1/2 transform  -translate-x-1/2 z-10 w-40 p-2 shadow-md mt-3 transition-all delay-75 duration-500 ease-in-out bg-white ${languageOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"} border border-t-0 border-gray-300 space-y-1`}>
+                                          <ul tabIndex={0} className={`absolute left-1/2 transform  -translate-x-1/2 z-20 w-40 p-2 shadow-md mt-3 transition-all delay-75 duration-500 ease-in-out bg-white ${languageOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"} border border-t-0 border-gray-300 space-y-1`}>
                                                  <li className='flex items-center gap-1 hover:text-Radical cursor-pointer'> <img src={english} alt="" /> <a>English</a></li>
                                                  <li className='flex items-center gap-1 hover:text-Radical cursor-pointer'> <img src={francais} alt="" /> <a>Francais</a></li>
                                                  <li className='flex items-center gap-1 hover:text-Radical cursor-pointer'> <img src={espanol} alt="" /> <a>Espanol</a></li>
