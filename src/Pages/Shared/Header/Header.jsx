@@ -21,7 +21,7 @@ const Header = () => {
                                           <div className="drawer-content">
                                                  <label htmlFor="my-drawer" className="drawer-button"><RxHamburgerMenu className='text-2xl' /></label>
                                           </div>
-                                          <div className="drawer-side z-10">
+                                          <div className="drawer-side z-20">
                                                  <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                                                  <ul className="menu bg-white text-base-content min-h-full w-64 md:w-96 p-4">
                                                         {Links}

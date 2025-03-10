@@ -4,6 +4,7 @@ import HeaderTop from '../../Shared/HeaderTop/HeaderTop';
 import Header from '../../Shared/Header/Header';
 import Navbar from '../../Shared/Navbar/Navbar';
 import Banner from '../Banner/Banner';
+import Shipping from '../Shipping/Shipping';
 
 const Home = () => {
        return (
@@ -13,6 +14,7 @@ const Home = () => {
                      <Header></Header>
                      <Navbar></Navbar>
                      <Banner></Banner>
+                     <Shipping></Shipping>
               </div>
        );
 };

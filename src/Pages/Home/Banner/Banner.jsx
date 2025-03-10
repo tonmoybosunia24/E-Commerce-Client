@@ -22,7 +22,7 @@ import categoryProduct8 from '../../../assets/Category-Products/Category-Product
 
 const Banner = () => {
        return (
-              <div className='bg-aliceBlue py-5 px-5 md:px-10 lg:px-20'>
+              <section className='bg-aliceBlue py-5 px-5 md:px-10 lg:px-20'>
                      {/* -------------------Swiper Modules----------------- */}
                      <div className='flex flex-col lg:flex-row gap-5'>
                             {/* ---------------Swiper Modules-------------- */}
@@ -47,25 +47,25 @@ const Banner = () => {
                                    {/* ---------------------Swiper Banner------------------ */}
                                    <SwiperSlide className='relative'>
                                           <img className='w-full h-full object-fill rounded-md' src={banner1} alt="" />
-                                          <div className='absolute top-1/2 transform -translate-y-1/2 right-5 lg:right-20 space-y-1 lg:space-y-2'>
-                                                 <h4 className='text-xs lg:text-2xl'>Big Saving Days Sale</h4>
-                                                 <h2 className='text-sm lg:text-4xl'>Women Solid Round <br /> Green T-Shirt</h2>
-                                                 <p className='text-sm lg:text-2xl'>Starting At Only <span className='text-Radical font-bold text-md lg:text-3xl'>$59.00</span></p>
+                                          <div className='absolute top-1/2 transform -translate-y-1/2 right-5 md:right-20 lg:right-20 space-y-1 md:space-y-2 lg:space-y-2'>
+                                                 <h4 className='text-xs md:text-xl lg:text-2xl'>Big Saving Days Sale</h4>
+                                                 <h2 className='text-sm md:text-3xl lg:text-4xl'>Women Solid Round <br /> Green T-Shirt</h2>
+                                                 <p className='text-sm md:text-xl lg:text-2xl'>Starting At Only <span className='text-Radical font-bold text-md lg:text-3xl'>$59.00</span></p>
                                                  <button className='bg-Radical hover:bg-black text-white text-xs lg px-2 lg:px-6 py-1 lg:py-2 rounded-xs lg:rounded-md cursor-pointer'>Shop Now</button>
                                           </div>
                                    </SwiperSlide>
                                    <SwiperSlide>
                                           <img className='w-full h-full object-fill rounded-md' src={banner2} alt="" />
-                                          <div className='absolute top-1/2 transform -translate-y-1/2 right-5 lg:right-20 space-y-1 lg:space-y-2'>
-                                                 <h4 className='text-xs lg:text-2xl'>Big Saving Days Sale</h4>
-                                                 <h2 className='text-sm lg:text-4xl'>Buy Modern Chair In <br /> Black Color</h2>
-                                                 <p className='text-sm lg:text-2xl'>Starting At Only <span className='text-Radical font-bold text-md lg:text-3xl'>$99.00</span></p>
+                                          <div className='absolute top-1/2 transform -translate-y-1/2 right-5 md:right-20 lg:right-20 space-y-1 md:space-y-2 lg:space-y-2'>
+                                                 <h4 className='text-xs md:text-xl lg:text-2xl'>Big Saving Days Sale</h4>
+                                                 <h2 className='text-sm md:text-3xl lg:text-4xl'>Buy Modern Chair In <br /> Black Color</h2>
+                                                 <p className='text-sm md:text-xl lg:text-2xl'>Starting At Only <span className='text-Radical font-bold text-md lg:text-3xl'>$99.00</span></p>
                                                  <button className='bg-Radical hover:bg-black text-white text-xs lg px-2 lg:px-6 py-1 lg:py-2 rounded-xs lg:rounded-md cursor-pointer'>Shop Now</button>
                                           </div>
                                    </SwiperSlide>
                             </Swiper>
                             {/* ------------------Sub Banner For Pc----------------- */}
-                            <div className='hidden lg:flex flex-col gap-3'>
+                            <div className='hidden md:flex lg:flex md:flex-row lg:flex-col gap-3'>
                                    <div className='relative'>
                                           <img className='rounded-md' src={subBanner1} alt="" />
                                           <div className='absolute top-1/2 transform -translate-y-1/2 left-5 space-y-0.5'>
@@ -84,7 +84,7 @@ const Banner = () => {
                                    </div>
                             </div>
                             {/* ----------------Sub Banner For Mobile--------------- */}
-                            <div className='flex flex-col gap-3 lg:hidden '>
+                            <div className='flex flex-col gap-3 md:hidden lg:hidden '>
                                    <div className='relative'>
                                           <img className='rounded-md w-full h-[172.25px]' src={subBanner3} alt="" />
                                           <div className='absolute top-1/2 transform -translate-y-1/2 left-5 space-y-0.5'>
@@ -106,7 +106,7 @@ const Banner = () => {
                      {/* -----------------------Category Slider--------------------- */}
                      <div className='relative'>
                             {/* ------------------Category Navigation----------------- */}
-                            <div className='absolute top-1/2 -translate-y-1/2 -left-3 cursor-pointer z-30'><IoIosArrowDropleftCircle className='PrevCategory  text-3xl lg:text-3xl text-Radical' /></div>
+                            <div className='absolute top-1/2 -translate-y-1/2 -left-3 cursor-pointer z-10'><IoIosArrowDropleftCircle className='PrevCategory  text-3xl lg:text-3xl text-Radical' /></div>
                             <div className='absolute top-1/2 -translate-y-1/2 -right-3 cursor-pointer z-10'><IoIosArrowDroprightCircle className='NextCategory  text-3xl lg:text-3xl text-Radical' /></div>
                             {/* --------------------Swiper Modules-------------------- */}
                             <Swiper
@@ -159,7 +159,7 @@ const Banner = () => {
                                    </SwiperSlide>
                             </Swiper>
                      </div>
-              </div>
+              </section>
        );
 };
 
