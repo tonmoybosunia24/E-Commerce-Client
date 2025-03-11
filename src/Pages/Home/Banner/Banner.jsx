@@ -64,18 +64,18 @@ const Banner = () => {
                                           </div>
                                    </SwiperSlide>
                             </Swiper>
-                            {/* ------------------Sub Banner For Pc----------------- */}
-                            <div className='hidden md:flex lg:flex md:flex-row lg:flex-col gap-3'>
-                                   <div className='relative'>
-                                          <img className='rounded-md' src={subBanner1} alt="" />
+                            {/* ------------------Sub Banner For Tablet/Pc----------------- */}
+                            <div className='hidden md:flex lg:flex md:flex-row lg:flex-col gap-5'>
+                                   <div className='relative overflow-hidden group'>
+                                          <img className='rounded-md transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={subBanner1} alt="" />
                                           <div className='absolute top-1/2 transform -translate-y-1/2 left-5 space-y-0.5'>
                                                  <h3 className='text-2xl'>Samsung Gear <br /> VR Camera</h3>
                                                  <p className='text-xl text-Radical font-bold'>$129.00</p>
                                                  <button className='underline cursor-pointer'>SHOP NOW</button>
                                           </div>
                                    </div>
-                                   <div className='relative'>
-                                          <img className='rounded-md' src={subBanner2} alt="" />
+                                   <div className='relative overflow-hidden group'>
+                                          <img className='rounded-md transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={subBanner2} alt="" />
                                           <div className='absolute top-1/2 transform -translate-y-1/2 right-5 space-y-0.5'>
                                                  <h3 className='text-2xl'>Marcel Dining <br /> Room Chair</h3>
                                                  <p className='text-xl text-Radical font-bold'>$129.00</p>
@@ -85,16 +85,16 @@ const Banner = () => {
                             </div>
                             {/* ----------------Sub Banner For Mobile--------------- */}
                             <div className='flex flex-col gap-3 md:hidden lg:hidden '>
-                                   <div className='relative'>
-                                          <img className='rounded-md w-full h-[172.25px]' src={subBanner3} alt="" />
+                                   <div className='relative overflow-hidden group'>
+                                          <img className='rounded-md w-full transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={subBanner3} alt="" />
                                           <div className='absolute top-1/2 transform -translate-y-1/2 left-5 space-y-0.5'>
                                                  <h3 className='text-2xl'>Samsung Gear <br /> VR Camera</h3>
                                                  <p className='text-xl text-Radical font-bold'>$129.00</p>
                                                  <button className='underline cursor-pointer'>SHOP NOW</button>
                                           </div>
                                    </div>
-                                   <div className='relative'>
-                                          <img className='rounded-md w-full h-[172.25px]' src={subBanner4} alt="" />
+                                   <div className='relative overflow-hidden group'>
+                                          <img className='rounded-md w-full transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={subBanner4} alt="" />
                                           <div className='absolute top-1/2 transform -translate-y-1/2 right-5 space-y-0.5'>
                                                  <h3 className='text-2xl'>Marcel Dining <br /> Room Chair</h3>
                                                  <p className='text-xl text-Radical font-bold'>$129.00</p>
@@ -125,36 +125,36 @@ const Banner = () => {
                                    }}
                             >
                                    {/* ---------------------Category Slider------------------ */}
-                                   <SwiperSlide className='relative cursor-pointer'>
-                                          <img className='rounded-lg' src={categoryProduct1} alt="" />
+                                   <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
+                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct1} alt="" />
                                           <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full text-lg text-center hover:text-Radical'><p>Smart Tablet</p></div>
                                    </SwiperSlide>
-                                   <SwiperSlide className='relative cursor-pointer'>
-                                          <img className='rounded-lg' src={categoryProduct2} alt="" />
+                                   <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
+                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct2} alt="" />
                                           <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full text-lg text-center hover:text-Radical'><p>Crape T-Shirt</p></div>
                                    </SwiperSlide>
-                                   <SwiperSlide className='relative cursor-pointer'>
-                                          <img className='rounded-lg' src={categoryProduct3} alt="" />
+                                   <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
+                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct3} alt="" />
                                           <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full text-lg text-center hover:text-Radical'><p>Leather Watch</p></div>
                                    </SwiperSlide>
-                                   <SwiperSlide className='relative cursor-pointer'>
-                                          <img className='rounded-lg' src={categoryProduct4} alt="" />
+                                   <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
+                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct4} alt="" />
                                           <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full text-lg text-center hover:text-Radical'><p>Rolling Diamond</p></div>
                                    </SwiperSlide>
-                                   <SwiperSlide className='relative cursor-pointer'>
-                                          <img className='rounded-lg' src={categoryProduct5} alt="" />
+                                   <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
+                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct5} alt="" />
                                           <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full text-lg text-center hover:text-Radical'><p>Wooden Chair</p></div>
                                    </SwiperSlide>
-                                   <SwiperSlide className='relative cursor-pointer'>
-                                          <img className='rounded-lg' src={categoryProduct6} alt="" />
+                                   <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
+                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct6} alt="" />
                                           <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full text-lg text-center hover:text-Radical'><p>Sneakers Shoes</p></div>
                                    </SwiperSlide>
-                                   <SwiperSlide className='relative cursor-pointer'>
-                                          <img className='rounded-lg' src={categoryProduct7} alt="" />
+                                   <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
+                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct7} alt="" />
                                           <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full text-lg text-center hover:text-Radical'><p>Purse</p></div>
                                    </SwiperSlide>
-                                   <SwiperSlide className='relative cursor-pointer'>
-                                          <img className='rounded-lg' src={categoryProduct8} alt="" />
+                                   <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
+                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct8} alt="" />
                                           <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full text-lg text-center hover:text-Radical'><p>X-Box Controller</p></div>
                                    </SwiperSlide>
                             </Swiper>
