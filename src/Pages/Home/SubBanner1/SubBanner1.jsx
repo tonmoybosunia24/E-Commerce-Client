@@ -4,7 +4,7 @@ import cmsBanner3 from '../../../assets/Cms-Banner/Cms-banner-3.jpg'
 
 const SubBanner1 = () => {
        return (
-              <section className="px-5 md:px-10 lg:px-20 mb-5 md:mb-7 lg:mb-10">
+              <section className="px-5 md:px-10 lg:px-20">
                      {/* ------------------SubBanner Parent Container---------------- */}
                      <div className='flex flex-col md:flex-row lg:flex-row gap-5'>
                             {/* ----------------SubBanner Clild Container-------------- */}

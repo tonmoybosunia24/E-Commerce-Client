@@ -1,104 +1,77 @@
-import 'react-tabs/style/react-tabs.css';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import useCategoryProducts from "../../../Hooks/useCategoryProducts";
-import { Navigation } from 'swiper/modules';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/navigation';
+import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+// import required modules
+import { FreeMode, Navigation } from 'swiper/modules';
+import { Tab, Tabs, TabList } from 'react-tabs';
+import { useEffect, useState } from "react";
+import useCategoryProducts from "../../../Hooks/useCategoryProducts";
+import useCategory from '../../../Hooks/useCategory';
 import ProductCard from '../../Shared/ProductCard/ProductCard';
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
 
 const CategoryProducts = () => {
 
-  const [Electronics] = useCategoryProducts('Electronics')
-  const [Fashion] = useCategoryProducts('Fashion')
-  const [HomeKitchen] = useCategoryProducts('Home & Kitchen')
+    const [categories] = useCategory()
+    const [activeCategory, setActiveCategory] = useState('');
+    const [products, loading] = useCategoryProducts(activeCategory)
 
+    useEffect(() => {
+        if (categories.length > 0) {
+            setActiveCategory(categories[0])
+        }
+    }, [categories])
 
-  return (
-    <section className='px-5 md:px-10 lg:px-20 mb-10 z-50'>
-      <Tabs>
-        <div className='flex justify-between items-center mb-5'>
-          {/* ------------------------TabList------------------------ */}
-        <TabList className='flex gap-3 focus-within::border-none'>
-          <Tab className='text-sm md:text-lg lg:text-xl border-none cursor-pointer' selectedClassName="text-Radical">Electronics</Tab>
-          <Tab className='text-sm md:text-lg lg:text-xl border-none cursor-pointer' selectedClassName="text-Radical">Fashion</Tab>
-          <Tab className='text-sm md:text-lg lg:text-xl border-none cursor-pointer' selectedClassName="text-Radical">Home & Kitchen</Tab>
-        </TabList>
-        <div className='flex'>
-          <div className='cursor-pointer'><IoIosArrowDropleftCircle className='PrevCategoryProducts  text-3xl lg:text-3xl text-Radical' /></div>
-          <div className='cursor-pointer'><IoIosArrowDroprightCircle className='NextCategoryProducts  text-3xl lg:text-3xl text-Radical' /></div>
-        </div>
-        </div>
-        {/* ----------------------Electronics---------------------- */}
-        <TabPanel>
-          <div className='flex'>
-            <Swiper
-              modules={[Navigation]}
-              spaceBetween={0}
-              slidesPerView={2}
-              navigation={{
-                nextEl: '.NextCategoryProducts',
-                prevEl: '.PrevCategoryProducts',
-              }}
-              breakpoints={{
-                640: { slidesPerView: 2 },
-                768: { slidesPerView: 4 },
-                1024: { slidesPerView: 5 },
-              }}
-            >
-              {Electronics.map((products, index) => <SwiperSlide key={products._id}><ProductCard isLast={index === Electronics.length - 1} products={products}></ProductCard></SwiperSlide>)}
-            </Swiper>
-          </div>
-        </TabPanel>
-        {/* ------------------------Fashion------------------------ */}
-        <TabPanel>
-          <div className='flex'>
-            <Swiper
-              modules={[Navigation]}
-              spaceBetween={0}
-              slidesPerView={2}
-              navigation={{
-                nextEl: '.NextCategoryProducts',
-                prevEl: '.PrevCategoryProducts',
-              }}
-              breakpoints={{
-                640: { slidesPerView: 2 },
-                768: { slidesPerView: 4 },
-                1024: { slidesPerView: 5 },
-              }}
-            >
-              {Fashion.map((products, index) => <SwiperSlide key={products._id}><ProductCard isLast={index === Electronics.length - 1} products={products}></ProductCard></SwiperSlide>)}
-            </Swiper>
-          </div>
-        </TabPanel>
-        {/* ----------------Home & Kitchen Category----------------- */}
-        <TabPanel>
-          <div className='flex'>
-            <Swiper
-              modules={[Navigation]}
-              spaceBetween={0}
-              slidesPerView={2}
-              navigation={{
-                nextEl: '.NextCategoryProducts',
-                prevEl: '.PrevCategoryProducts',
-              }}
-              breakpoints={{
-                640: { slidesPerView: 2 },
-                768: { slidesPerView: 4 },
-                1024: { slidesPerView: 5 },
-              }}
-            >
-              {HomeKitchen.map((products, index) => <SwiperSlide key={products._id}><ProductCard isLast={index === Electronics.length - 1} products={products}></ProductCard></SwiperSlide>)}
-            </Swiper>
-          </div>
-        </TabPanel>
-      </Tabs>
-    </section>
-  );
+    return (
+        <section className="px-5 md:px-10 lg:px-20 my-5 md:my-7 lg:my-10">
+            {/* ----------------Products Tabs Container---------------- */}
+            <Tabs onSelect={(index) => {
+                const selected = categories[index];
+                setActiveCategory(selected)
+            }}>
+
+                {/* -------------------Tablist For Tabs ---------------- */}
+                <div className='flex justify-between items-center mb-3'>
+                    <TabList className="flex gap-3 relative active:border-none text-xs md:text-2xl lg:text-lg overflow-x-auto lg:overflow-visible max-w-full">
+                        {categories.map((category, index) => (
+                            <Tab key={index} className={category === activeCategory ? "text-Radical outline-none whitespace-nowrap"
+                                : "text-black whitespace-nowrap"}>{category}</Tab>
+                        ))}
+                    </TabList>
+                    {/* ------------------Category Navigation----------------- */}
+                    <div className='flex items-center ml-2 shrink-0'>
+                        <div className='cursor-pointer'><IoIosArrowDropleftCircle className='Prev  text-3xl lg:text-3xl text-Radical' /></div>
+                        <div className='cursor-pointer'><IoIosArrowDroprightCircle className='Next  text-3xl lg:text-3xl text-Radical' /></div>
+                    </div>
+                </div>
+                {/* ------------Products Sent To Product Card & Added Swiper Js----------- */}
+                <div className='h-auto'>
+                    <Swiper     
+                        slidesPerView={2}
+                        spaceBetween={0}
+                        freeMode={true}
+                        modules={[FreeMode, Navigation]}
+                        navigation={{
+                            nextEl: '.Next',
+                            prevEl: '.Prev',
+                        }}
+                        className={`mySwiper h-auto ${!loading && products.length >= 5 ? 'border border-l-0 border-gray-400' : ''} ${products.length > 1 && products.length < 5 ? 'border-l border-gray-400' : ''}`}
+                        breakpoints={{
+                            640: { slidesPerView: 2 },
+                            768: { slidesPerView: 4 },
+                            1024: { slidesPerView: 5 },
+                        }}
+                    >
+                        {loading ? (<span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>) : (products.map((product, index) => <SwiperSlide key={index} className={`!h-auto flex ${index === 0 ? 'border-l border-gray-400' : 'border-l border-gray-400'} ${products.length > 0 && products.length < 5 ? 'border-t border-r border-b' : ''} ${products.length > 1  && products.length < 5 ? 'border-l-0' : ''}`}>
+                        <div className={`w-full h-full flex flex-col`}><ProductCard product={product} /></div></SwiperSlide>))}
+                    </Swiper>
+                </div>
+            </Tabs>
+        </section>
+    );
 };
 
 export default CategoryProducts;
