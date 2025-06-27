@@ -23,7 +23,7 @@ const Navbar = () => {
        }, [])
 
        return (
-              <nav className={`hidden lg:flex justify-between sticky top-0 bg-white px-5 md:px-10 lg:px-20 py-3 border-b transition-shadow duration-100 ease-in-out border-gray-300 ${shadow ? 'shadow-md' : ''} relative z-10`}>
+              <nav className={`hidden lg:flex justify-between sticky top-0 bg-white px-5 md:px-10 lg:px-20 py-3 border-b transition-shadow duration-100 ease-in-out border-gray-300 ${shadow ? 'shadow-md' : ''} relative z-20`}>
                      {/* ----------------Shop By Categories--------------- */}
                      <div className="relative">
                             <div onClick={() => setDrawerOpen(!drawerOpen)} className="flex items-center gap-2 cursor-pointer border-r border-gray-300 pr-3">

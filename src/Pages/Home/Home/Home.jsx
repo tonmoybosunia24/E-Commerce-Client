@@ -7,6 +7,7 @@ import Banner from '../Banner/Banner';
 import Shipping from '../Shipping/Shipping';
 import SubBanner1 from '../SubBanner1/SubBanner1';
 import CategoryProducts from '../CategoryProducts/CategoryProducts';
+import OfferBanner from '../OfferBanner/OfferBanner';
 
 const Home = () => {
        return (
@@ -19,6 +20,7 @@ const Home = () => {
                      <Shipping></Shipping>
                      <SubBanner1></SubBanner1>
                      <CategoryProducts></CategoryProducts>
+                     <OfferBanner></OfferBanner>
               </div>
        );
 };

@@ -18,11 +18,11 @@ const SubBanner1 = () => {
                             </div>
                             <div className='relative overflow-hidden group'>
                                    <img className='rounded-md transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={cmsBanner2} alt="" />
-                                   <div className='absolute top-1/2 -translate-y-1/2 right-5'>
-                                          <h2 className='text-2xl md:text-sm lg:text-2xl'>Armchair Mad <br />By shopstic</h2>
-                                          <p className='text-md md:text-sm lg:text-xl text-Radical font-semibold'>$190.00</p>
-                                          <button className='text-md md:text-xs lg:text-lg underline cursor-pointer'>SHOP NOW</button>
-                                   </div>
+                                          <div className='absolute top-1/2 -translate-y-1/2 right-5'>
+                                                 <h2 className='text-2xl md:text-sm lg:text-2xl'>Armchair Mad <br />By shopstic</h2>
+                                                 <p className='text-md md:text-sm lg:text-xl text-Radical font-semibold'>$190.00</p>
+                                                 <button className='text-md md:text-xs lg:text-lg underline cursor-pointer'>SHOP NOW</button>
+                                          </div>
                             </div>
                             <div className='relative overflow-hidden group'>
                                    <img className='rounded-md transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={cmsBanner3} alt="" />

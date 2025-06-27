@@ -66,16 +66,16 @@ const Banner = () => {
                             </Swiper>
                             {/* ------------------Sub Banner For Tablet/Pc----------------- */}
                             <div className='hidden md:flex lg:flex md:flex-row lg:flex-col gap-5'>
-                                   <div className='relative overflow-hidden group'>
-                                          <img className='rounded-md transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={subBanner1} alt="" />
+                                   <div className='flex-1 relative overflow-hidden group'>
+                                          <img className='w-full rounded-md transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={subBanner1} alt="" />
                                           <div className='absolute top-1/2 transform -translate-y-1/2 left-5 space-y-0.5'>
                                                  <h3 className='text-2xl'>Samsung Gear <br /> VR Camera</h3>
                                                  <p className='text-xl text-Radical font-bold'>$129.00</p>
                                                  <button className='underline cursor-pointer'>SHOP NOW</button>
                                           </div>
                                    </div>
-                                   <div className='relative overflow-hidden group'>
-                                          <img className='rounded-md transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={subBanner2} alt="" />
+                                   <div className='flex-1 relative overflow-hidden group'>
+                                          <img className='w-full rounded-md transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={subBanner2} alt="" />
                                           <div className='absolute top-1/2 transform -translate-y-1/2 right-5 space-y-0.5'>
                                                  <h3 className='text-2xl'>Marcel Dining <br /> Room Chair</h3>
                                                  <p className='text-xl text-Radical font-bold'>$129.00</p>
