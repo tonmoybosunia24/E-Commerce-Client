@@ -8,6 +8,7 @@ import Shipping from '../Shipping/Shipping';
 import SubBanner1 from '../SubBanner1/SubBanner1';
 import CategoryProducts from '../CategoryProducts/CategoryProducts';
 import OfferBanner from '../OfferBanner/OfferBanner';
+import LatestProducts from '../LatestProducts/LatestProducts';
 
 const Home = () => {
        return (
@@ -21,6 +22,7 @@ const Home = () => {
                      <SubBanner1></SubBanner1>
                      <CategoryProducts></CategoryProducts>
                      <OfferBanner></OfferBanner>
+                     <LatestProducts></LatestProducts>
               </div>
        );
 };

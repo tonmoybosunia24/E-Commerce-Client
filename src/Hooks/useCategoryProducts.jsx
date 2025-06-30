@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
-const useCategoryProducts = (category) => {
+const useCategoryProducts = (query = '') => {
 
-       const axiosPublic = useAxiosPublic();
-       const {data: Products = [], isPending: loading} = useQuery({
-              queryKey: ['products', category],
-              queryFn: async () => {
-                     const res = await axiosPublic.get(`/products/${category}`);
-                     return res.data;
-              }
-       })
+  const axiosPublic = useAxiosPublic();
+  const { data: products = [], isPending: loading } = useQuery({
+    queryKey: ['filteredProducts', query],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/categoryProducts${query}`)
+      return res.data
+    }
+  })
 
-       return [Products, loading]
+  return [products, loading]
 };
 
 export default useCategoryProducts;

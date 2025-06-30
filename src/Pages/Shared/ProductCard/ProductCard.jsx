@@ -31,10 +31,10 @@ const ProductCard = ({ product }) => {
               <div className="h-full relative p-3 group">
                      {/* ------------------Product Main Card----------------- */}
                      <div className='space-y-1.5'>
-                            <img className="aspect-[2/2] object-contain" src={Images[0]} alt="" />
+                            <img className="aspect-[2/2] object-contain" src={Images?.[0]} alt="" />
                             <p className='text-gray-500 hover:text-Radical'>{SubCategory}</p>
                             <h4 className='font-semibold text-gray-800 line-clamp-1'>{Title}</h4>
-                            <p className='text-sm lg:text-base line-clamp-1'>{SellerInformation.name}</p>
+                            <p className='text-sm lg:text-base line-clamp-1'>{SellerInformation?.name}</p>
                             <Rating style={{ maxWidth: 80 }} value={ProductRating} />
                             <div className='flex gap-2'>
                                    <del className='text-gray-300 text-sm lg:text-lg font-semibold'>{Price} Tk </del>
@@ -62,7 +62,7 @@ const ProductCard = ({ product }) => {
                                                         modules={[FreeMode, Navigation, Thumbs]}
                                                         className="mySwiper2"
                                                  >
-                                                        {Images.map((pic, index) => (
+                                                        {Images?.map((pic, index) => (
                                                                <SwiperSlide key={index}>
                                                                       <img className="aspect-[2/2] object-contain" src={pic} />
                                                                </SwiperSlide>
@@ -79,7 +79,7 @@ const ProductCard = ({ product }) => {
                                                         modules={[FreeMode, Navigation, Thumbs]}
                                                         className="mySwiper mt-5"
                                                  >
-                                                        {Images.map((pic, index) => (
+                                                        {Images?.map((pic, index) => (
                                                                <SwiperSlide className='border' key={index}>
                                                                       <img className="aspect-[3/3] object-contain" src={pic} />
                                                                </SwiperSlide>
@@ -97,13 +97,13 @@ const ProductCard = ({ product }) => {
                                                  {/* ----------------Variant/Size/Storage----------------- */}
                                                  <div className='flex gap-1'>
                                                         <span className='font-semibold text-gray-800'>{((Category === 'Electronics' || Category === 'Smart Home') && 'Variant :') || ((Category === 'Fashion' || Category === 'Kitchenware' || Category === 'Personal Care') && 'Size :') || (Category === 'Home Appliances' && 'Storage :')}</span>
-                                                        {Variant.map((item, index) => (<p key={index}>{item} {index === Variant.length - 1 ? '' : ','}</p>
+                                                        {Variant?.map((item, index) => (<p key={index}>{item} {index === Variant.length - 1 ? '' : ','}</p>
                                                         ))}
                                                  </div>
                                                  {/* -----------------------Colors------------------------ */}
                                                  <div className='flex items-center gap-1'>
                                                         <span className='font-semibold text-gray-800'>Colors : </span>
-                                                        {Colors.map(((color, index) => (
+                                                        {Colors?.map(((color, index) => (
                                                                <div key={index} className='w-7 h-7 border border-gray-400 rounded-full' style={{ backgroundColor: color }}></div>
                                                         )))}
                                                  </div>
@@ -115,8 +115,8 @@ const ProductCard = ({ product }) => {
                                                  </div>
                                                  {/* -------------------Shipping Info--------------------- */}
                                                  <div>
-                                                        <p><span className='font-semibold text-gray-800'>Inside Dhaka : </span>{ShippingInformation.InsideDhaka} ,</p>
-                                                        <p><span className='font-semibold text-gray-800'>Outside Dhaka : </span>{ShippingInformation.OutsideDhaka}</p>
+                                                        <p><span className='font-semibold text-gray-800'>Inside Dhaka : </span>{ShippingInformation?.InsideDhaka} ,</p>
+                                                        <p><span className='font-semibold text-gray-800'>Outside Dhaka : </span>{ShippingInformation?.OutsideDhaka}</p>
                                                  </div>
                                                  {/* ----------------Quantity Of Products----------------- */}
                                                  <div className='flex gap-2'>
