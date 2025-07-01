@@ -10,3 +10,9 @@
        --color-charcoalGray: #666666;
        --color-Radical: #ff5252;
 }
+.swiper,
+.swiper-wrapper,
+.swiper-slide {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}

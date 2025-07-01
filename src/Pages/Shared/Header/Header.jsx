@@ -30,9 +30,9 @@ const Header = () => {
                                    </div>
                                    <img className='w-36 lg:w-full' src={logo} alt="" />
                             </div>
-                            <div className='hidden md:flex lg:flex lg:flex-grow justify-center items-center gap-3 -z-10'>
-                                   <input type="text" placeholder="Search Products Here.." className="input input-md focus:outline-none" />
-                                   <button className='bg-Radical hover:bg-black text-white rounded-sm px-5 py-2'>SEARCH</button>
+                            <div className='hidden md:flex lg:flex lg:flex-grow justify-center items-center gap-2'>
+                                   <input type="text" placeholder="Search Products Here.." className="input focus:outline-none focus:border-gray-500" />
+                                   <button className='bg-Radical hover:bg-black text-white rounded-sm px-5 py-2 cursor-pointer'>SEARCH</button>
                             </div>
                             <div className='flex items-center gap-2 lg:gap-3'>
                                    {/* --------------------Login/Register Routes---------------- */}
