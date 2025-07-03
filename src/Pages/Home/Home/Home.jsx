@@ -11,8 +11,11 @@ import LatestProducts from '../LatestProducts/LatestProducts';
 import CmsBanner from '../CmsBanner/CmsBanner';
 import CmsBanner1 from '../../../assets/Cms-Banner/Cms-banner-1.jpg'
 import CmsBanner2 from '../../../assets/Cms-Banner/Cms-banner-2.jpg'
+import CmsBanner3 from '../../../assets/Cms-Banner/Cms-banner-3.jpg'
+import CmsBanner4 from '../../../assets/Cms-Banner/Cms-banner-4.jpg'
 import FeaturedProducts from '../FeaturedProducts/FeaturedProducts';
-import DealOfTheDay from '../FeaturedProducts/DealOfTheDay/DealOfTheDay';
+import DealOfTheDay from '../DealOfTheDay/DealOfTheDay';
+import Brands from '../Brands/Brands';
 
 const Home = () => {
        return (
@@ -30,6 +33,8 @@ const Home = () => {
                      <CmsBanner cmsBannerImg1={CmsBanner1} cmsBannerImg2={CmsBanner2} offerTitle1='Save Up To 20% Off' offerTitle2='Best Online Discount' mainTitle1={<>Santa Lucia Three <br /> Seater Sofa</>} mainTitle2={<>Woman In Red Crew <br /> Neck T-shirt</>}></CmsBanner>
                      <FeaturedProducts></FeaturedProducts>
                      <DealOfTheDay></DealOfTheDay>
+                     <CmsBanner cmsBannerImg1={CmsBanner3} cmsBannerImg2={CmsBanner4} offerTitle1='20 Days Return Products' offerTitle2='Save Up To 30% Off' mainTitle1={<>Mobile Shope-Smart <br /> Watch T-55</>} mainTitle2={<>Decoration Design <br /> Lamp Light</>}></CmsBanner>
+                     <Brands></Brands>
               </div>
        );
 };

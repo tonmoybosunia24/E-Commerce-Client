@@ -6,8 +6,8 @@ import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
 import { FreeMode, Navigation } from 'swiper/modules';
-import ProductCard from "../../../Shared/ProductCard/ProductCard";
-import useCategoryProducts from "../../../../Hooks/useCategoryProducts";
+import ProductCard from "../../Shared/ProductCard/ProductCard";
+import useCategoryProducts from "../../../Hooks/useCategoryProducts";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
 
 const DealOfTheDay = () => {

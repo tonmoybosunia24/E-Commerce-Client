@@ -36,14 +36,14 @@ const ProductCard = ({ product, fromSlider = '' }) => {
                      {/* ------------------Product Main Card----------------- */}
                      <div className='space-y-1.5'>
                             <img className="aspect-[2/2] object-contain" src={Images?.[0]} alt="" />
-                            <p className={`text-gray-500 hover:text-Radical ${fromSlider === 'isOnSale' ? 'mt-10' : ''}`}>{SubCategory}</p>
+                            <p className={`text-gray-500 hover:text-Radical line-clamp-1 ${fromSlider === 'isOnSale' ? 'mt-10' : ''}`}>{SubCategory}</p>
                             <h4 className='font-semibold text-gray-800 line-clamp-1'>{Title}</h4>
                             <p className='text-sm lg:text-base line-clamp-1'>{SellerInformation?.name}</p>
                             <Rating style={{ maxWidth: 80 }} value={ProductRating} />
                             {/* ------------------Price---------------- */}
                             <div className='flex gap-2'>
-                                   <del className='text-gray-300 text-sm lg:text-lg font-semibold'>{Price} Tk </del>
-                                   <p className='text-Radical text-sm lg:text-lg font-semibold'>{OfferPrice} Tk </p>
+                                   <del className='text-gray-300 text-xs lg:text-lg font-semibold'>{Price} Tk </del>
+                                   <p className='text-Radical text-xs lg:text-lg font-semibold'>{OfferPrice} Tk </p>
                             </div>
                             {/* ------------------Timer For Deal Of The Day----------------- */}
                             <div>
@@ -51,10 +51,10 @@ const ProductCard = ({ product, fromSlider = '' }) => {
                                           <Countdown date={targetDate}
                                                  renderer={({ days, hours, minutes, seconds, completed }) => {
                                                         if (completed) {
-                                                               return <span className="flex absolute top-[10.5rem] lg:top-[13.5rem] left-1/2 transform -translate-x-1/2 gap-1 text-center bg-white text-Radical drop-shadow-sm rounded-sm px-2">Offer Ended!</span>;
+                                                               return <span className="flex absolute top-[9.7rem] lg:top-[13.5rem] left-1/2 transform -translate-x-1/2 gap-1 text-center bg-white text-Radical drop-shadow-sm rounded-sm px-2">Offer Ended!</span>;
                                                         } else {
                                                                return (
-                                                                      <div className="flex absolute top-[10.5rem] lg:top-[13.5rem] left-1/2 transform -translate-x-1/2 gap-1 text-center bg-white text-Radical drop-shadow-sm rounded-sm px-2">
+                                                                      <div className="flex absolute top-[9.7rem] lg:top-[13.5rem] left-1/2 transform -translate-x-1/2 gap-1 text-center bg-white text-Radical drop-shadow-sm rounded-sm px-2">
                                                                              <div className="flex items-center">
                                                                                     <span className="countdown font-mono text-base">
                                                                                            <span style={{ "--value": days }}>{days}</span>
