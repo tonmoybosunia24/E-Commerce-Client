@@ -1,6 +1,6 @@
 const CmsBanner = ({cmsBannerImg1, cmsBannerImg2, offerTitle1, offerTitle2, mainTitle1, mainTitle2}) => {
        return (
-              <section className="px-5 md:px-10 lg:px-20 mb-10">
+              <section className="px-5 md:px-10 lg:px-20">
                      {/* ---------------Cms-Banner Container------------- */}
                      <div className="flex flex-col md:flex-row lg:flex-row gap-5">
                             {/* -------------Cms-Banner Parent----------- */}

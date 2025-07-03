@@ -15,10 +15,10 @@ const LatestProducts = () => {
     const [products, loading] = useCategoryProducts(`?isNewArrival=true`);
 
     return (
-        <div className="px-5 md:px-10 lg:px-20 my-5 md:my-7 lg:my-10">
+        <section className="px-5 md:px-10 lg:px-20 my-5 md:my-7 lg:my-10">
             {/* -----------------Title And Slider Navigation----------------- */}
             <div className='flex justify-between items-center mb-3'>
-                <h2 className='text-base md:text-lg lg:text-lg hover:text-Radical cursor-default'>Latest Products</h2>
+                <h2 className='text-base md:text-xl lg:text-xl hover:text-Radical cursor-default'>Latest Products</h2>
                 <div className='flex items-center'>
                     <div className='cursor-pointer'><IoIosArrowDropleftCircle className='PrevLatest  text-3xl lg:text-3xl text-Radical' /></div>
                     <div className='cursor-pointer'><IoIosArrowDroprightCircle className='NextLatest  text-3xl lg:text-3xl text-Radical' /></div>
@@ -46,7 +46,7 @@ const LatestProducts = () => {
                         <div className={`w-full h-full flex flex-col`}><ProductCard product={product} /></div></SwiperSlide>))}
                 </Swiper>
             </div>
-        </div>
+        </section>
     );
 };
 

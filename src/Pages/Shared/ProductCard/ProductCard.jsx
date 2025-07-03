@@ -19,26 +19,71 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import '@smastrom/react-rating/style.css'
 import { Rating } from '@smastrom/react-rating'
+import Countdown from 'react-countdown';
 
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, fromSlider = '' }) => {
 
-       const { _id, Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, Condition, AvailabilityStatus, SellerInformation } = product;
+       const { _id, Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, OfferTime, Condition, AvailabilityStatus, isNewArrival, isBestSeller, isOnSale, SellerInformation } = product;
        const [thumbsSwiper, setThumbsSwiper] = useState(null);
        const [value, setValue] = useState(1);
+       /* ---------------Count Total Milliseconds-------------- */
+       const totalMilliseconds = (((OfferTime?.Day || 0) * 24 + (OfferTime?.Hour || 0)) * 60 + (OfferTime?.Minutes || 0)) * 60 * 1000 + (OfferTime?.Second || 0) * 1000;
+       const targetDate = Date.now() + totalMilliseconds;
 
        return (
               <div className="h-full relative p-3 group">
                      {/* ------------------Product Main Card----------------- */}
                      <div className='space-y-1.5'>
                             <img className="aspect-[2/2] object-contain" src={Images?.[0]} alt="" />
-                            <p className='text-gray-500 hover:text-Radical'>{SubCategory}</p>
+                            <p className={`text-gray-500 hover:text-Radical ${fromSlider === 'isOnSale' ? 'mt-10' : ''}`}>{SubCategory}</p>
                             <h4 className='font-semibold text-gray-800 line-clamp-1'>{Title}</h4>
                             <p className='text-sm lg:text-base line-clamp-1'>{SellerInformation?.name}</p>
                             <Rating style={{ maxWidth: 80 }} value={ProductRating} />
+                            {/* ------------------Price---------------- */}
                             <div className='flex gap-2'>
                                    <del className='text-gray-300 text-sm lg:text-lg font-semibold'>{Price} Tk </del>
                                    <p className='text-Radical text-sm lg:text-lg font-semibold'>{OfferPrice} Tk </p>
+                            </div>
+                            {/* ------------------Timer For Deal Of The Day----------------- */}
+                            <div>
+                                   {fromSlider === 'isOnSale' ? (
+                                          <Countdown date={targetDate}
+                                                 renderer={({ days, hours, minutes, seconds, completed }) => {
+                                                        if (completed) {
+                                                               return <span className="flex absolute top-[10.5rem] lg:top-[13.5rem] left-1/2 transform -translate-x-1/2 gap-1 text-center bg-white text-Radical drop-shadow-sm rounded-sm px-2">Offer Ended!</span>;
+                                                        } else {
+                                                               return (
+                                                                      <div className="flex absolute top-[10.5rem] lg:top-[13.5rem] left-1/2 transform -translate-x-1/2 gap-1 text-center bg-white text-Radical drop-shadow-sm rounded-sm px-2">
+                                                                             <div className="flex items-center">
+                                                                                    <span className="countdown font-mono text-base">
+                                                                                           <span style={{ "--value": days }}>{days}</span>
+                                                                                    </span>
+                                                                                    <span className="text-xl">:</span>
+                                                                             </div>
+                                                                             <div className="flex items-center">
+                                                                                    <span className="countdown font-mono text-base">
+                                                                                           <span style={{ "--value": hours }}>{hours}</span>
+                                                                                    </span>
+                                                                                    <span className="text-xl">:</span>
+                                                                             </div>
+                                                                             <div className="flex items-center">
+                                                                                    <span className="countdown font-mono text-base">
+                                                                                           <span style={{ "--value": minutes }}>{minutes}</span>
+                                                                                    </span>
+                                                                                    <span className="text-xl">:</span>
+                                                                             </div>
+                                                                             <div>
+                                                                                    <span className="countdown font-mono text-base">
+                                                                                           <span style={{ "--value": seconds }}>{seconds}</span>
+                                                                                    </span>
+                                                                             </div>
+                                                                      </div>
+                                                               );
+                                                        }
+                                                 }}
+                                          />
+                                   ) : null}
                             </div>
                      </div>
                      <div className='flex flex-col gap-2 absolute top-0 right-3 opacity-0 group-hover:opacity-100 group-hover:top-5  duration-500 transition-all text-3xl'>

@@ -36,7 +36,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": true,
     "isBestSeller": false,
-    "isOnSale": false,
+    "isOnSale": true,
     "ReturnPolicy": "10-day easy return.",
     "SellerInformation": {
       "name": "Apple Store BD",
@@ -301,7 +301,7 @@
     "availabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": false,
-    "isOnSale": false,
+    "isOnSale": true,
     "returnPolicy": "Return within 7 days for a full refund",
     "sellerInformation": {
       "name": "TechZone BD",
@@ -405,8 +405,8 @@
     "offerTime": null,
     "condition": "New",
     "availabilityStatus": "In Stock",
-    "isNewArrival": true,
-    "isBestSeller": true,
+    "isNewArrival": false,
+    "isBestSeller": false,
     "isOnSale": false,
     "returnPolicy": "Only panel defect returns allowed",
     "sellerInformation": {
@@ -458,8 +458,8 @@
     "offerTime": null,
     "condition": "New",
     "availabilityStatus": "In Stock",
-    "isNewArrival": false,
-    "isBestSeller": false,
+    "isNewArrival": true,
+    "isBestSeller": true,
     "isOnSale": false,
     "returnPolicy": "Return if unopened within 7 days",
     "sellerInformation": {
@@ -513,7 +513,7 @@
     "availabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": false,
-    "isOnSale": true,
+    "isOnSale": false,
     "returnPolicy": "10-day return policy",
     "sellerInformation": {
       "name": "Surface BD",
@@ -992,7 +992,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": false,
-    "isOnSale": true,
+    "isOnSale": false,
     "ReturnPolicy": "7-day return if unopened.",
     "SellerInformation": {
       "name": "Desktop Hub BD",
@@ -1098,7 +1098,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": true,
-    "isOnSale": false,
+    "isOnSale": true,
     "ReturnPolicy": "7-day return if tags intact.",
     "SellerInformation": {
       "name": "Urban Apparel BD",
@@ -1204,7 +1204,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": false,
-    "isOnSale": false,
+    "isOnSale": true,
     "ReturnPolicy": "7-day return if unused.",
     "SellerInformation": {
       "name": "Sporty Shoes BD",
@@ -1628,7 +1628,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": false,
-    "isOnSale": true,
+    "isOnSale": false,
     "ReturnPolicy": "7-day return if tags intact.",
     "SellerInformation": {
       "name": "Sportswear BD",
@@ -1681,7 +1681,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": false,
-    "isOnSale": false,
+    "isOnSale": true,
     "ReturnPolicy": "7-day return if tags intact.",
     "SellerInformation": {
       "name": "Fashion House BD",
@@ -1787,7 +1787,7 @@
     "AvailabilityStatus": "Limited Stock",
     "isNewArrival": true,
     "isBestSeller": true,
-    "isOnSale": true,
+    "isOnSale": false,
     "ReturnPolicy": "No return due to warranty policy.",
     "SellerInformation": {
       "name": "Luxury Timepieces BD",
@@ -1999,7 +1999,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": true,
     "isBestSeller": false,
-    "isOnSale": true,
+    "isOnSale": false,
     "ReturnPolicy": "7-day return with original packaging.",
     "SellerInformation": {
       "name": "Coffee World BD",
@@ -2105,7 +2105,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": true,
-    "isOnSale": false,
+    "isOnSale": true,
     "ReturnPolicy": "7-day return with original packaging.",
     "SellerInformation": {
       "name": "Smart Home BD",
@@ -2370,7 +2370,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": false,
-    "isOnSale": false,
+    "isOnSale": true,
     "ReturnPolicy": "14-day return with original packaging.",
     "SellerInformation": {
       "name": "Kitchen Pro BD",
@@ -2529,7 +2529,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": false,
-    "isOnSale": false,
+    "isOnSale": true,
     "ReturnPolicy": "14-day return with original packaging.",
     "SellerInformation": {
       "name": "Blend Pro BD",
@@ -2611,9 +2611,9 @@
     "Tags": ["samsung","family hub","smart refrigerator","kitchen appliance"],
     "Brand": "Samsung",
     "Images": [
-      "https://m.media-amazon.com/images/I/41p7zRQewWL._AC_SL1000_.jpg",
-      "https://m.media-amazon.com/images/I/41vX814+l5L._AC_SL1000_.jpg",
-      "https://m.media-amazon.com/images/I/51hp6CKkC8L._AC_SL1000_.jpg"
+      "https://m.media-amazon.com/images/I/51IpXmAmjOL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71mpZMFpa0L._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/81l8+edI8TL._AC_SL1500_.jpg"
     ],
     "Colors": ["#E34234","#D72631","#F5B041"],
     "Variant": ["Standard"],
@@ -2688,7 +2688,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": false,
-    "isOnSale": true,
+    "isOnSale": false,
     "ReturnPolicy": "14-day return with original packaging.",
     "SellerInformation": {
       "name": "Glamour Store BD",
@@ -2847,7 +2847,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": false,
-    "isOnSale": true,
+    "isOnSale": false,
     "ReturnPolicy": "14-day return with original packaging.",
     "SellerInformation": {
       "name": "GroomTech BD",
@@ -3059,7 +3059,7 @@
     "AvailabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": false,
-    "isOnSale": true,
+    "isOnSale": false,
     "ReturnPolicy": "14-day return with original packaging.",
     "SellerInformation": {
       "name": "SmileCare BD",

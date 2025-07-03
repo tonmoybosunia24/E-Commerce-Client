@@ -11,6 +11,8 @@ import LatestProducts from '../LatestProducts/LatestProducts';
 import CmsBanner from '../CmsBanner/CmsBanner';
 import CmsBanner1 from '../../../assets/Cms-Banner/Cms-banner-1.jpg'
 import CmsBanner2 from '../../../assets/Cms-Banner/Cms-banner-2.jpg'
+import FeaturedProducts from '../FeaturedProducts/FeaturedProducts';
+import DealOfTheDay from '../FeaturedProducts/DealOfTheDay/DealOfTheDay';
 
 const Home = () => {
        return (
@@ -25,7 +27,9 @@ const Home = () => {
                      <CategoryProducts></CategoryProducts>
                      <OfferBanner></OfferBanner>
                      <LatestProducts></LatestProducts>
-                     <CmsBanner cmsBannerImg1={CmsBanner1} cmsBannerImg2={CmsBanner2} offerTitle1='Save Up To 20% Off' offerTitle2='Best Online Discount' mainTitle1={<>Santa Lucia Three <br/> Seater Sofa</>} mainTitle2={<>Woman In Red Crew <br/> Neck T-shirt</>}></CmsBanner>
+                     <CmsBanner cmsBannerImg1={CmsBanner1} cmsBannerImg2={CmsBanner2} offerTitle1='Save Up To 20% Off' offerTitle2='Best Online Discount' mainTitle1={<>Santa Lucia Three <br /> Seater Sofa</>} mainTitle2={<>Woman In Red Crew <br /> Neck T-shirt</>}></CmsBanner>
+                     <FeaturedProducts></FeaturedProducts>
+                     <DealOfTheDay></DealOfTheDay>
               </div>
        );
 };
