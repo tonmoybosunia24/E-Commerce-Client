@@ -16,6 +16,7 @@ import CmsBanner4 from '../../../assets/Cms-Banner/Cms-banner-4.jpg'
 import FeaturedProducts from '../FeaturedProducts/FeaturedProducts';
 import DealOfTheDay from '../DealOfTheDay/DealOfTheDay';
 import Brands from '../Brands/Brands';
+import Testimonial from '../Testimonial/Testimonial';
 
 const Home = () => {
        return (
@@ -35,6 +36,7 @@ const Home = () => {
                      <DealOfTheDay></DealOfTheDay>
                      <CmsBanner cmsBannerImg1={CmsBanner3} cmsBannerImg2={CmsBanner4} offerTitle1='20 Days Return Products' offerTitle2='Save Up To 30% Off' mainTitle1={<>Mobile Shope-Smart <br /> Watch T-55</>} mainTitle2={<>Decoration Design <br /> Lamp Light</>}></CmsBanner>
                      <Brands></Brands>
+                     <Testimonial></Testimonial>
               </div>
        );
 };

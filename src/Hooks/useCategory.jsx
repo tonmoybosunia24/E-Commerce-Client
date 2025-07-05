@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
 const useCategory = () => {
 
        const axiosPublic = useAxiosPublic();
-       const [categories, setCategories] = useState([]);
+       const {data: categories = [], isPending: categoriesLoading} = useQuery({
+            queryKey: ['categories'],
+            queryFn: async () => {
+                const res = await axiosPublic.get('/categories')
+                return res.data
+            }
+       })       
 
-       useEffect(() => {
-               axiosPublic.get('/categories')
-                   .then(res => {
-                       setCategories(res.data);
-                   })
-                   .catch(error => {
-                       console.log('Failed To Fetch Categories', error);
-                   })
-           }, [])
-
-       return [categories]
+       return [categories, categoriesLoading]
 };
 
 export default useCategory;

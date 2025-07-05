@@ -12,13 +12,13 @@ import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons
 
 const FeaturedProducts = () => {
 
-       const [products, loading] = useCategoryProducts(`?isBestSeller=true`)
+       const [products, productsLoading] = useCategoryProducts(`?isBestSeller=true`)
 
        return (
               <section className="px-5 md:px-10 lg:px-20 my-5 md:my-7 lg:my-10">
                      {/* -----------------Title And Slider Navigation----------------- */}
                      <div className='flex justify-between items-center mb-3'>
-                            <h2 className='text-base md:text-xl lg:text-xl hover:text-Radical cursor-default'>Featured Products</h2>
+                            <h2 className='font-semibold text-base md:text-xl lg:text-2xl hover:text-Radical'>Featured Products</h2>
                             <div className='flex items-center'>
                                    <div className='cursor-pointer'><IoIosArrowDropleftCircle className='PrevFeatured  text-3xl lg:text-3xl text-Radical' /></div>
                                    <div className='cursor-pointer'><IoIosArrowDroprightCircle className='NextFeatured  text-3xl lg:text-3xl text-Radical' /></div>
@@ -35,14 +35,14 @@ const FeaturedProducts = () => {
                                           nextEl: '.NextFeatured',
                                           prevEl: '.PrevFeatured',
                                    }}
-                                   className={`mySwiper h-auto ${!loading && products.length >= 5 ? 'border border-l-0 border-gray-400' : ''} ${products.length > 1 && products.length < 5 ? 'border-l border-gray-400' : ''}`}
+                                   className={`mySwiper h-auto ${!productsLoading && products.length >= 5 ? 'border border-l-0 border-gray-400' : ''} ${products.length > 1 && products.length < 5 ? 'border-l border-gray-400' : ''}`}
                                    breakpoints={{
                                           640: { slidesPerView: 2 },
                                           768: { slidesPerView: 4 },
                                           1024: { slidesPerView: 5 },
                                    }}
                             >
-                                   {loading ? (<span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>) : (products.map((product, index) => <SwiperSlide key={index} className={`!h-auto flex ${index === 0 ? 'border-l border-gray-400' : 'border-l border-gray-400'} ${products.length > 0 && products.length < 5 ? 'border-t border-r border-b' : ''} ${products.length > 1 && products.length < 5 ? 'border-l-0' : ''}`}>
+                                   {productsLoading ? (<span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>) : (products.map((product, index) => <SwiperSlide key={index} className={`!h-auto flex ${index === 0 ? 'border-l border-gray-400' : 'border-l border-gray-400'} ${products.length > 0 && products.length < 5 ? 'border-t border-r border-b' : ''} ${products.length > 1 && products.length < 5 ? 'border-l-0' : ''}`}>
                                           <div className={`w-full h-full flex flex-col`}><ProductCard product={product} /></div></SwiperSlide>))}
                             </Swiper>
                      </div>
