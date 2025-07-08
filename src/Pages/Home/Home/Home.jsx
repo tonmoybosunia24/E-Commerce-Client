@@ -18,6 +18,8 @@ import DealOfTheDay from '../DealOfTheDay/DealOfTheDay';
 import Brands from '../Brands/Brands';
 import Testimonial from '../Testimonial/Testimonial';
 import Blogs from '../Blogs/Blogs';
+import Follows from '../Follows/Follows';
+import Services from '../Services/Services';
 
 const Home = () => {
        return (
@@ -39,6 +41,8 @@ const Home = () => {
                      <Brands></Brands>
                      <Testimonial></Testimonial>
                      <Blogs></Blogs>
+                     <Follows></Follows>
+                     <Services></Services>
               </div>
        );
 };

@@ -60,7 +60,7 @@ const Blogs = () => {
                                                         </div>
                                                         <h3 className='font-semibold line-clamp-1'>{blog.title}</h3>
                                                         <p className='text-sm line-clamp-4'>{blog.content}</p>
-                                                        <button className='font-semibold text-Radical cursor-pointer text-sm underline'>Read More</button>
+                                                        <button className='font-semibold text-Radical cursor-pointer text-sm underline hover:no-underline'>Read More</button>
                                                  </div>
                                           </SwiperSlide>))}
                             </Swiper>
