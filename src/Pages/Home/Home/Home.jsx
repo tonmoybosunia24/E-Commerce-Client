@@ -20,10 +20,11 @@ import Testimonial from '../Testimonial/Testimonial';
 import Blogs from '../Blogs/Blogs';
 import Follows from '../Follows/Follows';
 import Services from '../Services/Services';
+import Footer from '../Footer/Footer';
 
 const Home = () => {
        return (
-              <div>
+              <div className='font-light'>
                      <Helmet><title>E-Commerce | Home</title></Helmet>
                      <HeaderTop></HeaderTop>
                      <Header></Header>
@@ -43,6 +44,7 @@ const Home = () => {
                      <Blogs></Blogs>
                      <Follows></Follows>
                      <Services></Services>
+                     <Footer></Footer>
               </div>
        );
 };
