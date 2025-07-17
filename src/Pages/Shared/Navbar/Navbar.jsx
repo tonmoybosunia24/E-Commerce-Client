@@ -29,7 +29,7 @@ const Navbar = () => {
                      {/* ----------------Shop By Categories--------------- */}
                      <div className="relative">
                             <div onClick={() => setDrawerOpen(!drawerOpen)} className="flex items-center gap-2 cursor-pointer border-r border-gray-300 pr-3">
-                                   <h3>SHOP BY CATEGORIES </h3>
+                                   <h3 className="font-semibold">SHOP BY CATEGORIES </h3>
                                    {drawerOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
                             </div>
                             {/* -----------------All Categories----------------- */}
@@ -41,10 +41,10 @@ const Navbar = () => {
                      <div>
                             <ul className="flex gap-2">{Links}</ul>
                      </div>
-                     {/* ------------------Free Delevery------------------ */}
+                     {/* ------------------Free Delivery------------------ */}
                      <div className="flex items-center gap-2">
                             <HiOutlineRocketLaunch className="text-xl" />
-                            <p>Free International Delivery</p>
+                            <p className="font-semibold">Free International Delivery</p>
                      </div>
               </nav>
        );

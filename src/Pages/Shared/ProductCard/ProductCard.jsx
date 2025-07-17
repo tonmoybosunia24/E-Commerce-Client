@@ -20,11 +20,12 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import '@smastrom/react-rating/style.css'
 import { Rating } from '@smastrom/react-rating'
 import Countdown from 'react-countdown';
+import brandImg1 from '../../../assets/Brands/Brands2.jpg'
 
 
 const ProductCard = ({ product, fromSlider = '' }) => {
 
-       const { _id, Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, OfferTime, Condition, AvailabilityStatus, isNewArrival, isBestSeller, isOnSale, SellerInformation } = product;
+       const { _id, Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, OfferTime, Condition, AvailabilityStatus, SellerInformation } = product;
        const [thumbsSwiper, setThumbsSwiper] = useState(null);
        const [value, setValue] = useState(1);
        /* ---------------Count Total Milliseconds-------------- */
@@ -36,13 +37,13 @@ const ProductCard = ({ product, fromSlider = '' }) => {
                      {/* ------------------Product Main Card----------------- */}
                      <div className='space-y-1.5'>
                             <img className="aspect-[2/2] object-contain" src={Images?.[0]} alt="" />
-                            <p className={`text-gray-500 hover:text-Radical line-clamp-1 ${fromSlider === 'isOnSale' ? 'mt-10' : ''}`}>{SubCategory}</p>
-                            <h4 className='font-semibold text-gray-800 line-clamp-1'>{Title}</h4>
-                            <p className='text-sm lg:text-base line-clamp-1'>{SellerInformation?.name}</p>
+                            <p className={`text-gray-500 text-sm md:text-base lg:text-base hover:text-Radical line-clamp-1 ${fromSlider === 'isOnSale' ? 'mt-10' : ''}`}>{SubCategory}</p>
+                            <h4 className='font-bold line-clamp-1 hover:text-Radical'>{Title}</h4>
+                            <p className='font-semibold text-sm line-clamp-1'>{SellerInformation?.name}</p>
                             <Rating style={{ maxWidth: 80 }} value={ProductRating} />
                             {/* ------------------Price---------------- */}
                             <div className='flex gap-2'>
-                                   <del className='text-gray-300 text-xs lg:text-lg font-semibold'>{Price} Tk </del>
+                                   <del className='text-gray-300 text-xs lg:text-lg font-medium'>{Price} Tk </del>
                                    <p className='text-Radical text-xs lg:text-lg font-semibold'>{OfferPrice} Tk </p>
                             </div>
                             {/* ------------------Timer For Deal Of The Day----------------- */}
@@ -86,15 +87,19 @@ const ProductCard = ({ product, fromSlider = '' }) => {
                                    ) : null}
                             </div>
                      </div>
+                     <div className='flex flex-col gap-2 absolute top-0 left-3 opacity-0 group-hover:opacity-100 group-hover:top-6  duration-500 transition-all'>
+                            {DiscountPercentage && <p className='bg-red-600 text-white text-xs px-2 py-1 rounded-xs'> - {DiscountPercentage} %</p>}
+                            {Condition && (<p className="bg-green-600 text-center text-white text-xs p-1 rounded-xs font-medium">{Condition}</p>)}
+                     </div>
                      <div className='flex flex-col gap-2 absolute top-0 right-3 opacity-0 group-hover:opacity-100 group-hover:top-5  duration-500 transition-all text-3xl'>
                             <CiHeart className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' />
                             <GoGitCompare className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' />
                             {/* -----------------Product Details Icon-------------- */}
                             <button className="" onClick={() => document.getElementById(`my_modal_${_id}`).showModal()}><SlSizeFullscreen className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' /></button>
                             <dialog id={`${`my_modal_${_id}`}`} className="modal">
-                                   <div className="flex flex-col md:flex-row lg:flex-row modal-box lg:w-12/12 max-w-5xl gap-5">
+                                   <div className="flex flex-col md:flex-row lg:flex-row modal-box lg:w-12/12 md:max-w-3xl lg:max-w-5xl gap-5">
                                           {/* -----------------------Image Slider------------------- */}
-                                          <div className='lg:w-4/10'>
+                                          <div className='md:w-5/10 lg:w-4/10'>
                                                  {/* -----------------Upper Swiper------------------ */}
                                                  <Swiper
                                                         style={{
@@ -108,8 +113,8 @@ const ProductCard = ({ product, fromSlider = '' }) => {
                                                         className="mySwiper2"
                                                  >
                                                         {Images?.map((pic, index) => (
-                                                               <SwiperSlide key={index}>
-                                                                      <img className="aspect-[2/2] object-contain" src={pic} />
+                                                               <SwiperSlide className='border border-gray-400 hover:border-Radical' key={index}>
+                                                                      <img className="aspect-[2/2] object-contain p-5" src={pic} />
                                                                </SwiperSlide>
                                                         ))}
 
@@ -125,54 +130,59 @@ const ProductCard = ({ product, fromSlider = '' }) => {
                                                         className="mySwiper mt-5"
                                                  >
                                                         {Images?.map((pic, index) => (
-                                                               <SwiperSlide className='border' key={index}>
-                                                                      <img className="aspect-[3/3] object-contain" src={pic} />
+                                                               <SwiperSlide className='border border-gray-400 hover:border-Radical' key={index}>
+                                                                      <img className="aspect-[3/3] object-contain p-2" src={pic} />
                                                                </SwiperSlide>
                                                         ))}
                                                  </Swiper>
                                           </div>
                                           {/* ------------------Product Details Side---------------- */}
-                                          <div className=' text-base space-y-1'>
-                                                 <h5 className='text-3xl'>{Title}</h5>
-                                                 <p className='text-gray-600'>{Description}</p>
-                                                 <hr className='my-1' />
-                                                 <p><span className='font-semibold text-gray-800'>Brand : </span>{Brand}</p>
-                                                 <p><span className='font-semibold text-gray-800'>Condition : </span>{Condition}</p>
-                                                 <p className='text-green-500 font-semibold'><span className='font-semibold text-gray-800'>Available In Stock : </span>{Stock} Items</p>
-                                                 {/* ----------------Variant/Size/Storage----------------- */}
-                                                 <div className='flex gap-1'>
-                                                        <span className='font-semibold text-gray-800'>{((Category === 'Electronics' || Category === 'Smart Home') && 'Variant :') || ((Category === 'Fashion' || Category === 'Kitchenware' || Category === 'Personal Care') && 'Size :') || (Category === 'Home Appliances' && 'Storage :')}</span>
-                                                        {Variant?.map((item, index) => (<p key={index}>{item} {index === Variant.length - 1 ? '' : ','}</p>
-                                                        ))}
-                                                 </div>
-                                                 {/* -----------------------Colors------------------------ */}
-                                                 <div className='flex items-center gap-1'>
-                                                        <span className='font-semibold text-gray-800'>Colors : </span>
-                                                        {Colors?.map(((color, index) => (
-                                                               <div key={index} className='w-7 h-7 border border-gray-400 rounded-full' style={{ backgroundColor: color }}></div>
-                                                        )))}
+                                          <div className='text-sm md:text-xs lg:text-base space-y-1.5'>
+                                                 <h5 className='font-semibold text-3xl'>{Title}</h5>
+                                                 <p className='text-gray-700'>{Description}</p>
+                                                 <hr className='text-gray-400 my-1' />
+                                                 <div className='flex justify-between items-center'>
+                                                        <div className='space-y-1.5'>
+                                                               <p><span className='font-bold'>Brand : </span>{Brand}</p>
+                                                               <p><span className='font-bold'>Condition : </span>{Condition}</p>
+                                                               <p className='font-bold'>Available In Stock : <span className='font-semibold text-green-700'>{Stock} Items</span></p>
+                                                               {/* ----------------Variant/Size/Storage----------------- */}
+                                                               <div className='flex gap-1'>
+                                                                      <span className='font-bold'>{((Category === 'Electronics' || Category === 'Smart Home') && 'Variant :') || ((Category === 'Fashion' || Category === 'Kitchenware' || Category === 'Personal Care') && 'Size :') || (Category === 'Home Appliances' && 'Storage :')}</span>
+                                                                      {Variant?.map((item, index) => (<p key={index}>{item} {index === Variant.length - 1 ? '' : ','}</p>
+                                                                      ))}
+                                                               </div>
+                                                               {/* -----------------------Colors------------------------ */}
+                                                               <div className='flex items-center gap-1'>
+                                                                      <span className='font-bold'>Colors : </span>
+                                                                      {Colors?.map(((color, index) => (
+                                                                             <div key={index} className='w-7 h-7 border border-gray-400 rounded-full' style={{ backgroundColor: color }}></div>
+                                                                      )))}
+                                                               </div>
+                                                        </div>
+                                                        <div className='hidden lg:block'><img className='p-3 border border-gray-400 rounded-md' src={brandImg1} alt="" /></div>
                                                  </div>
                                                  {/* -------------Price/OfferPrice/Discount--------------- */}
                                                  <div className='flex items-center gap-3 '>
-                                                        <del className='font-semibold lg:text-2xl text-gray-300'>{Price} Tk,</del>
+                                                        <del className='lg:text-2xl text-gray-400'>{Price} Tk,</del>
                                                         <p className='text-Radical font-semibold lg:text-2xl'>{OfferPrice} Tk,</p>
-                                                        <p className='text-Radical'><span>SAVE </span>{DiscountPercentage} % </p>
+                                                        <p className='text-Radical font-semibold'><span>SAVE </span>{DiscountPercentage} % </p>
                                                  </div>
                                                  {/* -------------------Shipping Info--------------------- */}
                                                  <div>
-                                                        <p><span className='font-semibold text-gray-800'>Inside Dhaka : </span>{ShippingInformation?.InsideDhaka} ,</p>
-                                                        <p><span className='font-semibold text-gray-800'>Outside Dhaka : </span>{ShippingInformation?.OutsideDhaka}</p>
+                                                        <p><span className='font-bold'>Inside Dhaka : </span>{ShippingInformation?.InsideDhaka} ,</p>
+                                                        <p><span className='font-bold'>Outside Dhaka : </span>{ShippingInformation?.OutsideDhaka}</p>
                                                  </div>
                                                  {/* ----------------Quantity Of Products----------------- */}
                                                  <div className='flex gap-2'>
                                                         <div className='flex'>
-                                                               <div><input className='border outline-0 w-14 h-10 pl-2' type="tel" value={value} /></div>
-                                                               <div className='border border-l-0 flex flex-col'>
-                                                                      <div className='border-b flex-1' onClick={() => setValue(value + 1)}><FaAngleUp /></div>
-                                                                      <div className='flex-1' onClick={() => value > 1 && setValue(value - 1)}><FaAngleDown /></div>
+                                                               <div><input className='border outline-0 w-12 h-full pl-2' type="tel" value={value} /></div>
+                                                               <div className='flex flex-col border border-l-0'>
+                                                                      <div className='flex-1 border-b text-sm' onClick={() => setValue(value + 1)}><FaAngleUp /></div>
+                                                                      <div className='flex-1 text-sm' onClick={() => value > 1 && setValue(value - 1)}><FaAngleDown /></div>
                                                                </div>
                                                         </div>
-                                                        <div><button className='w-40 h-full bg-Radical text-white rounded-sm hover:bg-black'>Add To Card</button></div>
+                                                        <div><button className='px-7 py-1.5 bg-Radical text-white rounded-sm hover:bg-black'>Add To Card</button></div>
                                                  </div>
                                                  {/* -----------------Wishlist And Compare---------------- */}
                                                  <div className='flex gap-2'>
@@ -185,12 +195,12 @@ const ProductCard = ({ product, fromSlider = '' }) => {
                                                                <p>Add To Compare</p>
                                                         </div>
                                                  </div>
-                                                 <p className={AvailabilityStatus === 'Limited Stock' ? 'w-max text-yellow-700 bg-yellow-200 border border-yellow-500 px-2' : 'w-max text-green-700 bg-green-200 border border-green-700 px-2'}>{AvailabilityStatus}</p>
+                                                 <p className={AvailabilityStatus === 'Limited Stock' ? 'w-max flex items-center text-yellow-700 bg-yellow-200 border border-yellow-500 px-2' : 'w-max flex items-center text-green-700 bg-green-200 border border-green-700 px-2'}>{AvailabilityStatus}</p>
                                                  {/* --------------Icons Of Social Media----------------- */}
-                                                 <div className='flex mt-2'>
-                                                        <div className='border border-black border-r-0 px-4 py-2 text-blue-700'><FaFacebookF /></div>
-                                                        <div className='border border-black border-r-0 px-4 py-2 text-black'><FaXTwitter /></div>
-                                                        <div className='border border-black px-4 py-2 text-red-600'><AiFillPinterest /></div>
+                                                 <div className='flex gap-2 mt-2'>
+                                                        <div className='border border-black px-5 py-2 text-blue-700'><FaFacebookF /></div>
+                                                        <div className='border border-black px-5 py-2 text-black'><FaXTwitter /></div>
+                                                        <div className='border border-black px-5 py-2 text-red-600'><AiFillPinterest /></div>
                                                  </div>
                                           </div>
                                    </div>

@@ -16,7 +16,7 @@ const Testimonial = () => {
        return (
               <section className='px-5 md:px-10 lg:px-20'>
                      <div className='flex justify-between items-center mb-3'>
-                            <h2 className='font-semibold text-base md:text-xl lg:text-2xl hover:text-Radical'>What Our Clients Say</h2>
+                            <h2 className='font-bold text-base md:text-xl lg:text-xl hover:text-Radical'>What Our Clients Say</h2>
                             <div className='flex items-center'>
                                    <div className='cursor-pointer'><IoIosArrowDropleftCircle className='PrevReviews  text-3xl lg:text-3xl text-Radical' /></div>
                                    <div className='cursor-pointer'><IoIosArrowDroprightCircle className='NextReviews  text-3xl lg:text-3xl text-Radical' /></div>
@@ -46,11 +46,11 @@ const Testimonial = () => {
                                                         <div className='flex items-center gap-3'>
                                                                <img className='rounded-full' src={review.image} alt="" />
                                                                <div>
-                                                                      <h4 className='font-semibold text-lg'>{review.name}</h4>
-                                                                      <p className='text-sm'>{review.role}</p>
+                                                                      <h4 className='font-bold text-lg'>{review.name}</h4>
+                                                                      <p className='font-semibold text-sm'>{review.role}</p>
                                                                </div>
                                                         </div>
-                                                        <p className='text-sm text-gray-600'>{review.testimonial}</p>
+                                                        <p className='text-sm text-gray-800'>{review.testimonial}</p>
                                                  </div>
                                           </SwiperSlide>))}
                             </Swiper>

@@ -24,7 +24,7 @@ import Footer from '../Footer/Footer';
 
 const Home = () => {
        return (
-              <div className='font-light'>
+              <div>
                      <Helmet><title>E-Commerce | Home</title></Helmet>
                      <HeaderTop></HeaderTop>
                      <Header></Header>

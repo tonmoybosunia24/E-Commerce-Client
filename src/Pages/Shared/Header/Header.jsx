@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import logo from '../../../assets/Logo/Logo-2.jpg'
 import { PiShoppingCartLight } from 'react-icons/pi';
 import { LiaUserSolid } from 'react-icons/lia';
@@ -32,12 +32,13 @@ const Header = () => {
                             </div>
                             <div className='hidden md:flex lg:flex lg:flex-grow justify-center items-center gap-2'>
                                    <input type="text" placeholder="Search Products Here.." className="input focus:outline-none focus:border-gray-500" />
-                                   <button className='bg-Radical hover:bg-black text-white rounded-sm px-5 py-2 cursor-pointer'>SEARCH</button>
+                                   <button className='font-semibold bg-Radical hover:bg-black text-white rounded-sm px-5 py-2 cursor-pointer'>SEARCH</button>
                             </div>
                             <div className='flex items-center gap-2 lg:gap-3'>
                                    {/* --------------------Login/Register Routes---------------- */}
                                    <div className='border-r px-3 border-gray-300 hidden lg:block'>
-                                          <Link className='hover:text-Radical' to='/login'>Login</Link> / <Link className='hover:text-Radical' to='/register'>Register</Link>
+                                          <Link className='font-bold hover:text-Radical' to='/login'>Login</Link> /
+                                          <Link className='font-bold hover:text-Radical' to='/register'> Register</Link>
                                    </div>
                                    {/* --------------------Header Icons------------------ */}
                                    <div className='flex gap-2 lg:gap-3'>

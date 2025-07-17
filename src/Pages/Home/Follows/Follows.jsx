@@ -20,7 +20,7 @@ const Follows = () => {
        return (
               <section className="bg-[#F5F0F0]">
                      <div className="p-7 md:p-10 lg:p-20">
-                            <h3 className="text-center text-lg md:text-xl lg:text-3xl font-semibold">Follow Us on Instagram</h3>
+                            <h3 className="font-bold text-center text-lg md:text-xl lg:text-2xl">Follow Us on Instagram</h3>
                             {/* ----------------------Swiper Slider------------------ */}
                             <Swiper
                                    modules={[Autoplay]}

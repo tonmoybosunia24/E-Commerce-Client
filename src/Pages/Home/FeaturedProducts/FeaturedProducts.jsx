@@ -18,7 +18,7 @@ const FeaturedProducts = () => {
               <section className="px-5 md:px-10 lg:px-20 my-5 md:my-7 lg:my-10">
                      {/* -----------------Title And Slider Navigation----------------- */}
                      <div className='flex justify-between items-center mb-3'>
-                            <h2 className='font-semibold text-base md:text-xl lg:text-2xl hover:text-Radical'>Featured Products</h2>
+                            <h2 className='font-bold text-base md:text-xl lg:text-xl hover:text-Radical'>Featured Products</h2>
                             <div className='flex items-center'>
                                    <div className='cursor-pointer'><IoIosArrowDropleftCircle className='PrevFeatured  text-3xl lg:text-3xl text-Radical' /></div>
                                    <div className='cursor-pointer'><IoIosArrowDroprightCircle className='NextFeatured  text-3xl lg:text-3xl text-Radical' /></div>

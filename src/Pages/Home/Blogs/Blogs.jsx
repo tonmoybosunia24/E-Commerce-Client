@@ -18,7 +18,7 @@ const Blogs = () => {
        return (
               <section className="px-5 md:px-10 lg:px-20 my-5 md:7 lg:my-10">
                      <div className='flex justify-between items-center mb-3'>
-                            <h2 className='font-semibold text-base md:text-xl lg:text-2xl hover:text-Radical'>From The Blog</h2>
+                            <h2 className='font-bold text-base md:text-xl lg:text-xl hover:text-Radical'>From The Blog</h2>
                             <div className='flex items-center'>
                                    <div className='cursor-pointer'><IoIosArrowDropleftCircle className='PrevBlogs  text-3xl lg:text-3xl text-Radical' /></div>
                                    <div className='cursor-pointer'><IoIosArrowDroprightCircle className='NextBlogs  text-3xl lg:text-3xl text-Radical' /></div>
@@ -54,13 +54,13 @@ const Blogs = () => {
                                                                       </div>
                                                                </div>
                                                         </div>
-                                                        <div className='flex items-center gap-1 text-Radical '>
+                                                        <div className='flex items-center gap-1 font-semibold text-Radical '>
                                                                <FiClock />
                                                                <p>{blog.date}</p>
                                                         </div>
-                                                        <h3 className='font-semibold line-clamp-1'>{blog.title}</h3>
+                                                        <h3 className='font-bold line-clamp-1'>{blog.title}</h3>
                                                         <p className='text-sm line-clamp-4'>{blog.content}</p>
-                                                        <button className='font-semibold text-Radical cursor-pointer text-sm underline hover:no-underline'>Read More</button>
+                                                        <button className='font-bold text-Radical cursor-pointer text-sm underline hover:no-underline'>Read More</button>
                                                  </div>
                                           </SwiperSlide>))}
                             </Swiper>

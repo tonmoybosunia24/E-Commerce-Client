@@ -16,10 +16,10 @@ const Footer = () => {
        const [isCompanyOpen, setIsCompanyOpen] = useState(false);
 
        return (
-              <footer className='font-light'>
+              <footer className=''>
                      {/* -------------------Footer Top------------------- */}
                      <div className="px-5 md:px-10 lg:px-20 py-10 border-t border-t-gray-400">
-                            <div className="flex flex-col lg:flex-row justify-between lg:gap-10 text-gray-600">
+                            <div className="flex flex-col lg:flex-row justify-between lg:gap-10 text-gray-700">
                                    {/* ---------- Desktop Contact Us ---------- */}
                                    <div className="flex-3/12 hidden lg:block space-y-3 border-r border-gray-300">
                                           <h3 className="font-semibold text-xl text-black">Contact Us</h3>
@@ -145,7 +145,7 @@ const Footer = () => {
                                    <div className="text-sm border border-gray-300 rounded-full p-2 hover:bg-Radical hover:text-white"><FaPinterestP /></div>
                                    <div className="text-sm border border-gray-300 rounded-full p-2 hover:bg-Radical hover:text-white"><IoLogoInstagram /></div>
                             </div>
-                            <div><p className="text-gray-400">© 2025 - Ecommerce software by PrestaShop™</p></div>
+                            <div><p className="text-gray-700 text-center">© 2025 - Ecommerce software by PrestaShop™</p></div>
                             <div className="flex gap-1">
                                    <img src={card1} alt="" />
                                    <img src={card2} alt="" />

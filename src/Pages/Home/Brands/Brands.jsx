@@ -16,7 +16,7 @@ import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons
 
 const Brands = () => {
        return (
-              <section className="px-5 md:px-10 lg:px-20 my-5 md:my-7 lg:my-10">
+              <section className="px-5 md:px-10 lg:px-20 my-3 md:my-4 lg:my-5">
                      <div className='relative'>
                             {/* ------------------Brands Navigation----------------- */}
                             <div className='absolute top-1/2 -translate-y-1/2 -left-3 cursor-pointer z-10'><IoIosArrowDropleftCircle className='PrevCategory  text-3xl lg:text-3xl text-Radical' /></div>
@@ -38,28 +38,28 @@ const Brands = () => {
                                    }}
                             >
                                    {/* ---------------------Brands Slider------------------ */}
-                                   <SwiperSlide>
+                                   <SwiperSlide className='py-2 md:py-3 lg:py-5'>
                                           <img className='wave' src={BrandImg1} alt="" />
                                    </SwiperSlide>
-                                   <SwiperSlide>
+                                   <SwiperSlide className='py-2 md:py-3 lg:py-5'>
                                           <img className='wave' src={BrandImg2} alt="" />
                                    </SwiperSlide>
-                                   <SwiperSlide>
+                                   <SwiperSlide className='py-2 md:py-3 lg:py-5'>
                                           <img className='wave' src={BrandImg3} alt="" />
                                    </SwiperSlide>
-                                   <SwiperSlide>
+                                   <SwiperSlide className='py-2 md:py-3 lg:py-5'>
                                           <img className='wave' src={BrandImg4} alt="" />
                                    </SwiperSlide>
-                                   <SwiperSlide>
+                                   <SwiperSlide className='py-2 md:py-3 lg:py-5'>
                                           <img className='wave' src={BrandImg5} alt="" />
                                    </SwiperSlide>
-                                   <SwiperSlide>
+                                   <SwiperSlide className='py-2 md:py-3 lg:py-5'>
                                           <img className='wave' src={BrandImg6} alt="" />
                                    </SwiperSlide>
-                                   <SwiperSlide>
+                                   <SwiperSlide className='py-2 md:py-3 lg:py-5'>
                                           <img className='wave' src={BrandImg7} alt="" />
                                    </SwiperSlide>
-                                   <SwiperSlide>
+                                   <SwiperSlide className='py-2 md:py-3 lg:py-5'>
                                           <img className='wave' src={BrandImg8} alt="" />
                                    </SwiperSlide>
                             </Swiper>

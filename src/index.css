@@ -3,7 +3,7 @@
 
 @theme {
        /* ----------------Fonts--------------- */
-       --font-Roboto: "Roboto", 'sans-serif';
+       --font-Roboto: "Nunito", sans-serif;
        /* ----------------Colors-------------- */
        --color-white: #fff;
        --color-aliceBlue: #F5F0F0;
