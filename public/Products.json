@@ -1079,7 +1079,7 @@
       "https://m.media-amazon.com/images/I/91F9Y+6SWFL._AC_SX569_.jpg"
     ],
     "Colors": ["#000000","#4B3B2B","#5C4B3A"],
-    "Variant": ["Sm","Md","Lg","XL"],
+    "Variant": ["S","M","L","XL"],
     "WarrantyInformation": "6 months manufacturer warranty.",
     "ShippingInformation": {
       "InsideDhaka": 60,
@@ -1132,7 +1132,7 @@
       "https://m.media-amazon.com/images/I/61tglpXfy9L._AC_SX679_.jpg"
     ],
     "Colors": ["#800000","#333333","#FFFFFF"],
-    "Variant": ["Sm","Md","Lg","XL"],
+    "Variant": ["S","M","L","XL"],
     "WarrantyInformation": "3 months warranty.",
     "ShippingInformation": {
       "InsideDhaka": 50,
@@ -1466,7 +1466,7 @@
     },
     "OfferTime": null,
     "Conditon": "New",
-    "AvailabilityStatus": "In Stock",
+    "AvailabilityStatus": "Not Available",
     "isNewArrival": false,
     "isBestSeller": false,
     "isOnSale": false,

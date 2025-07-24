@@ -1,16 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/Logo/Logo-2.jpg'
 import { PiShoppingCartLight } from 'react-icons/pi';
 import { LiaUserSolid } from 'react-icons/lia';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoIosGitCompare, IoIosHeartEmpty } from 'react-icons/io';
 import { AuthContext } from '../../../Providers/AuthProviders';
-import { useContext } from 'react';
+import { useContext, useRef, } from 'react';
 
 const Header = () => {
 
-       const { Links } = useContext(AuthContext)
-
+       const { Links, searchInput, setSearchInput } = useContext(AuthContext);
+       const inputText = useRef();
+       const navigate = useNavigate()
        return (
               <header className='px-5 md:px-10 lg:px-20 py-5 border-b border-gray-300'>
                      <div className='flex justify-between items-center'>
@@ -31,8 +32,8 @@ const Header = () => {
                                    <img className='w-36 lg:w-full' src={logo} alt="" />
                             </div>
                             <div className='hidden md:flex lg:flex lg:flex-grow justify-center items-center gap-2'>
-                                   <input type="text" placeholder="Search Products Here.." className="input focus:outline-none focus:border-gray-500" />
-                                   <button className='font-semibold bg-Radical hover:bg-black text-white rounded-sm px-5 py-2 cursor-pointer'>SEARCH</button>
+                                   <input type="text" value={searchInput} ref={inputText} onChange={(e) => setSearchInput(e.target.value.trim())} placeholder="Search Products Here.." className="input focus:outline-none focus:border-gray-500" />
+                                   <button onClick={() => navigate('/products')} className='font-semibold bg-Radical hover:bg-black text-white rounded-sm px-5 py-2 cursor-pointer'>SEARCH</button>
                             </div>
                             <div className='flex items-center gap-2 lg:gap-3'>
                                    {/* --------------------Login/Register Routes---------------- */}

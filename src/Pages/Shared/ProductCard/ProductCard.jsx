@@ -23,7 +23,7 @@ import Countdown from 'react-countdown';
 import brandImg1 from '../../../assets/Brands/Brands2.jpg'
 
 
-const ProductCard = ({ product, fromSlider = '' }) => {
+const ProductCard = ({ product, fromSlider = '', isColumn }) => {
 
        const { _id, Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, OfferTime, Condition, AvailabilityStatus, SellerInformation } = product;
        const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -35,63 +35,88 @@ const ProductCard = ({ product, fromSlider = '' }) => {
        return (
               <div className="h-full relative p-3 group">
                      {/* ------------------Product Main Card----------------- */}
-                     <div className='space-y-1.5'>
-                            <img className="aspect-[2/2] object-contain" src={Images?.[0]} alt="" />
-                            <p className={`text-gray-500 text-sm md:text-base lg:text-base hover:text-Radical line-clamp-1 ${fromSlider === 'isOnSale' ? 'mt-10' : ''}`}>{SubCategory}</p>
-                            <h4 className='font-bold line-clamp-1 hover:text-Radical'>{Title}</h4>
-                            <p className='font-semibold text-sm line-clamp-1'>{SellerInformation?.name}</p>
-                            <Rating style={{ maxWidth: 80 }} value={ProductRating} />
-                            {/* ------------------Price---------------- */}
-                            <div className='flex gap-2'>
-                                   <del className='text-gray-300 text-xs lg:text-lg font-medium'>{Price} Tk </del>
-                                   <p className='text-Radical text-xs lg:text-lg font-semibold'>{OfferPrice} Tk </p>
-                            </div>
-                            {/* ------------------Timer For Deal Of The Day----------------- */}
-                            <div>
-                                   {fromSlider === 'isOnSale' ? (
-                                          <Countdown date={targetDate}
-                                                 renderer={({ days, hours, minutes, seconds, completed }) => {
-                                                        if (completed) {
-                                                               return <span className="flex absolute top-[9.7rem] lg:top-[13.5rem] left-1/2 transform -translate-x-1/2 gap-1 text-center bg-white text-Radical drop-shadow-sm rounded-sm px-2">Offer Ended!</span>;
-                                                        } else {
-                                                               return (
-                                                                      <div className="flex absolute top-[9.7rem] lg:top-[13.5rem] left-1/2 transform -translate-x-1/2 gap-1 text-center bg-white text-Radical drop-shadow-sm rounded-sm px-2">
-                                                                             <div className="flex items-center">
-                                                                                    <span className="countdown font-mono text-base">
-                                                                                           <span style={{ "--value": days }}>{days}</span>
-                                                                                    </span>
-                                                                                    <span className="text-xl">:</span>
+                     {fromSlider === 'allProducts' && isColumn === true ? (
+                            /* ---------------------Heading Card For Column------------------ */
+                            <div className='flex flex-col md:flex-row lg:flex-row items-center gap-5 space-y-1.5'>
+                                   <div className='flex-1 md:flex-4/12 lg:flex-2/12'><img className="aspect-[2/2] object-contain" src={Images?.[0]} alt="" /></div>
+                                   <div className='flex-9/12 space-y-2'>
+                                          <p className={`text-gray-500 text-sm md:text-base lg:text-base hover:text-Radical line-clamp-1 ${fromSlider === 'isOnSale' ? 'mt-10' : ''}`}>{SubCategory}</p>
+                                          <h4 className='font-bold line-clamp-1 hover:text-Radical'>{Title}</h4>
+                                          <Rating style={{ maxWidth: 80 }} value={ProductRating} />
+                                          <div className='flex gap-2'>
+                                                 <del className={`text-gray-300 text-xs md:text-base lg:text-lg font-medium`}>{Price} Tk </del>
+                                                 <p className={`text-Radical text-xs md:text-base lg:text-lg font-semibold`}>{OfferPrice} Tk </p>
+                                          </div>
+                                          <p className='line-clamp-2'>{Description}</p>
+                                          <div className='flex items-center gap-2'>
+                                                 <div className='flex items-center gap-1'>
+                                                        {Colors?.map(((color, index) => (
+                                                               <div key={index} className='w-4 h-4 border border-gray-400 rounded-full' style={{ backgroundColor: color }}></div>
+                                                        )))}
+                                                 </div>
+                                                 <p className={AvailabilityStatus === 'Limited Stock' ? 'w-max flex items-center text-yellow-700 bg-yellow-200 border border-yellow-500 px-2 text-sm' : 'w-max flex items-center text-green-700 bg-green-200 border border-green-700 px-2 text-sm'}>{AvailabilityStatus}</p>
+                                          </div>
+                                          <button className='bg-Radical text-white hover:bg-black px-7 py-1.5 rounded-md'>Option</button>
+                                   </div>
+                            </div>) :
+                            /* -----------------------Heading Card For Row ----------------------- */
+                            (<div className='space-y-1.5'>
+                                   <img className="aspect-[2/2] object-contain" src={Images?.[0]} alt="" />
+                                   <p className={`text-gray-500 text-sm md:text-base lg:text-base hover:text-Radical line-clamp-1 ${fromSlider === 'isOnSale' ? 'mt-10' : ''}`}>{SubCategory}</p>
+                                   <h4 className='font-bold line-clamp-1 hover:text-Radical'>{Title}</h4>
+                                   <p className='font-semibold text-sm line-clamp-1'>{SellerInformation?.name}</p>
+                                   <Rating style={{ maxWidth: 80 }} value={ProductRating} />
+                                   {/* ------------------Price---------------- */}
+                                   <div className='flex gap-2'>
+                                          <del className={`text-gray-300 text-xs ${fromSlider === 'allProducts' ? 'lg:text-base' : 'lg:text-lg'} font-medium`}>{Price} Tk </del>
+                                          <p className={`text-Radical text-xs${fromSlider === 'allProducts' ? 'line-clamp-1 text-xs lg:text-base' : 'lg:text-lg'} font-semibold`}>{OfferPrice} Tk </p>
+                                   </div>
+                                   {/* ------------------Timer For Deal Of The Day----------------- */}
+                                   <div>
+                                          {fromSlider === 'isOnSale' ? (
+                                                 <Countdown date={targetDate}
+                                                        renderer={({ days, hours, minutes, seconds, completed }) => {
+                                                               if (completed) {
+                                                                      return <span className="flex absolute top-[9.7rem] lg:top-[13.5rem] left-1/2 transform -translate-x-1/2 gap-1 text-center bg-white text-Radical drop-shadow-sm rounded-sm px-2">Offer Ended!</span>;
+                                                               } else {
+                                                                      return (
+                                                                             <div className="flex absolute top-[9.7rem] lg:top-[13.5rem] left-1/2 transform -translate-x-1/2 gap-1 text-center bg-white text-Radical drop-shadow-sm rounded-sm px-2">
+                                                                                    <div className="flex items-center">
+                                                                                           <span className="countdown font-mono text-base">
+                                                                                                  <span style={{ "--value": days }}>{days}</span>
+                                                                                           </span>
+                                                                                           <span className="text-xl">:</span>
+                                                                                    </div>
+                                                                                    <div className="flex items-center">
+                                                                                           <span className="countdown font-mono text-base">
+                                                                                                  <span style={{ "--value": hours }}>{hours}</span>
+                                                                                           </span>
+                                                                                           <span className="text-xl">:</span>
+                                                                                    </div>
+                                                                                    <div className="flex items-center">
+                                                                                           <span className="countdown font-mono text-base">
+                                                                                                  <span style={{ "--value": minutes }}>{minutes}</span>
+                                                                                           </span>
+                                                                                           <span className="text-xl">:</span>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                           <span className="countdown font-mono text-base">
+                                                                                                  <span style={{ "--value": seconds }}>{seconds}</span>
+                                                                                           </span>
+                                                                                    </div>
                                                                              </div>
-                                                                             <div className="flex items-center">
-                                                                                    <span className="countdown font-mono text-base">
-                                                                                           <span style={{ "--value": hours }}>{hours}</span>
-                                                                                    </span>
-                                                                                    <span className="text-xl">:</span>
-                                                                             </div>
-                                                                             <div className="flex items-center">
-                                                                                    <span className="countdown font-mono text-base">
-                                                                                           <span style={{ "--value": minutes }}>{minutes}</span>
-                                                                                    </span>
-                                                                                    <span className="text-xl">:</span>
-                                                                             </div>
-                                                                             <div>
-                                                                                    <span className="countdown font-mono text-base">
-                                                                                           <span style={{ "--value": seconds }}>{seconds}</span>
-                                                                                    </span>
-                                                                             </div>
-                                                                      </div>
-                                                               );
-                                                        }
-                                                 }}
-                                          />
-                                   ) : null}
-                            </div>
-                     </div>
+                                                                      );
+                                                               }
+                                                        }}
+                                                 />
+                                          ) : null}
+                                   </div>
+                            </div>)}
                      <div className='flex flex-col gap-2 absolute top-0 left-3 opacity-0 group-hover:opacity-100 group-hover:top-6  duration-500 transition-all'>
                             {DiscountPercentage && <p className='bg-red-600 text-white text-xs px-2 py-1 rounded-xs'> - {DiscountPercentage} %</p>}
                             {Condition && (<p className="bg-green-600 text-center text-white text-xs p-1 rounded-xs font-medium">{Condition}</p>)}
                      </div>
-                     <div className='flex flex-col gap-2 absolute top-0 right-3 opacity-0 group-hover:opacity-100 group-hover:top-5  duration-500 transition-all text-3xl'>
+                     <div className={`flex flex-col gap-2 absolute right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 text-3xl ${fromSlider === 'allProducts' && isColumn ? 'top-[10px] right-5 group-hover:top-5 lg:left-32 lg:group-hover:top-1/2 lg:transform lg:-translate-y-1/2' : 'top-0 group-hover:top-5'}`}>
                             <CiHeart className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' />
                             <GoGitCompare className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' />
                             {/* -----------------Product Details Icon-------------- */}
@@ -195,7 +220,7 @@ const ProductCard = ({ product, fromSlider = '' }) => {
                                                                <p>Add To Compare</p>
                                                         </div>
                                                  </div>
-                                                 <p className={AvailabilityStatus === 'Limited Stock' ? 'w-max flex items-center text-yellow-700 bg-yellow-200 border border-yellow-500 px-2' : 'w-max flex items-center text-green-700 bg-green-200 border border-green-700 px-2'}>{AvailabilityStatus}</p>
+                                                 <p className={AvailabilityStatus === 'Limited Stock' ? 'w-max flex items-center text-yellow-700 bg-yellow-200 border border-yellow-500 px-2' : AvailabilityStatus === 'Not Available' ? 'w-max flex items-center text-red-700 bg-red-200 border border-red-500 px-2' : 'w-max flex items-center text-green-700 bg-green-200 border border-green-700 px-2'}>{AvailabilityStatus}</p>
                                                  {/* --------------Icons Of Social Media----------------- */}
                                                  <div className='flex gap-2 mt-2'>
                                                         <div className='border border-black px-5 py-2 text-blue-700'><FaFacebookF /></div>

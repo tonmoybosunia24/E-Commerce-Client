@@ -8,7 +8,7 @@ const useCategory = () => {
         queryKey: ['categories'],
         queryFn: async () => {
             const res = await axiosPublic.get('/categories')
-            return res.data
+            return res.data;
         }
     })
 
