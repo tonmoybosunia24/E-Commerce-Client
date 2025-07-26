@@ -238,6 +238,7 @@ const ProductsSection = () => {
                                                  {/* ----------------Phone Checkbox Model------------------ */}
                                                  <input type="checkbox" id="my_modal_7" className="modal-toggle" />
                                                  <div className="modal" role="dialog">
+                                                        {/* ------------------Modal For Mobile Checkbox------------------ */}
                                                         <div className="modal-box">
                                                                {/* --------------------Available Section For Mobile------------------- */}
                                                                <div className=" space-y-1.5">

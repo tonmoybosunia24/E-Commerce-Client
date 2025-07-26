@@ -30,7 +30,7 @@
     "react-tabs": "^6.1.0",
     "react-toastify": "^11.0.5",
     "sweetalert2": "^11.17.2",
-    "swiper": "^11.2.5",
+    "swiper": "^11.2.10",
     "tailwindcss": "^4.0.9"
   },
   "devDependencies": {

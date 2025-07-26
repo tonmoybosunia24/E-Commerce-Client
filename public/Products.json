@@ -301,7 +301,7 @@
     "availabilityStatus": "In Stock",
     "isNewArrival": false,
     "isBestSeller": false,
-    "isOnSale": true,
+    "isOnSale": false,
     "returnPolicy": "Return within 7 days for a full refund",
     "sellerInformation": {
       "name": "TechZone BD",
@@ -458,8 +458,8 @@
     "offerTime": null,
     "condition": "New",
     "availabilityStatus": "In Stock",
-    "isNewArrival": true,
-    "isBestSeller": true,
+    "isNewArrival": false,
+    "isBestSeller": false,
     "isOnSale": false,
     "returnPolicy": "Return if unopened within 7 days",
     "sellerInformation": {

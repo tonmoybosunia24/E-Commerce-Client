@@ -20,15 +20,16 @@ import { Rating } from '@smastrom/react-rating'
 import brandImg1 from '../../../assets/Brands/Brands2.jpg'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import ProductCard from "../../Shared/ProductCard/ProductCard";
 import productBrandImage from '../../../assets/Brands/Brands2.jpg'
+import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
 
 const ProductDescription = ({ id }) => {
        const { product, relatedProducts, productDetailsLoading } = useProductDetails(id);
-       console.log(relatedProducts)
        const [thumbsSwiper, setThumbsSwiper] = useState(null);
        const [value, setValue] = useState(1);
        const [activeTab, setActiveTab] = useState('Description')
-       const { _id, Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, OfferTime, Condition, AvailabilityStatus, SellerInformation } = product;
+       const { Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, Condition, AvailabilityStatus, SellerInformation } = product;
 
        return (
               <div className="px-5 md:px-10 lg:px-20 my-5 md:my-7 lg:my-10">
@@ -45,7 +46,7 @@ const ProductDescription = ({ id }) => {
                                                         }}
                                                         spaceBetween={10}
                                                         navigation={true}
-                                                        thumbs={{ swiper: thumbsSwiper }}
+                                                        thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : undefined}
                                                         modules={[FreeMode, Navigation, Thumbs]}
                                                         className="mySwiper2"
                                                  >
@@ -75,7 +76,6 @@ const ProductDescription = ({ id }) => {
                                           </div>
                                           {/* ------------------Product Details Side---------------- */}
                                           <div className='text-sm md:text-xs lg:text-base space-y-1.5'>
-                                                 <p>Total Releted Products{relatedProducts.length}</p>
                                                  <div className="flex gap-2">
                                                         <Rating style={{ maxWidth: 80 }} value={ProductRating} />
                                                         <p>{ProductRating} Review(s)</p>
@@ -154,15 +154,56 @@ const ProductDescription = ({ id }) => {
                                                         <Tab onClick={() => setActiveTab('Product Details')} className={activeTab === 'Product Details' ? "font-bold text-lg outline-none cursor-pointer" : "font-semibold text-lg text-black  cursor-pointer"}>Product Details</Tab>
                                                  </TabList>
                                                  <TabPanel className='border border-gray-300 p-5 pb-0 border-b-0'>
-                                                        <p>{Description}</p>
+                                                        <p><span className='font-bold'>Delivery Inside Dhaka : </span>{ShippingInformation?.InsideDhaka} Tk</p>
+                                                        <p><span className='font-bold'>Delivery Outside Dhaka : </span>{ShippingInformation?.OutsideDhaka} Tk</p>
+                                                        <p><span className='font-bold'>DeliveryTime Inside Dhaka : </span>{ShippingInformation?.EstimatedDeliveryTime?.InsideDhaka}</p>
+                                                        <p><span className='font-bold'>DeliveryTime Inside Dhaka : </span>{ShippingInformation?.EstimatedDeliveryTime?.OutsideDhaka}</p>
+                                                        <p><span className='font-bold'>Description : </span>{Description}</p>
                                                  </TabPanel>
                                                  <TabPanel className='border border-gray-300 p-5 pt-0 border-t-0 space-y-0.5'>
                                                         <img src={productBrandImage} alt="" />
                                                         <p><span className='font-bold'>Brand : </span>{Brand}</p>
+                                                        <p><span className='font-bold'>SubCategory : </span>{SubCategory}</p>
                                                         <p><span className='font-bold'>Condition : </span>{Condition || 'Unknown'}</p>
                                                         <p className='font-bold'>Available In Stock : <span className='font-semibold text-green-700'>{Stock} Items</span></p>
+                                                        <p><span className='font-bold'>SellerName : </span>{SellerInformation.name}</p>
+                                                        <p><span className='font-bold'>Location : </span>{SellerInformation.location}</p>
+                                                        <p><span className='font-bold'>Rating : </span>{SellerInformation.rating}</p>
+                                                        <p><span className='font-bold'>Contact : </span>{SellerInformation.contact}</p>
                                                  </TabPanel>
                                           </Tabs>
+                                   </div>
+                                   <div className='pt-5 md:pt-7 lg:pt-10'>
+                                          {/* -----------------Title And Slider Navigation----------------- */}
+                                          <div className='flex justify-between items-center mb-3'>
+                                                 <h2 className='font-bold text-base md:text-xl lg:text-xl hover:text-Radical'>You Might Also Like</h2>
+                                                 <div className='flex items-center'>
+                                                        <div className='cursor-pointer'><IoIosArrowDropleftCircle className='PrevFeatured  text-3xl lg:text-3xl text-Radical' /></div>
+                                                        <div className='cursor-pointer'><IoIosArrowDroprightCircle className='NextFeatured  text-3xl lg:text-3xl text-Radical' /></div>
+                                                 </div>
+                                          </div>
+                                          {/* ------------Products Sent To Product Card & Added Swiper Js----------- */}
+                                          <div className='h-auto'>
+                                                 <Swiper
+                                                        slidesPerView={2}
+                                                        spaceBetween={0}
+                                                        freeMode={true}
+                                                        modules={[FreeMode, Navigation]}
+                                                        navigation={{
+                                                               nextEl: '.NextFeatured',
+                                                               prevEl: '.PrevFeatured',
+                                                        }}
+                                                        className={`mySwiper h-auto ${!productDetailsLoading && relatedProducts.length >= 5 ? 'border border-l-0 border-gray-400' : ''} ${relatedProducts.length > 1 && relatedProducts.length < 5 ? 'border-l border-gray-400' : ''}`}
+                                                        breakpoints={{
+                                                               640: { slidesPerView: 2 },
+                                                               768: { slidesPerView: 4 },
+                                                               1024: { slidesPerView: 5 },
+                                                        }}
+                                                 >
+                                                        {productDetailsLoading ? (<span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>) : (relatedProducts.map((product, index) => <SwiperSlide key={index} className={`!h-auto flex ${index === 0 ? 'border-l border-gray-400' : 'border-l border-gray-400'} ${relatedProducts.length > 0 && relatedProducts.length < 5 ? 'border-t border-r border-b' : ''} ${relatedProducts.length > 1 && relatedProducts.length < 5 ? 'border-l-0' : ''}`}>
+                                                               <div className={`w-full h-full flex flex-col`}><ProductCard product={product} /></div></SwiperSlide>))}
+                                                 </Swiper>
+                                          </div>
                                    </div>
                             </div>
                      )}

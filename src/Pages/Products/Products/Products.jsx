@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import HeaderTop from "../../Shared/HeaderTop/HeaderTop";
 import Header from "../../Shared/Header/Header";
 import Navbar from "../../Shared/Navbar/Navbar";
-import ProductHeader from "../../Shared/ProductHeader/ProductHeader";
+import ProductHeader from "../../../Components/ProductHeader";
 import ProductsSection from "../ProductsSection/ProductsSection";
 import Footer from "../../Home/Footer/Footer";
 

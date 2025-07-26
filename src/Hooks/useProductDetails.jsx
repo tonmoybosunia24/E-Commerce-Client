@@ -11,7 +11,7 @@ const useProductDetails = (id) => {
                      return res.data
               }
        });
-       return { product: data.product || {}, relatedProducts: data.relatedProducts || [], productDetailsLoading }
+       return { product: data.product || {}, productTitle: data.product?.Title || '', relatedProducts: data.relatedProducts || [], productDetailsLoading }
 };
 
 export default useProductDetails;
