@@ -18,7 +18,7 @@ const Footer = () => {
        return (
               <footer className=''>
                      {/* -------------------Footer Top------------------- */}
-                     <div className="px-5 md:px-10 lg:px-20 py-10 border-t border-t-gray-400">
+                     <div className="px-5 md:px-10 lg:px-20 py-10 border-t border-t-gray-300">
                             <div className="flex flex-col lg:flex-row justify-between lg:gap-10 text-gray-700">
                                    {/* ---------- Desktop Contact Us ---------- */}
                                    <div className="flex-3/12 hidden lg:block space-y-3 border-r border-gray-300">
@@ -129,9 +129,7 @@ const Footer = () => {
                                           </div>
                                           <div className="flex items-start gap-1">
                                                  <input type="checkbox" className="checkbox rounded-none checkbox-xs" />
-                                                 <p className="text-sm -mt-0.5">
-                                                        I Agree To The Terms And Conditions And The Privacy Policy
-                                                 </p>
+                                                 <p className="text-sm -mt-0.5">I Agree To The Terms And Conditions And The Privacy Policy</p>
                                           </div>
                                    </div>
                             </div>

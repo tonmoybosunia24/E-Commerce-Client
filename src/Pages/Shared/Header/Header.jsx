@@ -6,10 +6,20 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoIosGitCompare, IoIosHeartEmpty } from 'react-icons/io';
 import { AuthContext } from '../../../Providers/AuthProviders';
 import { useContext, useRef, } from 'react';
+import { toast } from 'react-toastify';
 
 const Header = () => {
 
-       const { Links, searchInput, setSearchInput } = useContext(AuthContext);
+       const { user, Links, searchInput, setSearchInput, Logout } = useContext(AuthContext);
+       const handleLogOut = () => {
+              Logout()
+                     .then(() => {
+                            toast.success('Logout Successful')
+                     })
+                     .catch(error => {
+                            toast.error(error.message)
+                     })
+       }
        const inputText = useRef();
        const navigate = useNavigate()
        return (
@@ -36,11 +46,15 @@ const Header = () => {
                                    <button onClick={() => navigate('/products')} className='font-semibold bg-Radical hover:bg-black text-white rounded-sm px-5 py-2 cursor-pointer'>SEARCH</button>
                             </div>
                             <div className='flex items-center gap-2 lg:gap-3'>
-                                   {/* --------------------Login/Register Routes---------------- */}
-                                   <div className='border-r px-3 border-gray-300 hidden lg:block'>
-                                          <Link className='font-bold hover:text-Radical' to='/login'>Login</Link> /
-                                          <Link className='font-bold hover:text-Radical' to='/register'> Register</Link>
-                                   </div>
+                                   {/* --------------------Login/Register/Logout Routes---------------- */}
+                                   {user ? (
+                                          <button className='font-bold hover:text-Radical cursor-pointer hidden lg:block' onClick={handleLogOut}>LogOut</button>
+                                   ) : (
+                                          <div className='border-r px-3 border-gray-300 hidden lg:block'>
+                                                 <Link className='font-bold hover:text-Radical' to='/login'>Login</Link> /
+                                                 <Link className='font-bold hover:text-Radical' to='/register'> Register</Link>
+                                          </div>
+                                   )}
                                    {/* --------------------Header Icons------------------ */}
                                    <div className='flex gap-2 lg:gap-3'>
                                           <div className='lg:hidden'>
