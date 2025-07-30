@@ -5,8 +5,13 @@ import Navbar from "../../Shared/Navbar/Navbar";
 import ProductHeader from "../../../Components/ProductHeader";
 import ProductsSection from "../ProductsSection/ProductsSection";
 import Footer from "../../Home/Footer/Footer";
+import { useSearchParams } from "react-router";
 
 const Products = () => {
+
+       const [searchCategory] = useSearchParams();
+       const category = searchCategory.get('category');
+
        return (
               <div>
                      <Helmet><title>E-Commerce | Products</title></Helmet>
@@ -14,7 +19,7 @@ const Products = () => {
                      <Header></Header>
                      <Navbar></Navbar>
                      <ProductHeader></ProductHeader>
-                     <ProductsSection></ProductsSection>
+                     <ProductsSection categoryFromLink={category}></ProductsSection>
                      <Footer></Footer>
               </div>
        );

@@ -1,11 +1,9 @@
 import { Link, useLocation, useParams } from "react-router-dom";
-import useProductDetails from "../Hooks/useProductDetails";
 
-const ProductHeader = () => {
+const ProductHeader = ({ productTitle }) => {
 
   const location = useLocation();
   const { id } = useParams();
-  const { productTitle } = useProductDetails(id);
   const pathnames = location.pathname.split("/").filter(x => x);
 
   return (

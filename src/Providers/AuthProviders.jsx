@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../FireBase/FireBase.config";
 import { NavLink } from "react-router";
@@ -9,8 +9,8 @@ const auth = getAuth(app);
 const AuthProviders = ({ children }) => {
 
        const [user, setUser] = useState(null);
-       console.log('User Coming From Context APi', user);
        const [searchInput, setSearchInput] = useState('');
+       const googleProvider = new GoogleAuthProvider();
        const [loading, setLoading] = useState(true);
 
        // Create User Register Context
@@ -18,10 +18,25 @@ const AuthProviders = ({ children }) => {
               setLoading(true);
               return createUserWithEmailAndPassword(auth, email, password)
        }
+       // Create Verification Email Context
+       const verificationEmail = () => {
+              setLoading(false);
+              return sendEmailVerification(auth.currentUser)
+       }
        // Create User Login Context
        const LoginUser = (email, password) => {
               setLoading(true);
               return signInWithEmailAndPassword(auth, email, password)
+       }
+       // Create Password Reset Context
+       const resetPassword = (email) => {
+              setLoading(true);
+              return sendPasswordResetEmail(auth, email)
+       }
+       // Create Google login Context
+       const googleLogin = () => {
+              setLoading(true);
+              return signInWithPopup(auth, googleProvider)
        }
        // Create User Logout Context
        const Logout = () => {
@@ -46,7 +61,7 @@ const AuthProviders = ({ children }) => {
               <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold' : 'text-black'}`} to='/blog'>Blog</NavLink></li>
        </>
 
-       const AuthValue = { user, setUser, searchInput, setSearchInput, loading, setLoading, Links, CreateUser, LoginUser, Logout };
+       const AuthValue = { user, setUser, searchInput, setSearchInput, loading, setLoading, Links, CreateUser, verificationEmail, LoginUser, resetPassword, googleLogin, Logout };
 
        return (
               <AuthContext.Provider value={AuthValue}>

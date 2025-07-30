@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useProducts from "../../../Hooks/useProducts";
 import ProductCard from "../../Shared/ProductCard/ProductCard";
 import { CiCircleList, CiGrid41 } from "react-icons/ci";
@@ -6,19 +6,21 @@ import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import PriceRangeSlider from "../../../Components/PriceRangeSlider";
+import { useNavigate } from "react-router";
 
 
-const ProductsSection = () => {
+const ProductsSection = ({ categoryFromLink }) => {
 
        const [page, setPage] = useState(1);
        const [rowButton, setRowButton] = useState(true);
        const [colButton, setColButton] = useState(false);
        const [sortBy, setSortBy] = useState('name-asc');
-       const [filter, setFilter] = useState({ availability: [], size: [], color: [], brands: [], price: [0, 300000], });
+       const [filter, setFilter] = useState({ availability: [], size: [], color: [], brands: [], price: [0, 300000], category: categoryFromLink ? [categoryFromLink] : [] });
        const { searchInput } = useContext(AuthContext);
        const { allProducts, totalPages, currentPage, limit: productsPerPage, allProductsLoading, counts } = useProducts(page, sortBy, filter, searchInput);
        const start = (currentPage - 1) * productsPerPage + 1;
        const end = Math.min(currentPage * productsPerPage, totalPages * productsPerPage);
+       const navigate = useNavigate()
        /* ----------------Handle Checkbox Functionality--------------- */
        const handleCheckboxChange = (type, value, checked) => {
               setFilter((prev) => {
@@ -28,6 +30,14 @@ const ProductsSection = () => {
                      return { ...prev, [type]: updatedValues };
               });
        };
+       /* --------------------Dynamically Update The Category------------------ */
+       useEffect(() => {
+              setPage(1);
+              setFilter(prev => ({
+                     ...prev,
+                     category: categoryFromLink ? [categoryFromLink] : []
+              }));
+       }, [categoryFromLink]);
 
        return (
               <section className="px-5 md:px-10 lg:px-20 my-5 md:my-7 lg:my-10">
@@ -37,7 +47,7 @@ const ProductsSection = () => {
                                    <h2 className="font-bold px-5 py-2 text-lg border-b border-b-gray-400">Filter By</h2>
                                    {/* ----------------------Clear Filter Section--------------------- */}
                                    <div className="px-5 pt-3">
-                                          {(filter.availability.length > 0 || filter.size.length > 0 || filter.color.length > 0 || filter.brands.length > 0) && (<div onClick={() => setFilter({ availability: [], size: [], color: [] })} className="flex items-center gap-1 w-fit px-2 py-1.5 rounded-sm border cursor-pointer"><RxCross2 /> <span className="text-sm font-semibold">Clear All</span></div>)}
+                                          {(filter.availability.length > 0 || filter.size.length > 0 || filter.color.length > 0 || filter.brands.length > 0 || filter?.category?.length > 0) && (<div onClick={() => { navigate('/products'); setFilter({ availability: [], size: [], color: [], brands: [], category: [], price: [0, 300000], }) }} className="flex items-center gap-1 w-fit px-2 py-1.5 rounded-sm border cursor-pointer"><RxCross2 /> <span className="text-sm font-semibold">Clear All</span></div>)}
                                    </div>
                                    {/* -----------------Filter Section Container For Pc--------------- */}
                                    <div>
@@ -202,7 +212,7 @@ const ProductsSection = () => {
                                           <div className="hidden lg:block">
                                                  <div className="flex items-center gap-2 py-1 whitespace-nowrap">
                                                         <p>Sort By: </p>
-                                                        <select defaultValue="Date added, newest to oldest" value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="select  focus-within:outline-0">
+                                                        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="select  focus-within:outline-0">
                                                                <option disabled={true}>Date Added, Newest To Oldest</option>
                                                                <option value='name-asc'>Name, A To Z</option>
                                                                <option value='name-desc'>Name, Z To A</option>
@@ -213,20 +223,21 @@ const ProductsSection = () => {
                                           </div>
                                    </div>
                                    {/* -------------------Filter Tag Section------------------- */}
-                                   {(filter.availability.length > 0 || filter.size.length > 0 || filter.color.length > 0 || filter.brands.length > 0) && (
+                                   {(filter.availability.length > 0 || filter.size.length > 0 || filter.color.length > 0 || filter.brands.length > 0 || filter.category.length > 0) && (
                                           <div className="flex items-center gap-2 pb-2 md:pb-3 lg:pb-5">
                                                  <h4 className="text-lg font-semibold">Active Filter : </h4>
                                                  {filter.availability.map((available, index) => (<div key={index} onClick={() => setFilter(prev => ({ ...prev, availability: prev.availability.filter(item => item !== available) }))} className="flex items-center  gap-0.5 px-2 py-1 rounded-xs text-sm font-bold border cursor-pointer"><RxCross2 className="text-base" />{available}</div>))}
                                                  {filter.size.map((sizes, index) => (<div key={index} onClick={() => setFilter(prev => ({ ...prev, size: prev.size.filter(item => item !== sizes) }))} className="flex items-center gap-0.5  px-2 py-1 rounded-xs text-sm font-bold border cursor-pointer"><RxCross2 className="text-base" />({sizes})</div>))}
                                                  {filter.color.map((col, index) => (<div key={index} onClick={() => setFilter(prev => ({ ...prev, color: prev.color.filter(item => item !== col) }))} className="flex items-center gap-0.5  px-2 py-1 rounded-xs text-sm font-bold border cursor-pointer"><RxCross2 className="text-base" />({col})</div>))}
                                                  {filter.brands.map((brand, index) => (<div key={index} onClick={() => setFilter(prev => ({ ...prev, brands: prev.brands.filter(item => item !== brand) }))} className="flex items-center gap-0.5  px-2 py-1 rounded-xs text-sm font-bold border cursor-pointer"><RxCross2 className="text-base" />{brand}</div>))}
+                                                 {filter.category.map((cat, index) => (<div key={index} onClick={() => { navigate('/products'); setFilter(prev => ({ ...prev, category: prev.category.filter(item => item !== cat) })) }} className="flex items-center gap-0.5  px-2 py-1 rounded-xs text-sm font-bold border cursor-pointer"><RxCross2 className="text-base" />{cat}</div>))}
                                           </div>
                                    )}
                                    {/* -----------------Select Option For Mobile---------------- */}
                                    <div className="lg:hidden pb-2">
                                           <div className="flex items-center gap-2 w-full py-1 whitespace-nowrap">
                                                  <h3 className="font-semibold text-xl hidden md:block">Sort By : </h3>
-                                                 <select defaultValue="Date added, newest to oldest" value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="select w-full focus-within:outline-0">
+                                                 <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="select w-full focus-within:outline-0">
                                                         <option disabled={true}>Date Added, Newest To Oldest</option>
                                                         <option value='name-asc'>Name, A To Z</option>
                                                         <option value='name-desc'>Name, Z To A</option>

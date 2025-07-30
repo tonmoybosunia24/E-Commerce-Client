@@ -6,10 +6,12 @@ import Navbar from "../../Shared/Navbar/Navbar";
 import ProductHeader from "../../../Components/ProductHeader";
 import Footer from "../../Home/Footer/Footer";
 import ProductDescription from "../ProductDescription/ProductDescription";
+import useProductDetails from "../../../Hooks/useProductDetails";
 
 const ProductDetails = () => {
 
        const { id } = useParams();
+       const { product, productTitle, relatedProducts, productDetailsLoading } = useProductDetails(id);
 
        return (
               <div>
@@ -17,8 +19,8 @@ const ProductDetails = () => {
                      <HeaderTop></HeaderTop>
                      <Header></Header>
                      <Navbar></Navbar>
-                     <ProductHeader></ProductHeader>
-                     <ProductDescription id={id}></ProductDescription>
+                     <ProductHeader productTitle={productTitle}></ProductHeader>
+                     <ProductDescription product={product} relatedProducts={relatedProducts} productDetailsLoading={productDetailsLoading}></ProductDescription>
                      <Footer></Footer>
               </div>
        );

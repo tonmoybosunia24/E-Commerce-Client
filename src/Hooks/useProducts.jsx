@@ -14,7 +14,8 @@ const useProducts = (page, sortBy, filter, searchInput) => {
                      const brands = filter.brands.join(',');
                      const minPrice = filter?.price?.[0] ?? 0;
                      const maxPrice = filter?.price?.[1] ?? 99999;
-                     const res = await axiosPublic.get(`/allProducts?page=${page}&sort=${sortBy}&limit=${limit}&availability=${availability}&size=${size}&color=${color}&brands=${brands}&search=${searchInput}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
+                     const category = encodeURIComponent(filter?.category.join(','))
+                     const res = await axiosPublic.get(`/allProducts?page=${page}&sort=${sortBy}&limit=${limit}&availability=${availability}&size=${size}&color=${color}&brands=${brands}&search=${searchInput}&minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category}`);
                      return res.data;
               }
        })

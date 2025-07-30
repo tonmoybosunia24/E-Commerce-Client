@@ -6,13 +6,12 @@ import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
 import { FreeMode, Navigation } from 'swiper/modules';
-import { Tab, Tabs, TabList } from 'react-tabs';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useEffect, useState } from "react";
 import useCategoryProducts from '../../../Hooks/useCategoryProducts';
 import useCategory from '../../../Hooks/useCategory';
 import ProductCard from '../../Shared/ProductCard/ProductCard';
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
-import { Link } from 'react-router-dom';
 
 const CategoryProducts = () => {
 
@@ -34,7 +33,6 @@ const CategoryProducts = () => {
                     const selected = categories[index];
                     setActiveCategory(selected)
                 }}>
-
                     {/* -------------------Tablist For Tabs ---------------- */}
                     <div className='flex justify-between items-center mb-3'>
                         <TabList className="flex gap-3 relative active:border-none text-xs md:text-lg lg:text-lg overflow-x-auto lg:overflow-visible max-w-full">
@@ -49,27 +47,35 @@ const CategoryProducts = () => {
                         </div>
                     </div>
                     {/* ------------Products Sent To Product Card & Added Swiper Js----------- */}
-                    <div className='h-auto'>
-                        <Swiper
-                            slidesPerView={2}
-                            spaceBetween={0}
-                            freeMode={true}
-                            modules={[FreeMode, Navigation]}
-                            navigation={{
-                                nextEl: '.Next',
-                                prevEl: '.Prev',
-                            }}
-                            className={`mySwiper h-auto ${!productsLoading && products.length >= 5 ? 'border border-l-0 border-gray-400' : ''} ${products.length > 1 && products.length < 5 ? 'border-l border-gray-400' : ''}`}
-                            breakpoints={{
-                                640: { slidesPerView: 2 },
-                                768: { slidesPerView: 4 },
-                                1024: { slidesPerView: 5 },
-                            }}
-                        >
-                            {productsLoading ? (<span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>) : (products.map((product, index) => <SwiperSlide key={index} className={`!h-auto select-text flex ${index === 0 ? 'border-l border-gray-400' : 'border-l border-gray-400'} ${products.length > 0 && products.length < 5 ? 'border-t border-r border-b' : ''} ${products.length > 1 && products.length < 5 ? 'border-l-0' : ''}`}>
-                                <div className={`w-full h-full flex flex-col`}><ProductCard product={product} /></div></SwiperSlide>))}
-                        </Swiper>
-                    </div>
+                    {categories.map((category, index) => (
+                        <TabPanel key={index}>
+                            {productsLoading ? (<span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>) : (<Swiper
+                                slidesPerView={2}
+                                spaceBetween={0}
+                                freeMode={true}
+                                modules={[FreeMode, Navigation]}
+                                breakpoints={{
+                                    640: { slidesPerView: 2 },
+                                    768: { slidesPerView: 4 },
+                                    1024: { slidesPerView: 5 },
+                                }}
+                                navigation={{
+                                    nextEl: '.Next',
+                                    prevEl: '.Prev',
+                                }}
+                                className={`mySwiper h-auto ${!productsLoading && products.length >= 5 ? 'border border-l-0 border-gray-400' : ''} ${products.length > 1 && products.length < 5 ? 'border-l border-gray-400' : ''}`}
+                            >
+                                {products.map((product, productIndex) => (
+                                    <SwiperSlide key={productIndex} className={`!h-auto select-text flex ${productIndex === 0 ? 'border-l border-gray-400' : 'border-l border-gray-400'} ${products.length > 0 && products.length < 5 ? 'border-t border-r border-b' : ''} ${products.length > 1 && products.length < 5 ? 'border-l-0' : ''}`}>
+                                        <div className="w-full h-full flex flex-col">
+                                            <ProductCard product={product} />
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                            )}
+                        </TabPanel>
+                    ))}
                 </Tabs>)}
         </section>
     );

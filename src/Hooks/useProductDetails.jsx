@@ -6,6 +6,7 @@ const useProductDetails = (id) => {
        const axiosPublic = useAxiosPublic();
        const { data = {}, isPending: productDetailsLoading } = useQuery({
               queryKey: ['product', id],
+              enabled: !!id,
               queryFn: async () => {
                      const res = await axiosPublic.get(`/productDetails/${id}`);
                      return res.data

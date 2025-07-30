@@ -1,4 +1,3 @@
-import useProductDetails from "../../../Hooks/useProductDetails";
 import { useState } from 'react';
 import { CiHeart } from "react-icons/ci";
 import { MdContentCopy } from "react-icons/md";
@@ -24,8 +23,8 @@ import ProductCard from "../../Shared/ProductCard/ProductCard";
 import productBrandImage from '../../../assets/Brands/Brands2.jpg'
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
 
-const ProductDescription = ({ id }) => {
-       const { product, relatedProducts, productDetailsLoading } = useProductDetails(id);
+const ProductDescription = ({ product, relatedProducts, productDetailsLoading }) => {
+
        const [thumbsSwiper, setThumbsSwiper] = useState(null);
        const [value, setValue] = useState(1);
        const [activeTab, setActiveTab] = useState('Description')
@@ -118,7 +117,7 @@ const ProductDescription = ({ id }) => {
                                                  {/* ----------------Quantity Of Products----------------- */}
                                                  <div className='flex gap-2'>
                                                         <div className='flex'>
-                                                               <div><input className='border outline-0 w-12 h-full pl-2' type="tel" value={value} /></div>
+                                                               <div><input className='border outline-0 w-12 h-full pl-2' type="tel" value={value} onChange={(e) => setValue(e.target.value)} /></div>
                                                                <div className='flex flex-col border border-l-0'>
                                                                       <div className='flex-1 border-b text-sm' onClick={() => setValue(value + 1)}><FaAngleUp /></div>
                                                                       <div className='flex-1 text-sm' onClick={() => value > 1 && setValue(value - 1)}><FaAngleDown /></div>

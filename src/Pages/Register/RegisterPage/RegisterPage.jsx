@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import { toast } from "react-toastify";
@@ -7,14 +7,18 @@ import useSaveUsers from "../../../Hooks/useSaveUsers";
 import useCategory from "../../../Hooks/useCategory";
 import advertiseImg1 from '../../../assets/Advertise/Advertise1.jpg'
 import { Link, useLocation, useNavigate } from "react-router";
+import { IoIosEye, IoIosEyeOff } from "react-icons/io";
+import SocialAuthentication from "../../../Components/SocialAuthentication/SocialAuthentication";
 
 const RegisterPage = () => {
 
-       const { CreateUser } = useContext(AuthContext)
-       const { saveUser } = useSaveUsers()
+       const { CreateUser, verificationEmail } = useContext(AuthContext)
+       const { saveUser } = useSaveUsers();
        const { register, handleSubmit, watch, formState: { errors, isValid } } = useForm({ mode: 'onChange' });
        const password = watch('password');
-       const [categories, categoriesLoading] = useCategory()
+       const [categories, categoriesLoading] = useCategory();
+       const [showPass, setShowPass] = useState(false);
+       const [showConfirmPass, setShowConfirmPass] = useState(false);
        const location = useLocation();
        const navigate = useNavigate();
        const form = location?.state?.form?.pathname || '/';
@@ -40,6 +44,13 @@ const RegisterPage = () => {
                                                  referCodes: data.referCode
                                           }
                                           saveUser(userInfo);
+                                          verificationEmail()
+                                                 .then(() => {
+                                                        toast.success('Please Verify Your Email')
+                                                 })
+                                                 .catch((error) => {
+                                                        toast.error(error.message)
+                                                 })
                                           navigate(location?.state ? form : '/')
                                    })
                                    .catch((error) => {
@@ -61,8 +72,8 @@ const RegisterPage = () => {
                                    {/* -----------------All The Categories Section---------------- */}
                                    <div className="space-y-1">
                                           {categoriesLoading ? (<span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>) : (
-                                                 categories.map((category) => (
-                                                        <p className="font-semibold hover:text-Radical cursor-pointer">{category}</p>
+                                                 categories.map((category, index) => (
+                                                        <p key={index} className="font-semibold hover:text-Radical cursor-pointer"><Link to={`/products?category=${category}`}>{category}</Link></p>
                                                  )))}
                                    </div>
                             </div>
@@ -123,7 +134,12 @@ const RegisterPage = () => {
                                                                       <span className="label-text">Password : </span>
                                                                       {errors.password?.type === 'pattern' && <span className="text-xs mt-0.5 text-red-600">Please Enter A Stronger Password.</span>}
                                                                </label>
-                                                               <input type="password" required {...register('password', { required: true, pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{6,}/, message: "Password Must Contain Uppercase, Lowercase, Number, Special Char, And Minimum 6 Characters" } })} placeholder="Password" name="password" className="w-full input input-bordered focus:outline-0" />
+                                                               <div className="flex relative">
+                                                                      <input type={showPass ? 'text' : 'password'} required {...register('password', { required: true, pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{6,}/, message: "Password Must Contain Uppercase, Lowercase, Number, Special Char, And Minimum 6 Characters" } })} placeholder="Password" name="password" className="w-full input input-bordered focus:outline-0" />
+                                                                      <div className="flex  absolute right-3 top-1/2 transform -translate-y-1/2">
+                                                                             {showPass ? <IoIosEyeOff onClick={() => setShowPass(!showPass)} className="text-xl" /> : <IoIosEye onClick={() => setShowPass(!showPass)} className="text-xl" />}
+                                                                      </div>
+                                                               </div>
                                                         </div>
                                                         {/* ---------------Confirm Password Input--------------- */}
                                                         <div className="form-control space-y-1.5">
@@ -131,7 +147,12 @@ const RegisterPage = () => {
                                                                       <span className="label-text">Confirm Password : </span>
                                                                       {errors.confirmPassword && <span className="text-xs mt-0.5 text-red-600">{errors.confirmPassword.message}</span>}
                                                                </label>
-                                                               <input type="password" required {...register('confirmPassword', { required: true, validate: value => value === password || 'Passwords Do Not Match' })} placeholder="Confirm Password" name="confirmPassword" className="w-full input input-bordered focus:outline-0" />
+                                                               <div className="flex relative">
+                                                                      <input type={showConfirmPass ? 'text' : 'password'} required {...register('confirmPassword', { required: true, validate: value => value === password || 'Passwords Do Not Match' })} placeholder="Confirm Password" name="confirmPassword" className="w-full input input-bordered focus:outline-0" />
+                                                                      <div className="flex  absolute right-3 top-1/2 transform -translate-y-1/2">
+                                                                             {showPass ? <IoIosEyeOff onClick={() => setShowConfirmPass(!showConfirmPass)} className="text-xl" /> : <IoIosEye onClick={() => setShowConfirmPass(!showConfirmPass)} className="text-xl" />}
+                                                                      </div>
+                                                               </div>
                                                         </div>
                                                         {/* ---------------------Gender Input------------------- */}
                                                         <div className="form-control space-y-1.5">
@@ -157,13 +178,13 @@ const RegisterPage = () => {
                                                  </div>
                                                  {/* -----------------------Agreement Section-------------------- */}
                                                  <div className="flex gap-1.5">
-                                                        <input type="checkbox" className="checkbox checkbox-xs lg:checkbox-sm rounded-sm" {...register('conditionCheck', { required: true })} />
-                                                        <p className="text-xs md:text-xs lg:text-base">I Agree To The Terms And Conditions And The Privacy Policy</p>
+                                                        <input type="checkbox" className="checkbox checkbox-xs lg:checkbox-xs rounded-sm" {...register('conditionCheck', { required: true })} />
+                                                        <p className="font-medium text-xs md:text-xs lg:text-sm">I Agree To The Terms And Conditions And The Privacy Policy</p>
                                                  </div>
                                                  {/* ---------------------Social Login Section------------------- */}
                                                  <p className="text-center text-Radical text-sm">Already Registered <Link className="font-semibold base" to='/login'>Go to log In</Link></p>
                                                  <p className="text-center">Or Sign In With</p>
-                                                 {/* <SocialLogin></SocialLogin> */}
+                                                 <SocialAuthentication></SocialAuthentication>
                                           </form>
                                    </div>
                             </div>
