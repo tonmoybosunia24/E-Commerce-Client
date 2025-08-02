@@ -22,13 +22,15 @@ import 'react-tabs/style/react-tabs.css';
 import ProductCard from "../../Shared/ProductCard/ProductCard";
 import productBrandImage from '../../../assets/Brands/Brands2.jpg'
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
+import useAddToCarts from '../../../Hooks/useAddToCarts';
 
 const ProductDescription = ({ product, relatedProducts, productDetailsLoading }) => {
 
        const [thumbsSwiper, setThumbsSwiper] = useState(null);
        const [value, setValue] = useState(1);
        const [activeTab, setActiveTab] = useState('Description')
-       const { Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, Condition, AvailabilityStatus, SellerInformation } = product;
+       const { _id, Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, Condition, AvailabilityStatus, SellerInformation } = product;
+       const handleAddToCart = useAddToCarts();
 
        return (
               <div className="px-5 md:px-10 lg:px-20 my-5 md:my-7 lg:my-10">
@@ -54,7 +56,6 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
                                                                       <img className="aspect-[2/2] object-contain p-5" src={pic} />
                                                                </SwiperSlide>
                                                         ))}
-
                                                  </Swiper>
                                                  {/* -----------------Lower Swiper----------------- */}
                                                  <Swiper
@@ -117,13 +118,13 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
                                                  {/* ----------------Quantity Of Products----------------- */}
                                                  <div className='flex gap-2'>
                                                         <div className='flex'>
-                                                               <div><input className='border outline-0 w-12 h-full pl-2' type="tel" value={value} onChange={(e) => setValue(e.target.value)} /></div>
-                                                               <div className='flex flex-col border border-l-0'>
-                                                                      <div className='flex-1 border-b text-sm' onClick={() => setValue(value + 1)}><FaAngleUp /></div>
+                                                               <div><input className='border border-gray-300 outline-0 w-12 h-full pl-2' type="tel" value={value} onChange={(e) => setValue(e.target.value)} /></div>
+                                                               <div className='flex flex-col border border-l-0 border-gray-300'>
+                                                                      <div className='flex-1 border-b border-gray-300 text-sm' onClick={() => setValue(value + 1)}><FaAngleUp /></div>
                                                                       <div className='flex-1 text-sm' onClick={() => value > 1 && setValue(value - 1)}><FaAngleDown /></div>
                                                                </div>
                                                         </div>
-                                                        <div><button className='px-7 py-1.5 bg-Radical text-white rounded-sm hover:bg-black'>Add To Card</button></div>
+                                                        <div><button onClick={() => handleAddToCart(product, value)} className='px-7 py-1.5 bg-Radical text-white rounded-sm hover:bg-black cursor-pointer'>Add To Card</button></div>
                                                  </div>
                                                  {/* -----------------Wishlist And Compare---------------- */}
                                                  <div className='flex gap-2'>

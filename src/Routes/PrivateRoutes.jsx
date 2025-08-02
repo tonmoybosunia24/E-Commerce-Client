@@ -21,7 +21,7 @@ const PrivateRoutes = ({ children }) => {
        else if (user && user.emailVerified) {
               return children;
        }
-       return <Navigate state={{ form: location }} replace to='/login'></Navigate>;
+       return <Navigate state={{ from: location }} replace to='/login'></Navigate>;
 };
 
 export default PrivateRoutes;

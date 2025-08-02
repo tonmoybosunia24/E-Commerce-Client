@@ -2,22 +2,21 @@ import { Helmet } from "react-helmet-async";
 import HeaderTop from "../../Shared/HeaderTop/HeaderTop";
 import Header from "../../Shared/Header/Header";
 import Navbar from "../../Shared/Navbar/Navbar";
-import ProductHeader from "../../../Components/ProductHeader/ProductHeader";
-import LoginPage from "../LoginPage/LoginPage";
+import CartDetails from "../CartDetails/CartDetails";
 import Footer from "../../Home/Footer/Footer";
 
-const Login = () => {
+const AddToCarts = () => {
+
        return (
-              <section>
-                     <Helmet><title>E-Commerce | Login</title></Helmet>
+              <div>
+                     <Helmet><title>E-Commerce | Cart</title></Helmet>
                      <HeaderTop></HeaderTop>
                      <Header></Header>
                      <Navbar></Navbar>
-                     <ProductHeader></ProductHeader>
-                     <LoginPage></LoginPage>
+                     <CartDetails></CartDetails>
                      <Footer></Footer>
-              </section>
+              </div>
        );
 };
 
-export default Login;
+export default AddToCarts;

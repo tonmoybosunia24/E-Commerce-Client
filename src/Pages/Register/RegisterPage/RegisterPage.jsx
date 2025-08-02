@@ -21,7 +21,7 @@ const RegisterPage = () => {
        const [showConfirmPass, setShowConfirmPass] = useState(false);
        const location = useLocation();
        const navigate = useNavigate();
-       const form = location?.state?.form?.pathname || '/';
+       const from = location?.state?.from?.pathname || '/';
        const onsubmit = (data) => {
               CreateUser(data.email, data.password)
                      .then((userCredential) => {
@@ -51,7 +51,7 @@ const RegisterPage = () => {
                                                  .catch((error) => {
                                                         toast.error(error.message)
                                                  })
-                                          navigate(location?.state ? form : '/')
+                                          navigate(location?.state ? from : '/')
                                    })
                                    .catch((error) => {
                                           toast.error(error.message)

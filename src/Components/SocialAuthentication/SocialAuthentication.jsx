@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
-import { FaFacebookSquare, FaGithub, FaGoogle } from "react-icons/fa";
 import { TiSocialFacebook } from "react-icons/ti";
 import { BiLogoGoogle } from "react-icons/bi";
 import { IoLogoGithub } from "react-icons/io";

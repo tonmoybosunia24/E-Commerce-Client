@@ -143,7 +143,7 @@ const Footer = () => {
                                    <div className="text-sm border border-gray-300 rounded-full p-2 hover:bg-Radical hover:text-white"><FaPinterestP /></div>
                                    <div className="text-sm border border-gray-300 rounded-full p-2 hover:bg-Radical hover:text-white"><IoLogoInstagram /></div>
                             </div>
-                            <div><p className="text-gray-700 text-center">© 2025 - Ecommerce software by PrestaShop™</p></div>
+                            <div><p className="text-gray-700 text-center">© 2025 - Ecommerce Software By PrestaShop™</p></div>
                             <div className="flex gap-1">
                                    <img src={card1} alt="" />
                                    <img src={card2} alt="" />

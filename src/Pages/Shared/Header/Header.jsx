@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/Logo/Logo-2.jpg'
 import { PiShoppingCartLight } from 'react-icons/pi';
 import { LiaUserSolid } from 'react-icons/lia';
@@ -7,6 +7,7 @@ import { IoIosGitCompare, IoIosHeartEmpty } from 'react-icons/io';
 import { AuthContext } from '../../../Providers/AuthProviders';
 import { useContext, useRef, } from 'react';
 import { toast } from 'react-toastify';
+import useCarts from '../../../Hooks/useCarts';
 
 const Header = () => {
 
@@ -21,7 +22,10 @@ const Header = () => {
                      })
        }
        const inputText = useRef();
-       const navigate = useNavigate()
+       const location = useLocation();
+       const navigate = useNavigate();
+       const [carts] = useCarts();
+
        return (
               <header className='px-5 md:px-10 lg:px-20 py-5 border-b border-gray-300'>
                      <div className='flex justify-between items-center'>
@@ -60,17 +64,24 @@ const Header = () => {
                                           <div className='lg:hidden'>
                                                  <LiaUserSolid className='text-2xl' />
                                           </div>
-                                          <div className="indicator -z-10">
+                                          <div className="indicator">
                                                  <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">0</span>
                                                  <button className='text-2xl'><IoIosGitCompare /></button>
                                           </div>
-                                          <div className="indicator -z-10">
+                                          <div className="indicator">
                                                  <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">0</span>
                                                  <button className="text-2xl"><IoIosHeartEmpty /></button>
                                           </div>
-                                          <div className="indicator -z-10">
-                                                 <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">0</span>
-                                                 <button className="text-2xl"><PiShoppingCartLight /></button>
+                                          <div className="indicator">
+                                                 <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">{carts.length}</span>
+                                                 <button onClick={() => {
+                                                        if (user && user?.email) {
+                                                               navigate('/addToCarts')
+                                                        }
+                                                        else {
+                                                               navigate("/login", { state: { from: location } });
+                                                        }
+                                                 }} className="text-2xl cursor-pointer"><PiShoppingCartLight /></button>
                                           </div>
                                    </div>
                             </div>

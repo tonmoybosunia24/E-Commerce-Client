@@ -7,11 +7,14 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
 import PrivateRoutes from "./PrivateRoutes";
 import Products from "../Pages/Products/Products/Products";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails/ProductDetails";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import AddToCarts from "../Pages/AddToCarts/AddToCarts/AddToCarts";
 
 const Routes = createBrowserRouter([
        {
               path: '/',
               element: <Root></Root>,
+              errorElement: <ErrorPage></ErrorPage>,
               children: [
                      {
                             path: '/',
@@ -24,6 +27,10 @@ const Routes = createBrowserRouter([
                      {
                             path: '/productDetails/:id',
                             element: <ProductDetails></ProductDetails>
+                     },
+                     {
+                            path: '/addToCarts',
+                            element: <PrivateRoutes><AddToCarts></AddToCarts></PrivateRoutes>
                      },
                      {
                             path: '/login',

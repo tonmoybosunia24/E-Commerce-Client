@@ -16,12 +16,12 @@ const LoginPage = () => {
        const [showPass, setShowPass] = useState(false);
        const location = useLocation();
        const navigate = useNavigate();
-       const form = location?.state?.form?.pathname || '/';
+       const from = location?.state?.from?.pathname || '/';
        const onsubmit = (data) => {
               LoginUser(data.email, data.password)
                      .then(() => {
                             toast.success('Login Successful')
-                            navigate(location?.state ? form : '/')
+                            navigate(location?.state ? from : '/')
                      })
                      .catch((error) => {
                             toast.error(error.message)

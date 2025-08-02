@@ -5,7 +5,7 @@ import { CiCircleList, CiGrid41 } from "react-icons/ci";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import { AuthContext } from "../../../Providers/AuthProviders";
-import PriceRangeSlider from "../../../Components/PriceRangeSlider";
+import PriceRangeSlider from "../../../Components/PriceRangeSlider/PriceRangeSlider";
 import { useNavigate } from "react-router";
 
 

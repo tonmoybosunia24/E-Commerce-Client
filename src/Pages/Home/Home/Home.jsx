@@ -8,7 +8,7 @@ import OfferCardBanner from '../OfferCardBanner/OfferCardBanner';
 import CategoryProducts from '../CategoryProducts/CategoryProducts';
 import OfferBanner from '../OfferBanner/OfferBanner';
 import LatestProducts from '../LatestProducts/LatestProducts';
-import CmsBanner from '../../../Components/CmsBanner';
+import CmsBanner from "../../../Components/CmsBanner/CmsBanner";
 import CmsBanner1 from '../../../assets/Cms-Banner/Cms-banner-1.jpg'
 import CmsBanner2 from '../../../assets/Cms-Banner/Cms-banner-2.jpg'
 import CmsBanner3 from '../../../assets/Cms-Banner/Cms-banner-3.jpg'
