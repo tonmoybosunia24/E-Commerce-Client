@@ -1,12 +1,10 @@
 import { useContext } from "react";
-import useAxiosPublic from "./useAxiosPublic";
+import useAxiosSecure from "./useAxiosSecure";
 import { AuthContext } from "../Providers/AuthProviders";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "./useAxiosSecure";
 
 const useCarts = () => {
 
-       const axiosPublic = useAxiosPublic()
        const axiosSecure = useAxiosSecure();
 
        const { user, loading } = useContext(AuthContext);
@@ -14,8 +12,7 @@ const useCarts = () => {
               queryKey: ['carts', user?.email],
               enabled: !loading && !!user?.email,
               queryFn: async () => {
-                     const res = await axiosPublic.get(`/carts?email=${user.email}`)
-                     console.log(res)
+                     const res = await axiosSecure.get(`/carts?email=${user.email}`)
                      return res.data;
               }
        })

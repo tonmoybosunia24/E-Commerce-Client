@@ -5,6 +5,7 @@ import Navbar from "../../Shared/Navbar/Navbar";
 import CartDetails from "../CartDetails/CartDetails";
 import Footer from "../../Home/Footer/Footer";
 
+
 const AddToCarts = () => {
 
        return (

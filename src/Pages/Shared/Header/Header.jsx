@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/Logo/Logo-2.jpg'
 import { PiShoppingCartLight } from 'react-icons/pi';
 import { LiaUserSolid } from 'react-icons/lia';
@@ -22,7 +22,6 @@ const Header = () => {
                      })
        }
        const inputText = useRef();
-       const location = useLocation();
        const navigate = useNavigate();
        const [carts] = useCarts();
 
@@ -73,15 +72,8 @@ const Header = () => {
                                                  <button className="text-2xl"><IoIosHeartEmpty /></button>
                                           </div>
                                           <div className="indicator">
-                                                 <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">{carts.length}</span>
-                                                 <button onClick={() => {
-                                                        if (user && user?.email) {
-                                                               navigate('/addToCarts')
-                                                        }
-                                                        else {
-                                                               navigate("/login", { state: { from: location } });
-                                                        }
-                                                 }} className="text-2xl cursor-pointer"><PiShoppingCartLight /></button>
+                                                 <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">{carts.length} </span>
+                                                 <Link to='/addToCarts' className="text-2xl cursor-pointer"><PiShoppingCartLight /></Link>
                                           </div>
                                    </div>
                             </div>

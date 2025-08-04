@@ -13,7 +13,7 @@ const AuthProviders = ({ children }) => {
        const [searchInput, setSearchInput] = useState('');
        const googleProvider = new GoogleAuthProvider();
        const [loading, setLoading] = useState(true);
-       const axiosPublic = useAxiosPublic()
+       const axiosPublic = useAxiosPublic();
 
        // Create User Register Context
        const CreateUser = (email, password) => {
@@ -50,9 +50,8 @@ const AuthProviders = ({ children }) => {
               const unSubscribe = onAuthStateChanged(auth, currentUser => {
                      setUser(currentUser);
                      if (currentUser) {
-                             const userEmail = { email: currentUser.email }
-                             console.log(currentUser)
-                             console.log(userEmail)
+                            // Get The Users Email
+                            const userEmail = { email: currentUser.email }
                             // Get Token And Store It In LocalStorage
                             axiosPublic.post('/jwt', userEmail)
                                    .then(res => {

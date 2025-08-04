@@ -18,7 +18,6 @@ const useAxiosSecure = () => {
                      // Request Interceptors To Add Authorized Header For Every Secure Call To The Api
                      axiosSecure.interceptors.request.use(function (config) {
                             const token = localStorage.getItem('Access-Token')
-                            console.log("Sending token:", token);
                             if (token) {
                                    config.headers.authorization = `Bearer ${token}`
                             }
