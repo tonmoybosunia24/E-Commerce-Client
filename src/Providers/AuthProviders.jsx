@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStat
 import { createContext, useEffect, useState } from "react";
 import app from "../FireBase/FireBase.config";
 import { NavLink } from "react-router";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -12,6 +13,7 @@ const AuthProviders = ({ children }) => {
        const [searchInput, setSearchInput] = useState('');
        const googleProvider = new GoogleAuthProvider();
        const [loading, setLoading] = useState(true);
+       const axiosPublic = useAxiosPublic()
 
        // Create User Register Context
        const CreateUser = (email, password) => {
@@ -47,7 +49,23 @@ const AuthProviders = ({ children }) => {
        useEffect(() => {
               const unSubscribe = onAuthStateChanged(auth, currentUser => {
                      setUser(currentUser);
-                     setLoading(false);
+                     if (currentUser) {
+                             const userEmail = { email: currentUser.email }
+                             console.log(currentUser)
+                             console.log(userEmail)
+                            // Get Token And Store It In LocalStorage
+                            axiosPublic.post('/jwt', userEmail)
+                                   .then(res => {
+                                          if (res.data.token) {
+                                                 localStorage.setItem('Access-Token', res.data.token);
+                                                 setLoading(false);
+                                          }
+                                   })
+                     }
+                     else {
+                            localStorage.removeItem('Access-Token');
+                            setLoading(false);
+                     }
               })
               return () => {
                      return unSubscribe();

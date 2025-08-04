@@ -30,7 +30,7 @@ const Routes = createBrowserRouter([
                      },
                      {
                             path: '/addToCarts',
-                            element: <PrivateRoutes><AddToCarts></AddToCarts></PrivateRoutes>
+                            element: <AddToCarts></AddToCarts>
                      },
                      {
                             path: '/login',
