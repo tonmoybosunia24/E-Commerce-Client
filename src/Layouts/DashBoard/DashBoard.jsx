@@ -1,7 +1,11 @@
+import { Outlet } from "react-router";
+
 const DashBoard = () => {
        return (
-              <div>
-                     <h2>This Is The DashBoard Page</h2>
+              <div className="font-Roboto">
+                     <div>
+                            <Outlet></Outlet>
+                     </div>
               </div>
        );
 };

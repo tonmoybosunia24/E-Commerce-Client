@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/Logo/Logo-2.jpg'
 import { PiShoppingCartLight } from 'react-icons/pi';
 import { LiaUserSolid } from 'react-icons/lia';
@@ -8,10 +8,15 @@ import { AuthContext } from '../../../Providers/AuthProviders';
 import { useContext, useRef, } from 'react';
 import { toast } from 'react-toastify';
 import useCarts from '../../../Hooks/useCarts';
+import useAdmin from '../../../Hooks/useAdmin';
 
 const Header = () => {
 
-       const { user, Links, searchInput, setSearchInput, Logout } = useContext(AuthContext);
+       const [isAdmin, isAdminLoading] = useAdmin();
+       const inputText = useRef();
+       const navigate = useNavigate();
+       const [carts] = useCarts();
+       const { user, searchInput, setSearchInput, Logout } = useContext(AuthContext);
        const handleLogOut = () => {
               Logout()
                      .then(() => {
@@ -21,9 +26,14 @@ const Header = () => {
                             toast.error(error.message)
                      })
        }
-       const inputText = useRef();
-       const navigate = useNavigate();
-       const [carts] = useCarts();
+
+       const Links = <>
+              <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/'>Home</NavLink></li>
+              <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/products'>Products</NavLink></li>
+              <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/register'>Register</NavLink></li>
+              <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/blog'>Blog</NavLink></li>
+              {!isAdminLoading && isAdmin && <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/adminHome'>DashBoard</NavLink></li>}
+       </>
 
        return (
               <header className='px-5 md:px-10 lg:px-20 py-5 border-b border-gray-300'>

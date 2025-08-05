@@ -1,7 +1,6 @@
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../FireBase/FireBase.config";
-import { NavLink } from "react-router";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null);
@@ -71,14 +70,7 @@ const AuthProviders = ({ children }) => {
               }
        }, []);
 
-       const Links = <>
-              <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold' : 'text-black'}`} to='/'>Home</NavLink></li>
-              <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold' : 'text-black'}`} to='/products'>Products</NavLink></li>
-              <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold' : 'text-black'}`} to='/register'>Register</NavLink></li>
-              <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold' : 'text-black'}`} to='/blog'>Blog</NavLink></li>
-       </>
-
-       const AuthValue = { user, setUser, searchInput, setSearchInput, loading, setLoading, Links, CreateUser, verificationEmail, LoginUser, resetPassword, googleLogin, Logout };
+       const AuthValue = { user, setUser, searchInput, setSearchInput, loading, setLoading, CreateUser, verificationEmail, LoginUser, resetPassword, googleLogin, Logout };
 
        return (
               <AuthContext.Provider value={AuthValue}>

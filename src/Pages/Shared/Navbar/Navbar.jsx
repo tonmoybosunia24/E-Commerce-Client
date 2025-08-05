@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { HiOutlineRocketLaunch } from "react-icons/hi2";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { AuthContext } from "../../../Providers/AuthProviders";
 import useCategory from "../../../Hooks/useCategory";
+import useAdmin from "../../../Hooks/useAdmin";
+import { NavLink } from "react-router";
 
 const Navbar = () => {
 
-       const { Links } = useContext(AuthContext)
+       const [isAdmin, isAdminLoading] = useAdmin();
        const [drawerOpen, setDrawerOpen] = useState(false)
        const [shadow, setShadow] = useState(false);
        const [categories, categoriesLoading] = useCategory();
@@ -23,6 +24,14 @@ const Navbar = () => {
               window.addEventListener('scroll', handleScroll);
               return () => window.removeEventListener('scroll', handleScroll)
        }, [])
+
+       const Links = <>
+              <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'text-black font-semibold'}`} to='/'>Home</NavLink></li>
+              <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/products'>Products</NavLink></li>
+              <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/register'>Register</NavLink></li>
+              <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/blog'>Blog</NavLink></li>
+              {!isAdminLoading && isAdmin && <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/adminHome'>DashBoard</NavLink></li>}
+       </>
 
        return (
               <nav className={`hidden lg:flex justify-between sticky top-0 bg-white px-5 md:px-10 lg:px-20 py-3 border-b transition-shadow duration-100 ease-in-out border-gray-300 ${shadow ? 'shadow-md' : ''} relative z-30`}>

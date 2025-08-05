@@ -9,6 +9,9 @@ import Products from "../Pages/Products/Products/Products";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails/ProductDetails";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AddToCarts from "../Pages/AddToCarts/AddToCarts/AddToCarts";
+import DashBoard from "../Layouts/DashBoard/DashBoard";
+import AdminHome from "../Pages/DashBoard/AdminHome/AdminHome";
+import AdminRoutes from "./AdminRoutes";
 
 const Routes = createBrowserRouter([
        {
@@ -22,7 +25,7 @@ const Routes = createBrowserRouter([
                      },
                      {
                             path: '/products',
-                            element: <PrivateRoutes><Products></Products></PrivateRoutes>
+                            element: <Products></Products>
                      },
                      {
                             path: '/productDetails/:id',
@@ -45,6 +48,16 @@ const Routes = createBrowserRouter([
                             element: <PrivateRoutes><ContactUs></ContactUs></PrivateRoutes>,
                      }
               ],
+       },
+       {
+              path: 'dashboard',
+              element: <PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>,
+              children: [
+                     {
+                            path: 'adminHome',
+                            element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
+                     },
+              ]
        },
 ]);
 

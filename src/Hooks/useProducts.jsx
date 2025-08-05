@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useProducts = (page, sortBy, filter, searchInput) => {
 
        const limit = 12;
-       const axiosPublic = useAxiosPublic()
+       const axiosPublic = useAxiosPublic();
+
        const { data = {}, isPending: allProductsLoading } = useQuery({
               queryKey: ['allProducts', page, sortBy, limit, filter, searchInput],
               queryFn: async () => {
