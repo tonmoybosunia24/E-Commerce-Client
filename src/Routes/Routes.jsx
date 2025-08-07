@@ -12,6 +12,11 @@ import AddToCarts from "../Pages/AddToCarts/AddToCarts/AddToCarts";
 import DashBoard from "../Layouts/DashBoard/DashBoard";
 import AdminHome from "../Pages/DashBoard/AdminHome/AdminHome";
 import AdminRoutes from "./AdminRoutes";
+import AddProducts from "../Pages/DashBoard/AddProducts/AddProducts";
+import AllProducts from "../Pages/DashBoard/AllProducts/AllProducts";
+import Bookings from "../Pages/DashBoard/Bookings/Bookings";
+import Users from "../Pages/DashBoard/Users/Users";
+import Blogs from "../Pages/Blogs/Blogs";
 
 const Routes = createBrowserRouter([
        {
@@ -36,6 +41,14 @@ const Routes = createBrowserRouter([
                             element: <PrivateRoutes><AddToCarts></AddToCarts></PrivateRoutes>
                      },
                      {
+                            path: '/blogs',
+                            element: <Blogs></Blogs>
+                     },
+                     {
+                            path: '/contactUs',
+                            element: <PrivateRoutes><ContactUs></ContactUs></PrivateRoutes>,
+                     },
+                     {
                             path: '/login',
                             element: <Login></Login>,
                      },
@@ -43,10 +56,6 @@ const Routes = createBrowserRouter([
                             path: '/register',
                             element: <Register></Register>,
                      },
-                     {
-                            path: '/contactUs',
-                            element: <PrivateRoutes><ContactUs></ContactUs></PrivateRoutes>,
-                     }
               ],
        },
        {
@@ -56,6 +65,22 @@ const Routes = createBrowserRouter([
                      {
                             path: 'adminHome',
                             element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
+                     },
+                     {
+                            path: 'addProducts',
+                            element: <AdminRoutes><AddProducts></AddProducts></AdminRoutes>
+                     },
+                     {
+                            path: 'products',
+                            element: <AdminRoutes><AllProducts></AllProducts></AdminRoutes>
+                     },
+                     {
+                            path: 'bookings',
+                            element: <AdminRoutes><Bookings></Bookings></AdminRoutes>
+                     },
+                     {
+                            path: 'users',
+                            element: <AdminRoutes><Users></Users></AdminRoutes>
                      },
               ]
        },

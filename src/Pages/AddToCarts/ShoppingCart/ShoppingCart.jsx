@@ -5,6 +5,7 @@ import useUpdateQuantity from "../../../Hooks/useUpdateQuantity";
 import Swal from "sweetalert2";
 import useDeleteCart from "../../../Hooks/useDeleteCart";
 import { toast } from "react-toastify";
+import { FaTrashAlt } from "react-icons/fa";
 
 const ShoppingCart = ({ cart, isLast, refetch }) => {
 
@@ -69,8 +70,8 @@ const ShoppingCart = ({ cart, isLast, refetch }) => {
                             <p className="font-bold text-Radical">{Price * quantity} Tk</p>
                      </div>
                      {/* -----------------Cart Product Delete Button----------------- */}
-                     <div className="col-span-1 flex justify-end ">
-                            <AiOutlineDelete onClick={() => { handleDelete(_id) }} className="text-2xl hover:text-Radical cursor-pointer" />
+                     <div className="flex justify-end col-span-1">
+                            <FaTrashAlt onClick={() => { handleDelete(_id) }} className="bg-Radical hover:bg-gray-300 text-3xl text-white hover:text-black rounded-xs p-2 cursor-pointer" />
                      </div>
               </section>
        );
