@@ -46,8 +46,8 @@ const LoginPage = () => {
               <section className="px-5 md:px-10 lg:px-20 my-5 md:my-7 lg:my-10">
                      <div className="flex flex-col-reverse md:flex-row lg:flex-row gap-5">
                             {/* ------------------Left Side For Categories And Advertisement------------------ */}
-                            <div className="lg:flex-3/12 space-y-2 border p-5 border-gray-300 shadow-sm rounded-lg">
-                                   <div><img className="w-full" src={advertiseImg1} alt="" /></div>
+                            <div className="lg:flex-3/12 h-fit space-y-2 border p-5 bg-aliceBlue border-gray-300 shadow-sm rounded-lg">
+                                   <div><img className="w-full border border-gray-300 rounded-md" src={advertiseImg1} alt="" /></div>
                                    <h2 className="font-bold text-lg">All Categories</h2>
                                    {/* -----------------All The Categories Section---------------- */}
                                    <div className="space-y-1">

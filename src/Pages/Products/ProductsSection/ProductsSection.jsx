@@ -43,8 +43,8 @@ const ProductsSection = ({ categoryFromLink }) => {
               <section className="px-5 md:px-10 lg:px-20 my-5 md:my-7 lg:my-10">
                      <div className="flex gap-5">
                             {/* --------------------Filter Section------------------- */}
-                            <div className="flex-3/12 hidden h-fit lg:block border border-gray-400 rounded-sm">
-                                   <h2 className="font-bold px-5 py-2 text-lg border-b border-b-gray-400">Filter By</h2>
+                            <div className="flex-3/12 hidden h-fit lg:block bg-aliceBlue border border-gray-300 rounded-sm">
+                                   <h2 className="font-bold px-5 py-2 text-lg border-b border-b-gray-300">Filter By</h2>
                                    {/* ----------------------Clear Filter Section--------------------- */}
                                    <div className="px-5 pt-3">
                                           {(filter.availability.length > 0 || filter.size.length > 0 || filter.color.length > 0 || filter.brands.length > 0 || filter?.category?.length > 0) && (<div onClick={() => { navigate('/products'); setFilter({ availability: [], size: [], color: [], brands: [], category: [], price: [0, 300000], }) }} className="flex items-center gap-1 w-fit px-2 py-1.5 rounded-sm border cursor-pointer"><RxCross2 /> <span className="text-sm font-semibold">Clear All</span></div>)}

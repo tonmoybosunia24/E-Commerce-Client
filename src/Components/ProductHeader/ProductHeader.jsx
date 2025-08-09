@@ -8,7 +8,7 @@ const ProductHeader = ({ productTitle }) => {
 
   return (
     <section>
-      <div className="bg-gray-100 px-5 md:px-10 lg:px-20 py-5 md:py-6 lg:py-7 text-sm text-gray-700">
+      <div className="bg-aliceBlue px-5 md:px-10 lg:px-20 py-5 md:py-6 lg:py-7 text-sm text-gray-700">
         {/* -------------------Navlinks------------------ */}
         <nav className="flex gap-2 items-center flex-wrap">
           <Link to="/" className="hover:underline">Home</Link>

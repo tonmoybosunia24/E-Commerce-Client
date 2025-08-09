@@ -17,11 +17,12 @@ import AllProducts from "../Pages/DashBoard/AllProducts/AllProducts";
 import Bookings from "../Pages/DashBoard/Bookings/Bookings";
 import Users from "../Pages/DashBoard/Users/Users";
 import Blogs from "../Pages/Blogs/Blogs";
+import AuthProviders from "../Providers/AuthProviders";
 
 const Routes = createBrowserRouter([
        {
               path: '/',
-              element: <Root></Root>,
+              element: <AuthProviders><Root></Root></AuthProviders>,
               errorElement: <ErrorPage></ErrorPage>,
               children: [
                      {
@@ -60,7 +61,7 @@ const Routes = createBrowserRouter([
        },
        {
               path: 'dashboard',
-              element: <PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>,
+              element: <AuthProviders><PrivateRoutes><DashBoard></DashBoard></PrivateRoutes></AuthProviders>,
               children: [
                      {
                             path: 'adminHome',

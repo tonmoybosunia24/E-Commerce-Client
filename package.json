@@ -29,6 +29,7 @@
     "react-router-dom": "^7.6.3",
     "react-tabbordion": "^1.0.6",
     "react-tabs": "^6.1.0",
+    "react-tag-input-component": "^2.0.2",
     "react-toastify": "^11.0.5",
     "sweetalert2": "^11.22.2",
     "swiper": "^11.2.10",
