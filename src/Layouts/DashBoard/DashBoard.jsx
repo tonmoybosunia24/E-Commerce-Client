@@ -11,6 +11,7 @@ import Navbar from "../../Pages/Shared/Navbar/Navbar";
 import Header from "../../Pages/Shared/Header/Header";
 import HeaderTop from "../../Pages/Shared/HeaderTop/HeaderTop";
 import ProductHeader from "../../Components/ProductHeader/ProductHeader";
+import Footer from "../../Pages/Home/Footer/Footer";
 
 const DashBoard = () => {
 
@@ -66,6 +67,7 @@ const DashBoard = () => {
                                    </div>
                             </div>
                      </div>
+                     <Footer></Footer>
               </div>
        );
 };

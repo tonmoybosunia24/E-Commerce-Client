@@ -75,7 +75,7 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
                                                  </Swiper>
                                           </div>
                                           {/* ------------------Product Details Side---------------- */}
-                                          <div className='text-sm md:text-xs lg:text-base space-y-1.5'>
+                                          <div className='w-full text-sm md:text-xs lg:text-base space-y-1.5'>
                                                  <div className="flex gap-2">
                                                         <Rating style={{ maxWidth: 80 }} value={ProductRating} />
                                                         <p>{ProductRating} Review(s)</p>

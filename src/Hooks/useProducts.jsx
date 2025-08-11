@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
-import useAxiosSecure from "./useAxiosSecure";
 
 const useProducts = (page, sortBy, filter, searchInput) => {
 
@@ -17,7 +16,7 @@ const useProducts = (page, sortBy, filter, searchInput) => {
                      const minPrice = filter?.price?.[0] ?? 0;
                      const maxPrice = filter?.price?.[1] ?? 99999;
                      const category = encodeURIComponent(filter?.category.join(','))
-                     const res = await axiosPublic.get(`/allProducts?page=${page}&sort=${sortBy}&limit=${limit}&availability=${availability}&size=${size}&color=${color}&brands=${brands}&search=${searchInput}&minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category}`);
+                     const res = await axiosPublic.get(`/products?page=${page}&sort=${sortBy}&limit=${limit}&availability=${availability}&size=${size}&color=${color}&brands=${brands}&search=${searchInput}&minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category}`);
                      return res.data;
               }
        })

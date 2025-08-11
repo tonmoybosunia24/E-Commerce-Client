@@ -170,7 +170,7 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
                                                  </Swiper>
                                           </div>
                                           {/* ------------------Product Details Side---------------- */}
-                                          <div className='text-sm md:text-xs lg:text-base space-y-1.5'>
+                                          <div className='w-full text-sm md:text-xs lg:text-base space-y-1.5'>
                                                  <h5 className='font-semibold text-3xl'>{Title}</h5>
                                                  <p className='text-gray-700'>{Description}</p>
                                                  <hr className='text-gray-400 my-1' />
