@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
-import { AiOutlineDelete } from "react-icons/ai";
 import useUpdateQuantity from "../../../Hooks/useUpdateQuantity";
 import Swal from "sweetalert2";
 import useDeleteCart from "../../../Hooks/useDeleteCart";
@@ -71,7 +70,7 @@ const ShoppingCart = ({ cart, isLast, refetch }) => {
                      </div>
                      {/* -----------------Cart Product Delete Button----------------- */}
                      <div className="flex justify-end col-span-1">
-                            <FaTrashAlt onClick={() => { handleDelete(_id) }} className="bg-Radical hover:bg-gray-300 text-3xl text-white hover:text-black rounded-xs p-2 cursor-pointer" />
+                            <FaTrashAlt onClick={() => { handleDelete(_id) }} className="bg-Radical hover:bg-aliceBlue text-3xl text-white hover:text-black rounded-xs p-2 cursor-pointer" />
                      </div>
               </section>
        );

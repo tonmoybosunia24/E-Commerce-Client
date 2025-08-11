@@ -1,12 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useDeleteCart = () => {
 
-       const axiosPublic = useAxiosPublic();
+       const axiosSecure = useAxiosSecure();
        const { mutate: deleteCardItem, isLoading, isSuccess, isError } = useMutation({
               mutationFn: async (id) => {
-                     const res = await axiosPublic.delete(`/carts/${id}`);
+                     const res = await axiosSecure.delete(`/carts/${id}`);
                      return res.send;
               }
        })

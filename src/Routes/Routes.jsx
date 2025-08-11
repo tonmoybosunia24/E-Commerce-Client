@@ -18,6 +18,7 @@ import Bookings from "../Pages/DashBoard/Bookings/Bookings";
 import Users from "../Pages/DashBoard/Users/Users";
 import Blogs from "../Pages/Blogs/Blogs";
 import AuthProviders from "../Providers/AuthProviders";
+import UpdateProducts from "../Pages/DashBoard/UpdateProducts/UpdateProducts";
 
 const Routes = createBrowserRouter([
        {
@@ -74,6 +75,10 @@ const Routes = createBrowserRouter([
                      {
                             path: 'products',
                             element: <AdminRoutes><AllProducts></AllProducts></AdminRoutes>
+                     },
+                     {
+                            path: 'updateProducts/:id',
+                            element: <AdminRoutes><UpdateProducts></UpdateProducts></AdminRoutes>
                      },
                      {
                             path: 'bookings',
