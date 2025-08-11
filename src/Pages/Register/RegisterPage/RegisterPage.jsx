@@ -9,6 +9,7 @@ import advertiseImg1 from '../../../assets/Advertise/Advertise1.jpg'
 import { Link, useLocation, useNavigate } from "react-router";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import SocialAuthentication from "../../../Components/SocialAuthentication/SocialAuthentication";
+import useUploadImage from "../../../Hooks/useUploadImage";
 
 const RegisterPage = () => {
 
@@ -22,44 +23,54 @@ const RegisterPage = () => {
        const location = useLocation();
        const navigate = useNavigate();
        const from = location?.state?.from?.pathname || '/';
+       const { uploadImages } = useUploadImage();
        const onsubmit = (data) => {
-              CreateUser(data.email, data.password)
-                     .then((userCredential) => {
-                            const currentUser = userCredential.user;
-                            toast.success('Registration Completed')
-                            /* -----------------Update Profile Data------------------ */
-                            updateProfile(currentUser, {
-                                   displayName: `${data.firstName} ${data.lastName}`,
-                            })
-                                   .then(() => {
-                                          const userInfo = {
-                                                 name: `${data.firstName} ${data.lastName}`,
-                                                 phoneNumber: data.phoneNumber,
-                                                 dateOfBirth: data.dateOfBirth,
-                                                 gender: data.gender,
-                                                 country: data.country,
-                                                 email: data.email,
-                                                 password: data.password,
-                                                 emailVerified: currentUser.emailVerified,
-                                                 referCodes: data.referCode
-                                          }
-                                          saveUser(userInfo);
-                                          verificationEmail()
+              const filesArray = Array.from(data.Image);
+              uploadImages(filesArray, {
+                     onSuccess: (urls) => {
+                            CreateUser(data.email, data.password)
+                                   .then((userCredential) => {
+                                          const currentUser = userCredential.user;
+                                          toast.success('Registration Completed')
+                                          /* -----------------Update Profile Data------------------ */
+                                          updateProfile(currentUser, {
+                                                 displayName: `${data.firstName} ${data.lastName}`,
+                                          })
                                                  .then(() => {
-                                                        toast.success('Please Verify Your Email')
+                                                        const userInfo = {
+                                                               name: `${data.firstName} ${data.lastName}`,
+                                                               phoneNumber: data.phoneNumber,
+                                                               dateOfBirth: data.dateOfBirth,
+                                                               gender: data.gender,
+                                                               country: data.country,
+                                                               email: data.email,
+                                                               image: urls,
+                                                               password: data.password,
+                                                               emailVerified: currentUser.emailVerified,
+                                                               referCodes: data.referCode
+                                                        }
+                                                        saveUser(userInfo);
+                                                        verificationEmail()
+                                                               .then(() => {
+                                                                      toast.success('Please Verify Your Email')
+                                                               })
+                                                               .catch((error) => {
+                                                                      toast.error(error.message)
+                                                               })
+                                                        navigate(location?.state ? from : '/')
                                                  })
                                                  .catch((error) => {
                                                         toast.error(error.message)
                                                  })
-                                          navigate(location?.state ? from : '/')
                                    })
                                    .catch((error) => {
-                                          toast.error(error.message)
+                                          toast.error(error.message);
                                    })
-                     })
-                     .catch((error) => {
-                            toast.error(error.message)
-                     })
+                     },
+                     onError: (error) => {
+                            toast.error(error.message);
+                     }
+              })
        }
 
        return (
@@ -170,6 +181,10 @@ const RegisterPage = () => {
                                                                       <span className="label-text">Refer Code : </span>
                                                                </label>
                                                                <input type="tel" {...register('referCode')} placeholder="Your Refer Code" name="referCode" className="w-full input input-bordered focus:outline-0" />
+                                                        </div>
+                                                        {/* ---------------------Product Image--------------------- */}
+                                                        <div className="">
+                                                               <input type="file" {...register('Image', { required: true })} className="file-input file-input-ghost" />
                                                         </div>
                                                         {/* ---------------------Submit Button------------------- */}
                                                         <div className="form-control md:col-span-2 lg:col-span-2">

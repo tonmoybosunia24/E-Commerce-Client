@@ -15,7 +15,7 @@ const AddProducts = () => {
        const [variant, setVariant] = useState([]);
        const { uploadImages } = useUploadImage();
        const { adminSaveProducts } = useAdminSaveProducts();
-       const { register, handleSubmit, setValue, formState: { errors, isValid } } = useForm({ mode: 'onChange' });
+       const { register, handleSubmit, setValue, formState: { errors, isValid }, reset } = useForm({ mode: 'onChange' });
 
        const onsubmit = async (data) => {
               const filesArray = Array.from(data.Images);
@@ -68,10 +68,10 @@ const AddProducts = () => {
                                           contact: data.contact,
                                    }
                             }
-                            console.log('Product Information', productInfo)
                             adminSaveProducts(productInfo, {
                                    onSuccess: () => {
                                           toast.success('Product Added Successfully')
+                                          reset();
                                    },
                                    onError: (error) => {
                                           toast.error(error.message)
@@ -298,8 +298,9 @@ const AddProducts = () => {
                                                         </label>
                                                         <input type="tel" required {...register('contact', { required: true, valueAsNumber: true })} placeholder="Enter Your Seller Number" className="w-full input input-bordered focus:outline-0" />
                                                  </div>
+                                                 {/* --------------------Product Images--------------------- */}
                                                  <div className="lg:col-span-3">
-                                                        <input type="file" {...register('Images', { required: true, valueAsNumber: true })} multiple className="file-input file-input-ghost" />
+                                                        <input type="file" {...register('Images', { required: true })} multiple className="file-input file-input-ghost" />
                                                  </div>
                                                  {/* ---------------------Submit Button------------------- */}
                                                  <div className="form-control md:col-span-2 lg:col-span-3">
