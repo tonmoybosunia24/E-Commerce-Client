@@ -6,10 +6,13 @@ import { FaTrashAlt } from "react-icons/fa";
 import useDeleteProducts from "../../../Hooks/useDeleteProducts";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
+import { useRef, useState } from "react";
 
 const AllProducts = () => {
 
-       const [adminProducts, adminProductsLoading, refetch] = useAdminProducts();
+       const inputText = useRef();
+       const [searchInput, setSearchInput] = useState('')
+       const [adminProducts, adminProductsLoading, refetch] = useAdminProducts(searchInput);
        const { deleteProduct } = useDeleteProducts();
 
        const handleDelete = (id) => {
@@ -44,7 +47,27 @@ const AllProducts = () => {
               <div>
                      <Helmet><title>E-Commerce | Products</title></Helmet>
                      <AdminSectionTitle SubHeading='--------Manage Products--------' Heading='Product Inventory Management'></AdminSectionTitle>
-                     {adminProductsLoading ? (<span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>) : (
+                     <div className="flex justify-between items-center pb-5">
+                            <h2 className="font-semibold text-sm lg:text-lg flex-2/5 lg:flex-3/5">Total Products : {adminProducts.length}</h2>
+                            <div className="flex-3/5 lg:flex-2/5">
+                                   <label className="input w-full focus-within:outline-none">
+                                          <svg className="h-[1em] opacity-50 focus:outline-0 focus-within:outline-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                 <g
+                                                        strokeLinejoin="round"
+                                                        strokeLinecap="round"
+                                                        strokeWidth="2.5"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                 >
+                                                        <circle cx="11" cy="11" r="8"></circle>
+                                                        <path d="m21 21-4.3-4.3"></path>
+                                                 </g>
+                                          </svg>
+                                          <input ref={inputText} onChange={(e) => setSearchInput(e.target.value.trim())} type="search" className="w-full input input-bordered focus:outline-0" placeholder="Search" />
+                                   </label>
+                            </div>
+                     </div>
+                     {adminProductsLoading ? (<span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>) : adminProducts.length === 0 ? (<div className="flex items-center justify-center min-h-[200px]"><p className="text-gray-500 text-lg font-medium">No Products Found</p></div>) : (
                             <div className="overflow-x-auto border border-gray-300 rounded-sm">
                                    {/* --------------------Table------------------- */}
                                    <table className="table table-zebra w-full table-fixed lg:table-auto">

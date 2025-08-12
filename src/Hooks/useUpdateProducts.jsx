@@ -5,7 +5,7 @@ const useUpdateProducts = (id) => {
 
        const axiosSecure = useAxiosSecure();
 
-       const { data: updateProducts = [], isPending: updateProductsLoading } = useQuery({
+       const { data: updateProducts = [], isPending: updateProductsLoading, refetch } = useQuery({
               queryKey: ['updateProducts', id],
               enabled: !!id,
               queryFn: async () => {
@@ -14,7 +14,7 @@ const useUpdateProducts = (id) => {
               }
        })
 
-       return [updateProducts, updateProductsLoading]
+       return [updateProducts, updateProductsLoading, refetch]
 };
 
 export default useUpdateProducts;

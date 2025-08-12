@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
 
-const useAdminProducts = () => {
+const useAdminProducts = (searchInput) => {
 
        const axiosSecure = useAxiosSecure();
-       
+
        const { data: adminProducts = [], isPending: adminProductsLoading, refetch } = useQuery({
-              queryKey: ['adminProducts'],
+              queryKey: ['adminProducts', searchInput],
               queryFn: async () => {
-                     const res = await axiosSecure.get('/adminProducts')
+                     const res = await axiosSecure.get(`/adminProducts?search=${searchInput || ''}`)
                      return res.data;
               }
        })

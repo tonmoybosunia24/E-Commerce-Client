@@ -24,8 +24,8 @@ const MultiValueInput = ({ label = "Values", placeholder = "Enter value", value 
               <div className="form-control space-y-1.5">
                      {/* -------- Label & Current Items -------- */}
                      <div className="flex justify-between items-center">
-                            <span className="label-text text-sm font-medium text-gray-500">{label}</span>
-                            <div className="flex flex-wrap gap-1 justify-end max-w-[70%]">
+                            <span className="label-text text-sm font-medium text-gray-500 mr-2">{label}</span>
+                            <div className="flex gap-1 justify-end max-w-full overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
                                    {value.map((item, index) => (
                                           <span key={index} onClick={() => removeItem(item)} className="bg-aliceBlue hover:bg-Radical hover:text-white font-semibold cursor-pointer text-xs px-2 py-0.5 rounded transition-all" title="Click to remove">{item}</span>
                                    ))}
