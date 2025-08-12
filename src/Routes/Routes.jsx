@@ -19,6 +19,7 @@ import Users from "../Pages/DashBoard/Users/Users";
 import Blogs from "../Pages/Blogs/Blogs";
 import AuthProviders from "../Providers/AuthProviders";
 import UpdateProducts from "../Pages/DashBoard/UpdateProducts/UpdateProducts";
+import AddToWishlist from "../Pages/AddToWishlist/AddToWishlist";
 
 const Routes = createBrowserRouter([
        {
@@ -41,6 +42,10 @@ const Routes = createBrowserRouter([
                      {
                             path: '/addToCarts',
                             element: <PrivateRoutes><AddToCarts></AddToCarts></PrivateRoutes>
+                     },
+                     {
+                            path: '/addToWishlist',
+                            element: <PrivateRoutes><AddToWishlist></AddToWishlist></PrivateRoutes>
                      },
                      {
                             path: '/blogs',

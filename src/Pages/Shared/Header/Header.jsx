@@ -13,6 +13,7 @@ import useAdmin from '../../../Hooks/useAdmin';
 import { FiShoppingBag } from 'react-icons/fi';
 import { IoNewspaperOutline } from 'react-icons/io5';
 import { LuCalendarClock, LuFolderPlus, LuLayoutDashboard } from 'react-icons/lu';
+import useWishlist from '../../../Hooks/useWishlist';
 
 const Header = () => {
 
@@ -21,6 +22,7 @@ const Header = () => {
        const navigate = useNavigate();
        const [carts] = useCarts();
        const { user, searchInput, setSearchInput, Logout } = useContext(AuthContext);
+       const [wishlist, wishlistLoading, refetch] = useWishlist();
        const handleLogOut = () => {
               Logout()
                      .then(() => {
@@ -101,8 +103,9 @@ const Header = () => {
                                                  <button className='text-2xl'><IoIosGitCompare /></button>
                                           </div>
                                           <div className="indicator">
-                                                 <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">0</span>
-                                                 <button className="text-2xl"><IoIosHeartEmpty /></button>
+                                                 <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">{wishlist.length}</span>
+                                                 <Link to='/addToWishlist' className="text-2xl"><IoIosHeartEmpty /></Link>
+                                                 <button className="text-2xl"></button>
                                           </div>
                                           <div className="indicator">
                                                  <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">{carts.length} </span>

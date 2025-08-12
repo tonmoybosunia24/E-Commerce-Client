@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { CiHeart } from "react-icons/ci";
-import { GoGitCompare } from "react-icons/go";
-import { SlSizeFullscreen } from "react-icons/sl";
+import { GoGitCompare, GoScreenFull } from "react-icons/go";
 import { CiShare1 } from "react-icons/ci";
 import { MdContentCopy } from "react-icons/md";
 import { FaFacebookF } from "react-icons/fa";
@@ -23,6 +22,7 @@ import Countdown from 'react-countdown';
 import brandImg1 from '../../../assets/Brands/Brands2.jpg'
 import { Link } from 'react-router-dom';
 import useProductDetails from '../../../Hooks/useProductDetails';
+import useAddToWishlist from '../../../Hooks/useAddToWishlist';
 
 
 const ProductCard = ({ product, fromSlider = '', isColumn }) => {
@@ -30,9 +30,10 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
        const { _id, Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, OfferTime, Condition, AvailabilityStatus, SellerInformation } = product;
        const [thumbsSwiper, setThumbsSwiper] = useState(null);
        const [value, setValue] = useState(1);
-       const handleProductsDetails = () => {
-              useProductDetails(_id)
-       }
+       // const handleProductsDetails = () => {
+       //        useProductDetails(_id)
+       // }
+       const handleAddToWishlist = useAddToWishlist();
        /* ---------------Count Total Milliseconds-------------- */
        const totalMilliseconds = (((OfferTime?.Day || 0) * 24 + (OfferTime?.Hour || 0)) * 60 + (OfferTime?.Minutes || 0)) * 60 * 1000 + (OfferTime?.Second || 0) * 1000;
        const targetDate = Date.now() + totalMilliseconds;
@@ -126,10 +127,10 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
                             {Condition && (<p className="bg-green-600 text-center text-white text-xs p-1 rounded-xs font-medium">{Condition}</p>)}
                      </div>
                      <div className={`flex flex-col gap-2 absolute right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 text-3xl ${fromSlider === 'allProducts' && isColumn ? 'top-[10px] right-5 group-hover:top-5 lg:left-32 lg:group-hover:top-1/2 lg:transform lg:-translate-y-1/2' : 'top-0 group-hover:top-5'}`}>
-                            <CiHeart className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' />
+                            <CiHeart onClick={() => handleAddToWishlist(product)} className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' />
                             <GoGitCompare className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' />
                             {/* -----------------Product Details Icon-------------- */}
-                            <button className="" onClick={() => document.getElementById(`my_modal_${_id}`).showModal()}><SlSizeFullscreen className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' /></button>
+                            <button className="" onClick={() => document.getElementById(`my_modal_${_id}`).showModal()}><GoScreenFull className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' /></button>
                             <dialog id={`${`my_modal_${_id}`}`} className="modal">
                                    <div className="flex flex-col md:flex-row lg:flex-row modal-box lg:w-12/12 md:max-w-3xl lg:max-w-5xl gap-5">
                                           {/* -----------------------Image Slider------------------- */}
