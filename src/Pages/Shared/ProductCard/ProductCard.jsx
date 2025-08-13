@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { CiHeart } from "react-icons/ci";
-import { GoGitCompare, GoScreenFull } from "react-icons/go";
+import { GoScreenFull } from "react-icons/go";
 import { CiShare1 } from "react-icons/ci";
 import { MdContentCopy } from "react-icons/md";
 import { FaFacebookF } from "react-icons/fa";
@@ -21,8 +21,9 @@ import { Rating } from '@smastrom/react-rating'
 import Countdown from 'react-countdown';
 import brandImg1 from '../../../assets/Brands/Brands2.jpg'
 import { Link } from 'react-router-dom';
-import useProductDetails from '../../../Hooks/useProductDetails';
 import useAddToWishlist from '../../../Hooks/useAddToWishlist';
+import { PiShoppingCartSimpleThin } from "react-icons/pi";
+import useAddToCarts from '../../../Hooks/useAddToCarts';
 
 
 const ProductCard = ({ product, fromSlider = '', isColumn }) => {
@@ -34,6 +35,7 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
        //        useProductDetails(_id)
        // }
        const handleAddToWishlist = useAddToWishlist();
+       const handleAddToCart = useAddToCarts();
        /* ---------------Count Total Milliseconds-------------- */
        const totalMilliseconds = (((OfferTime?.Day || 0) * 24 + (OfferTime?.Hour || 0)) * 60 + (OfferTime?.Minutes || 0)) * 60 * 1000 + (OfferTime?.Second || 0) * 1000;
        const targetDate = Date.now() + totalMilliseconds;
@@ -128,7 +130,7 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
                      </div>
                      <div className={`flex flex-col gap-2 absolute right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 text-3xl ${fromSlider === 'allProducts' && isColumn ? 'top-[10px] right-5 group-hover:top-5 lg:left-32 lg:group-hover:top-1/2 lg:transform lg:-translate-y-1/2' : 'top-0 group-hover:top-5'}`}>
                             <CiHeart onClick={() => handleAddToWishlist(product)} className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' />
-                            <GoGitCompare className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' />
+                            <PiShoppingCartSimpleThin onClick={() => handleAddToCart(product, value)} className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' />
                             {/* -----------------Product Details Icon-------------- */}
                             <button className="" onClick={() => document.getElementById(`my_modal_${_id}`).showModal()}><GoScreenFull className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' /></button>
                             <dialog id={`${`my_modal_${_id}`}`} className="modal">
@@ -216,11 +218,11 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
                                                                       <div className='flex-1 text-sm' onClick={() => value > 1 && setValue(value - 1)}><FaAngleDown /></div>
                                                                </div>
                                                         </div>
-                                                        <div><button className='px-7 py-1.5 bg-Radical text-white rounded-sm hover:bg-black'>Add To Card</button></div>
+                                                        <div><button onClick={() => handleAddToCart(product, value)} className='px-7 py-1.5 bg-Radical text-white rounded-sm hover:bg-black'>Add To Card</button></div>
                                                  </div>
                                                  {/* -----------------Wishlist And Compare---------------- */}
                                                  <div className='flex gap-2'>
-                                                        <div className='flex items-center gap-0.5 hover:text-Radical cursor-pointer'>
+                                                        <div onClick={() => handleAddToWishlist(product)} className='flex items-center gap-0.5 hover:text-Radical cursor-pointer'>
                                                                <CiHeart className='text-2xl' />
                                                                <p>Add To Wishlist</p>
                                                         </div>

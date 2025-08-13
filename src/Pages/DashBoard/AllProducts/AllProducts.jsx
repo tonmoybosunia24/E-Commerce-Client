@@ -74,11 +74,11 @@ const AllProducts = () => {
                                           {/* -----------------Table Header--------------- */}
                                           <thead>
                                                  <tr>
-                                                        <th className="font-semibold text-black border-b border-gray-300 py-5">Images</th>
-                                                        <th className="font-semibold text-black border-b border-gray-300 py-5 px-1 md:px-0 lg:px-5">Title</th>
-                                                        <th className="font-semibold text-black border-b border-gray-300 py-5 px-2">Price</th>
-                                                        <th className="font-semibold text-black border-b border-gray-300 py-5 px-2 text-center">Update</th>
-                                                        <th className="font-semibold text-black border-b border-gray-300 py-5 px-2 text-center">Delete</th>
+                                                        <th className="font-bold text-black border-b border-gray-300 py-5">Images</th>
+                                                        <th className="font-bold text-black border-b border-gray-300 py-5 px-1 md:px-0 lg:px-5">Title</th>
+                                                        <th className="font-bold text-black border-b border-gray-300 py-5 px-2">Price</th>
+                                                        <th className="font-bold text-black border-b border-gray-300 py-5 px-2 text-center">Update</th>
+                                                        <th className="font-bold text-black border-b border-gray-300 py-5 px-2 text-center">Delete</th>
                                                  </tr>
                                           </thead>
                                           {/* ------------------Table Body--------------- */}

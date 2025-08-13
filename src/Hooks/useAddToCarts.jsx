@@ -23,6 +23,10 @@ const useAddToCarts = () => {
                             updateQuantity({
                                    id: alreadyInCarts._id,
                                    quantity: newQuantity,
+                            }, {
+                                   onSuccess: () => {
+                                          refetch();
+                                   }
                             });
                             toast.success(`${product.Title} Added To Cart`);
                             return;
@@ -38,7 +42,7 @@ const useAddToCarts = () => {
                      saveCart(cartInfo, {
                             onSuccess: () => {
                                    toast.success(`${product.Title} Added To Cart`);
-                                   refetch?.();
+                                   refetch();
                             },
                             onError: (error) => {
                                    toast.error(error.message);

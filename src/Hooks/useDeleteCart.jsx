@@ -7,7 +7,7 @@ const useDeleteCart = () => {
        const { mutate: deleteCardItem, isLoading, isSuccess, isError } = useMutation({
               mutationFn: async (id) => {
                      const res = await axiosSecure.delete(`/carts/${id}`);
-                     return res.send;
+                     return res.data;
               }
        })
 
