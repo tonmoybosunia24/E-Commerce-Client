@@ -35,6 +35,7 @@ const RegisterPage = () => {
                                           /* -----------------Update Profile Data------------------ */
                                           updateProfile(currentUser, {
                                                  displayName: `${data.firstName} ${data.lastName}`,
+                                                 photoURL: urls?.[0],
                                           })
                                                  .then(() => {
                                                         const userInfo = {
@@ -47,7 +48,8 @@ const RegisterPage = () => {
                                                                image: urls,
                                                                password: data.password,
                                                                emailVerified: currentUser.emailVerified,
-                                                               referCodes: data.referCode
+                                                               role: 'User',
+                                                               referCodes: data.referCode,
                                                         }
                                                         saveUser(userInfo);
                                                         verificationEmail()

@@ -12,9 +12,11 @@ import Header from "../../Pages/Shared/Header/Header";
 import HeaderTop from "../../Pages/Shared/HeaderTop/HeaderTop";
 import ProductHeader from "../../Components/ProductHeader/ProductHeader";
 import Footer from "../../Pages/Home/Footer/Footer";
+import useAdmin from "../../Hooks/useAdmin";
 
 const DashBoard = () => {
 
+       const [isAdmin, isAdminLoading] = useAdmin();
        const { Logout } = useContext(AuthContext);
        const navigate = useNavigate();
        const handleLogOut = () => {
@@ -39,7 +41,7 @@ const DashBoard = () => {
                                    <div className="h-fit hidden md:block lg:block lg:flex-3/12 md:flex-4/12 border border-gray-300 rounded-md">
                                           <div className="flex flex-col gap-3 bg-aliceBlue p-5">
                                                  {/* ------------------Admin Home---------------- */}
-                                                 <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='adminHome'><li className="flex flex-row gap-2 items-center text-base"><AiOutlineHome className="text-xl p-0" /> Admin Home</li></NavLink>
+                                                 {!isAdminLoading && isAdmin && (<NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='adminHome'><li className="flex flex-row gap-2 items-center text-base"><AiOutlineHome className="text-xl p-0" /> Admin Home</li></NavLink>)}
                                                  {/* -----------------Add Products--------------- */}
                                                  <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='addProducts'><li className="flex flex-row gap-2 items-center text-base "><LuFolderPlus className="text-xl p-0" /> Add Products</li></NavLink>
                                                  {/* -------------------Products----------------- */}
@@ -47,7 +49,7 @@ const DashBoard = () => {
                                                  {/* -------------------Bookings----------------- */}
                                                  <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='bookings'><li className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" /> Bookings</li></NavLink>
                                                  {/* --------------------Users------------------- */}
-                                                 <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='users'><li className="flex flex-row gap-2 items-center text-base "><PiUsersThreeBold className="text-xl p-0" />Users</li></NavLink>
+                                                 {!isAdminLoading && isAdmin && (<NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='users'><li className="flex flex-row gap-2 items-center text-base "><PiUsersThreeBold className="text-xl p-0" />Users</li></NavLink>)}
                                                  {/* -------------------Divider------------------ */}
                                                  <hr className="border-gray-300" />
                                                  {/* -------------------Home Page----------------- */}

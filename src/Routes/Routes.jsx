@@ -20,6 +20,7 @@ import Blogs from "../Pages/Blogs/Blogs";
 import AuthProviders from "../Providers/AuthProviders";
 import UpdateProducts from "../Pages/DashBoard/UpdateProducts/UpdateProducts";
 import AddToWishlist from "../Pages/AddToWishlist/AddToWishlist";
+import ModeratorRoutes from "./ModeratorRoutes";
 
 const Routes = createBrowserRouter([
        {
@@ -75,19 +76,19 @@ const Routes = createBrowserRouter([
                      },
                      {
                             path: 'addProducts',
-                            element: <AdminRoutes><AddProducts></AddProducts></AdminRoutes>
+                            element: <ModeratorRoutes><AddProducts></AddProducts></ModeratorRoutes>,
                      },
                      {
                             path: 'products',
-                            element: <AdminRoutes><AllProducts></AllProducts></AdminRoutes>
+                            element: <ModeratorRoutes><AllProducts></AllProducts></ModeratorRoutes>
                      },
                      {
                             path: 'updateProducts/:id',
-                            element: <AdminRoutes><UpdateProducts></UpdateProducts></AdminRoutes>
+                            element: <ModeratorRoutes><UpdateProducts></UpdateProducts></ModeratorRoutes>
                      },
                      {
                             path: 'bookings',
-                            element: <AdminRoutes><Bookings></Bookings></AdminRoutes>
+                            element: <ModeratorRoutes><Bookings></Bookings></ModeratorRoutes>
                      },
                      {
                             path: 'users',

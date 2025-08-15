@@ -72,7 +72,7 @@ const AddToWishlist = () => {
                                                         {wishlist.map((product) => (
                                                                <tr key={product._id}>
                                                                       <th className="w-24"><img className="w-10 h-10 lg:w-16 lg:h-16 object-contain border border-gray-300 p-1 lg:p-2 " src={product?.Images && product.Images.length > 0 ? product.Images[0] : '/images/default.png'} alt="" /></th>
-                                                                      <td className="font-semibold text-xs md:text-base lg:text-base px-1 md:px-0 lg:px-5">{product?.Title}</td>
+                                                                      <td className="font-semibold text-xs md:text-base lg:text-base px-1 md:px-0 lg:px-5 truncate">{product?.Title}</td>
                                                                       <td className="px-14 text-center hidden md:table-cell lg:table-cell font-bold text-green-700">{product?.Stock}</td>
                                                                       <td className="font-bold text-Radical px-2">{product?.Price}</td>
                                                                       <td><Link onClick={() => handleAddToCart(product, 1)}><FaCartShopping className="mx-auto bg-Radical hover:bg-aliceBlue text-3xl text-white hover:text-black rounded-xs p-2 cursor-pointer" /></Link></td>

@@ -4,10 +4,12 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import useCategory from "../../../Hooks/useCategory";
 import useAdmin from "../../../Hooks/useAdmin";
 import { NavLink } from "react-router";
+import useModerator from "../../../Hooks/useModerator";
 
 const Navbar = () => {
 
        const [isAdmin, isAdminLoading] = useAdmin();
+       const [isModerator, isModeratorLoading] = useModerator();
        const [drawerOpen, setDrawerOpen] = useState(false)
        const [shadow, setShadow] = useState(false);
        const [categories, categoriesLoading] = useCategory();
@@ -28,7 +30,7 @@ const Navbar = () => {
        const Links = <>
               <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'text-black font-semibold'}`} to='/'>Home</NavLink></li>
               <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/products'>Products</NavLink></li>
-              {!isAdminLoading && isAdmin && <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/adminHome'>DashBoard</NavLink></li>}
+              {!isAdminLoading && !isModeratorLoading && (isAdmin || isModerator) && <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to={isModerator && !isAdmin ? '/dashboard/addProducts' : '/dashboard/adminHome'}>DashBoard</NavLink></li>}
               <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/blogs'>Blogs</NavLink></li>
               <li><NavLink className={({ isActive }) => `!bg-transparent hover:text-Radical ${isActive ? 'font-bold text-Radical' : 'font-semibold text-black'}`} to='/contactUs'>Contact Us</NavLink></li>
        </>
