@@ -2,6 +2,7 @@ import { useState } from "react";
 import useCarts from "../../../Hooks/useCarts";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import { IoIosArrowDown } from "react-icons/io";
+import { Link } from "react-router";
 
 const CartDetails = () => {
 
@@ -68,7 +69,7 @@ const CartDetails = () => {
                                    </div>
                                    {/* ------------------CheckOut Button------------------ */}
                                    <div className={`flex justify-center ${couponOpen ? 'pt-3' : ''}`}>
-                                          <button className="font-semibold bg-Radical hover:bg-black text-sm text-white px-5 py-2.5 rounded-sm cursor-pointer">PROCEED TO CHECKOUT</button>
+                                          <Link to='/checkOut' className="font-semibold bg-Radical hover:bg-black text-sm text-white px-5 py-2.5 rounded-sm cursor-pointer">PROCEED TO CHECKOUT</Link>
                                    </div>
                             </div>
                      </div>

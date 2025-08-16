@@ -4,9 +4,9 @@ import { AiOutlineHome } from "react-icons/ai";
 import { PiPhoneCallBold, PiShoppingCartLight, PiSignInBold, PiSignOutBold, PiUsersThreeBold } from 'react-icons/pi';
 import { LiaUserSolid } from 'react-icons/lia';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { IoIosGitCompare, IoIosHeartEmpty } from 'react-icons/io';
+import { IoIosGitCompare, IoIosHeartEmpty, IoMdClose } from 'react-icons/io';
 import { AuthContext } from '../../../Providers/AuthProviders';
-import { useContext, useRef, } from 'react';
+import { useContext, useEffect, useRef, useState, } from 'react';
 import { toast } from 'react-toastify';
 import useCarts from '../../../Hooks/useCarts';
 import useAdmin from '../../../Hooks/useAdmin';
@@ -15,6 +15,9 @@ import { IoNewspaperOutline } from 'react-icons/io5';
 import { LuCalendarClock, LuFolderPlus, LuLayoutDashboard } from 'react-icons/lu';
 import useWishlist from '../../../Hooks/useWishlist';
 import useModerator from '../../../Hooks/useModerator';
+import { FaTrashAlt } from 'react-icons/fa';
+import useDeleteCart from '../../../Hooks/useDeleteCart';
+import Swal from 'sweetalert2';
 
 const Header = () => {
 
@@ -22,9 +25,32 @@ const Header = () => {
        const [isModerator, isModeratorLoading] = useModerator()
        const inputText = useRef();
        const navigate = useNavigate();
-       const [carts] = useCarts();
+       const [carts, cartsLoading, refetch] = useCarts();
        const { user, searchInput, setSearchInput, Logout } = useContext(AuthContext);
-       const [wishlist, wishlistLoading, refetch] = useWishlist();
+       const [wishlist, wishlistLoading] = useWishlist();
+       const [open, setOpen] = useState(false);
+       const shippingCharge = 150;
+       const taxRate = 0.10;
+       const subTotalPrice = parseFloat(carts.reduce((sum, cart) => sum + cart.Price * cart.Quantity, 0).toFixed(2));
+       const totalWithoutTax = subTotalPrice + shippingCharge;
+       const taxAmount = parseFloat((subTotalPrice * taxRate).toFixed(2));
+       const totalWIthTax = parseFloat((totalWithoutTax + taxAmount).toFixed(2));
+       const { deleteCardItem, isLoading, isSuccess, isError } = useDeleteCart();
+
+       useEffect(() => {
+              if (open) {
+                     document.documentElement.style.overflow = "hidden";
+                     document.body.style.overflow = "hidden";
+              } else {
+                     document.documentElement.style.overflow = "";
+                     document.body.style.overflow = "";
+              }
+              return () => {
+                     document.documentElement.style.overflow = "";
+                     document.body.style.overflow = "";
+              };
+       }, [open]);
+
        const handleLogOut = () => {
               Logout()
                      .then(() => {
@@ -33,6 +59,34 @@ const Header = () => {
                      .catch(error => {
                             toast.error(error.message)
                      })
+       }
+
+       const handleDelete = (id) => {
+              Swal.fire({
+                     title: "Are you sure?",
+                     text: "You won't be able to revert this!",
+                     icon: "warning",
+                     showCancelButton: true,
+                     confirmButtonColor: "#3085d6",
+                     cancelButtonColor: "#d33",
+                     confirmButtonText: "Yes, delete it!"
+              }).then((result) => {
+                     if (result.isConfirmed) {
+                            deleteCardItem(id, {
+                                   onSuccess: () => {
+                                          Swal.fire({
+                                                 title: "Deleted!",
+                                                 text: "Your file has been deleted.",
+                                                 icon: "success"
+                                          });
+                                          refetch();
+                                   },
+                                   onError: (error) => {
+                                          toast.error(error.message)
+                                   }
+                            })
+                     }
+              });
        }
 
        const Links = <>
@@ -112,14 +166,72 @@ const Header = () => {
                                                  <Link to='/addToWishlist' className="text-2xl"><IoIosHeartEmpty /></Link>
                                                  <button className="text-2xl"></button>
                                           </div>
-                                          <div className="indicator">
+                                          <div onClick={() => setOpen(true)} className="relative indicator">
                                                  <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">{carts.length} </span>
-                                                 <Link to='/addToCarts' className="text-2xl cursor-pointer"><PiShoppingCartLight /></Link>
+                                                 <button className="text-2xl cursor-pointer"><PiShoppingCartLight /></button>
+                                          </div>
+                                          {open && (<div onClick={() => setOpen(false)} className="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300"></div>)}
+                                          {/* ----------------Shopping Cart Container---------------- */}
+                                          <div className={`fixed top-0 right-0 h-screen bg-aliceBlue w-64 md:w-96 lg:w-96 z-50 transform transition-transform duration-300 ease-in-out shadow-lg flex flex-col ${open ? "translate-x-0" : "translate-x-full"}`}>
+                                                 <div className="flex items-center justify-between px-5 py-3 border-b border-gray-300">
+                                                        <h2 className="font-semibold text-lg">Shopping Cart ({carts?.length})</h2>
+                                                        <IoMdClose onClick={() => setOpen(false)} className="text-2xl cursor-pointer" />
+                                                 </div>
+                                                 <div className='flex-1 overflow-y-auto'>
+                                                        {carts.map((cart) => (
+                                                               <div key={cart?._id} className={`flex justify-between gap-2 px-5 py-3 border-b border-gray-300`}>
+                                                                      <div className='flex gap-3'>
+                                                                             <img className="w-14 h-14 lg:w-20 lg:h-20 aspect-2/2 object-contain p-2 border border-gray-300" src={cart?.Images?.[0]} alt="" />
+                                                                             <div>
+                                                                                    <h2 className=' font-bold text-sm md:text-base lg:text-base'>{cart?.Title}</h2>
+                                                                                    <p><span className='font-semibold'>{cart?.Quantity}</span> X <span className='font-semibold text-Radical'>{cart?.Price} Tk</span></p>
+                                                                             </div>
+                                                                      </div>
+                                                                      <div className="">
+                                                                             <FaTrashAlt onClick={() => { handleDelete(cart?._id) }} className="bg-Radical hover:bg-aliceBlue text-3xl text-white hover:text-black rounded-xs p-2 cursor-pointer" />
+                                                                      </div>
+                                                               </div>
+                                                        ))}
+                                                 </div>
+                                                 <div className='px-5 py-5'>
+                                                        {/* ----------------Products Total Price------------- */}
+                                                        <div className="flex justify-between items-center">
+                                                               <p className="font-semibold">{carts.length} Products</p>
+                                                               <p className="font-bold text-Radical">{subTotalPrice.toLocaleString()} Tk</p>
+                                                        </div>
+                                                        {/* --------------Products Shipping Charges----------- */}
+                                                        <div className="flex justify-between items-center">
+                                                               <p className="font-semibold">Shipping</p>
+                                                               <p className="font-bold text-Radical">{shippingCharge.toLocaleString()} Tk</p>
+                                                        </div>
+                                                        {/* -----------Products Price Without Tax------------- */}
+                                                        <hr className="text-gray-300 my-3" />
+                                                        <div className="flex justify-between items-center">
+                                                               <p className="font-semibold">Total (Tax Excl.)</p>
+                                                               <p className="font-bold text-Radical">{totalWithoutTax.toLocaleString()} Tk</p>
+                                                        </div>
+                                                        {/* ------------Products Price Total Tax-------------- */}
+                                                        <div className="flex justify-between items-center">
+                                                               <p className="font-semibold">Taxes</p>
+                                                               <p className="font-bold text-Radical">{taxAmount.toLocaleString()} Tk</p>
+                                                        </div>
+                                                        <hr className="text-gray-300 my-2" />
+                                                        {/* --------------Products Total Price---------------- */}
+                                                        <div className="flex justify-between items-center">
+                                                               <p className="font-semibold">Total (Tax Incl.)</p>
+                                                               <p className="font-bold text-Radical">{totalWIthTax.toLocaleString()} Tk</p>
+                                                        </div>
+                                                        {/* ----------------View & CheckOut Page-------------- */}
+                                                        <div className='flex justify-between gap-3 mt-5 text-center'>
+                                                               <Link to='/addToCarts' className='font-semibold bg-Radical  hover:bg-black text-sm lg:text-base text-white flex-1 px-2 py-2 rounded-sm'>VIEW CART</Link>
+                                                               <Link to='/checkOut' className='font-semibold bg-Radical  hover:bg-black text-sm lg:text-base text-white flex-1 px-2 py-2 rounded-sm'>CHECKOUT</Link>
+                                                        </div>
+                                                 </div>
                                           </div>
                                    </div>
                             </div>
                      </div>
-              </header>
+              </header >
        );
 };
 

@@ -21,6 +21,7 @@ import AuthProviders from "../Providers/AuthProviders";
 import UpdateProducts from "../Pages/DashBoard/UpdateProducts/UpdateProducts";
 import AddToWishlist from "../Pages/AddToWishlist/AddToWishlist";
 import ModeratorRoutes from "./ModeratorRoutes";
+import CheckOut from "../Pages/CheckOut/CheckOut/CheckOut";
 
 const Routes = createBrowserRouter([
        {
@@ -47,6 +48,10 @@ const Routes = createBrowserRouter([
                      {
                             path: '/addToWishlist',
                             element: <PrivateRoutes><AddToWishlist></AddToWishlist></PrivateRoutes>
+                     },
+                     {
+                            path: '/checkOut',
+                            element: <PrivateRoutes><CheckOut></CheckOut></PrivateRoutes>
                      },
                      {
                             path: '/blogs',
