@@ -19,21 +19,21 @@ const ShoppingCart = ({ cart, isLast, refetch }) => {
 
        const handleDelete = (id) => {
               Swal.fire({
-                     title: "Are you sure?",
-                     text: "You won't be able to revert this!",
+                     title: "Are You Sure?",
                      icon: "warning",
                      showCancelButton: true,
-                     confirmButtonColor: "#3085d6",
+                     confirmButtonColor: ' #ff5252',
                      cancelButtonColor: "#d33",
-                     confirmButtonText: "Yes, delete it!"
+                     confirmButtonText: "Yes, Delete"
               }).then((result) => {
                      if (result.isConfirmed) {
                             deleteCardItem(id, {
                                    onSuccess: () => {
                                           Swal.fire({
                                                  title: "Deleted!",
-                                                 text: "Your file has been deleted.",
-                                                 icon: "success"
+                                                 icon: "success",
+                                                 confirmButtonText: "Done",
+                                                 confirmButtonColor: "#ff5252"
                                           });
                                           refetch();
                                    },
