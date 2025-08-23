@@ -47,7 +47,7 @@ const DashBoard = () => {
                                                  {/* -------------------Products----------------- */}
                                                  <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='products'><li className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" /> Products</li></NavLink>
                                                  {/* -------------------Bookings----------------- */}
-                                                 <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='bookings'><li className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" /> Bookings</li></NavLink>
+                                                 <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='orders'><li className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" /> Orders</li></NavLink>
                                                  {/* --------------------Users------------------- */}
                                                  {!isAdminLoading && isAdmin && (<NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='users'><li className="flex flex-row gap-2 items-center text-base "><PiUsersThreeBold className="text-xl p-0" />Users</li></NavLink>)}
                                                  {/* -------------------Divider------------------ */}

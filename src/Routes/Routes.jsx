@@ -14,7 +14,7 @@ import AdminHome from "../Pages/DashBoard/AdminHome/AdminHome";
 import AdminRoutes from "./AdminRoutes";
 import AddProducts from "../Pages/DashBoard/AddProducts/AddProducts";
 import AllProducts from "../Pages/DashBoard/AllProducts/AllProducts";
-import Bookings from "../Pages/DashBoard/Bookings/Bookings";
+import Orders from "../Pages/DashBoard/Orders/Orders";
 import Users from "../Pages/DashBoard/Users/Users";
 import Blogs from "../Pages/Blogs/Blogs";
 import AuthProviders from "../Providers/AuthProviders";
@@ -92,8 +92,8 @@ const Routes = createBrowserRouter([
                             element: <ModeratorRoutes><UpdateProducts></UpdateProducts></ModeratorRoutes>
                      },
                      {
-                            path: 'bookings',
-                            element: <ModeratorRoutes><Bookings></Bookings></ModeratorRoutes>
+                            path: 'orders',
+                            element: <ModeratorRoutes><Orders></Orders></ModeratorRoutes>
                      },
                      {
                             path: 'users',
