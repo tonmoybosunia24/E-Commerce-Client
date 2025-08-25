@@ -8,7 +8,7 @@ const useUserInfo = () => {
        const axiosPublic = useAxiosPublic();
        const { user } = useContext(AuthContext);
 
-       const { data: userInfo = [], isLoading: userInfoPending } = useQuery({
+       const { data: userInfo, isLoading: userInfoPending, refetch } = useQuery({
               queryKey: ['userInfo', user?.email],
               enabled: !!user?.email,
               queryFn: async () => {
@@ -17,7 +17,7 @@ const useUserInfo = () => {
               }
        })
 
-       return [userInfo, userInfoPending]
+       return [userInfo, userInfoPending, refetch];
 };
 
 export default useUserInfo;

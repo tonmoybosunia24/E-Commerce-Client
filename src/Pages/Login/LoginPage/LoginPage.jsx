@@ -61,7 +61,7 @@ const LoginPage = () => {
                             <div className="card flex justify-center items-center w-full md:flex-11/12 lg:flex-9/12 shrink-0 shadow-sm border border-gray-300 ">
                                    <div className="w-10/12 md:w-9/12 lg:w-8/12 py-7">
                                           <form onSubmit={handleSubmit(onsubmit)} className="card-body p-0">
-                                                 <h2 className="font-bold text-center text-2xl hover:text-Radical pb-3">Welcome Back! Please Sign In</h2>
+                                                 <h2 className="font-bold text-center text-2xl text-Radical pb-3">Please Login</h2>
                                                  <div className="space-y-3">
                                                         {/* ---------------------Email Input-------------------- */}
                                                         <div className="form-control space-y-1.5">

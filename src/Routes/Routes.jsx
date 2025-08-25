@@ -22,6 +22,12 @@ import UpdateProducts from "../Pages/DashBoard/UpdateProducts/UpdateProducts";
 import AddToWishlist from "../Pages/AddToWishlist/AddToWishlist";
 import ModeratorRoutes from "./ModeratorRoutes";
 import CheckOut from "../Pages/CheckOut/CheckOut/CheckOut";
+import UserProfile from "../Layouts/UserProfile/UserProfile";
+import UserHome from "../Pages/UserProfile/UserHome/UserHome";
+import UserOrder from "../Pages/UserProfile/UserOrder/UserOrder";
+import EditProfile from "../Pages/UserProfile/EditProfile/EditProfile";
+
+
 
 const Routes = createBrowserRouter([
        {
@@ -69,12 +75,38 @@ const Routes = createBrowserRouter([
                             path: '/register',
                             element: <Register></Register>,
                      },
+                     {
+                            path: 'userProfile',
+                            element: <AuthProviders><PrivateRoutes><UserProfile></UserProfile></PrivateRoutes></AuthProviders>,
+                            children: [
+                                   {
+                                          index: true,
+                                          element: <UserHome></UserHome>,
+                                   },
+                                   {
+                                          path: 'userHome',
+                                          element: <UserHome></UserHome>,
+                                   },
+                                   {
+                                          path: 'userOrder',
+                                          element: <UserOrder></UserOrder>,
+                                   },
+                                   {
+                                          path: 'editProfile',
+                                          element: <EditProfile></EditProfile>,
+                                   },
+                            ]
+                     },
               ],
        },
        {
               path: 'dashboard',
               element: <AuthProviders><PrivateRoutes><DashBoard></DashBoard></PrivateRoutes></AuthProviders>,
               children: [
+                     {
+                            index: true,
+                            element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
+                     },
                      {
                             path: 'adminHome',
                             element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>

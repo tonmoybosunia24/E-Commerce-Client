@@ -94,7 +94,7 @@ const RegisterPage = () => {
                             <div className="card flex justify-center items-center w-full md:flex-11/12 lg:flex-9/12 shrink-0 shadow-sm border border-gray-300 ">
                                    <div className="w-10/12 md:w-10/12 lg:w-11/12 py-7">
                                           <form onSubmit={handleSubmit(onsubmit)} className="card-body flex items-center p-0">
-                                                 <h2 className="font-bold text-center text-2xl hover:text-Radical pb-3">Register Now & Start Exploring!</h2>
+                                                 <h2 className="font-bold text-center text-2xl text-Radical pb-3">Register Now</h2>
                                                  <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
                                                         {/* -------------------First Name Input------------------ */}
                                                         <div className="form-control space-y-1.5">

@@ -1,16 +1,15 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/Logo/Logo-2.jpg'
 import { AiOutlineHome } from "react-icons/ai";
-import { PiPhoneCallBold, PiShoppingCartLight, PiSignInBold, PiSignOutBold, PiUsersThreeBold } from 'react-icons/pi';
-import { LiaUserSolid } from 'react-icons/lia';
+import { PiPhoneCallBold, PiShoppingCartLight, PiSignInBold, PiSignOutBold, PiUserCircleLight, PiUsersThreeBold } from 'react-icons/pi';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { IoIosGitCompare, IoIosHeartEmpty, IoMdClose } from 'react-icons/io';
+import { IoIosArrowDown, IoIosHeartEmpty, IoMdClose } from 'react-icons/io';
 import { AuthContext } from '../../../Providers/AuthProviders';
 import { useContext, useEffect, useRef, useState, } from 'react';
 import { toast } from 'react-toastify';
 import useCarts from '../../../Hooks/useCarts';
 import useAdmin from '../../../Hooks/useAdmin';
-import { FiShoppingBag } from 'react-icons/fi';
+import { FiEdit, FiShoppingBag } from 'react-icons/fi';
 import { IoNewspaperOutline } from 'react-icons/io5';
 import { LuCalendarClock, LuFolderPlus, LuLayoutDashboard } from 'react-icons/lu';
 import useWishlist from '../../../Hooks/useWishlist';
@@ -18,6 +17,8 @@ import useModerator from '../../../Hooks/useModerator';
 import { FaTrashAlt } from 'react-icons/fa';
 import useDeleteCart from '../../../Hooks/useDeleteCart';
 import Swal from 'sweetalert2';
+import { ImProfile } from "react-icons/im";
+import useUserInfo from '../../../Hooks/useUserInfo';
 
 const Header = () => {
 
@@ -27,6 +28,7 @@ const Header = () => {
        const navigate = useNavigate();
        const [carts, cartsLoading, refetch] = useCarts();
        const { user, searchInput, setSearchInput, Logout } = useContext(AuthContext);
+       const [userInfo, userInfoPending] = useUserInfo();
        const [wishlist, wishlistLoading] = useWishlist();
        const [open, setOpen] = useState(false);
        const shippingCharge = 150;
@@ -35,7 +37,8 @@ const Header = () => {
        const totalWithoutTax = subTotalPrice + shippingCharge;
        const taxAmount = parseFloat((subTotalPrice * taxRate).toFixed(2));
        const totalWIthTax = parseFloat((totalWithoutTax + taxAmount).toFixed(2));
-       const { deleteCardItem, isLoading, isSuccess, isError } = useDeleteCart();
+       const { deleteCardItem, isLoading } = useDeleteCart();
+       const [profileOpen, setProfileOpen] = useState(false)
 
        useEffect(() => {
               if (open) {
@@ -111,6 +114,30 @@ const Header = () => {
               <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/products'><li className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" />Products</li></NavLink>
               {/* -----------------User Admin----------------- */}
               {!isAdminLoading && !isModeratorLoading && (isAdmin || isModerator) && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to={isModerator && !isAdmin ? '/dashboard/addProducts' : '/dashboard/adminHome'}><li className="flex flex-row gap-2 items-center text-base "><LuLayoutDashboard className="text-xl p-0" />DashBoard</li></NavLink>}
+              {/* -----------------User Profile--------------- */}
+              <div className="lg:hidden w-full">
+                     <div>
+                            <button onClick={() => setProfileOpen(!profileOpen)} className="flex justify-between items-center w-full focus:outline-none">
+                                   <div className='flex items-center gap-2'>
+                                          <ImProfile className='text-xl p-0' />
+                                          <span className="font-semibold text-base text-black">Profile</span>
+                                   </div>
+                                   <IoIosArrowDown className={`transition-transform duration-300 ${profileOpen ? "rotate-180" : ""}`} size={20} />
+                            </button>
+                            <div className={`overflow-hidden transition-all duration-500 ease-in-out ${profileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
+                                   <ul className="space-y-0">
+                                          <li className="cursor-pointer">
+                                                 {/* -------------------Home Page----------------- */}
+                                                 <NavLink className={({ isActive }) => `!bg-transparent py-0.5 ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/userProfile/userHome'><li className="flex flex-row gap-2 items-center text-base "><AiOutlineHome className="text-xl p-0" />Home</li></NavLink>
+                                                 {/* -------------------Order Page----------------- */}
+                                                 <NavLink className={({ isActive }) => `!bg-transparent py-0.5 ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/userProfile/userOrder'><li className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" />Orders</li></NavLink>
+                                                 {/* ---------------Edit Profile Page-------------- */}
+                                                 <NavLink className={({ isActive }) => `!bg-transparent py-0.5 ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/userProfile/editProfile'><li className="flex flex-row gap-2 items-center text-base "><FiEdit className="text-xl p-0" />Edit Profile</li></NavLink>
+                                          </li>
+                                   </ul>
+                            </div>
+                     </div>
+              </div>
               {/* ------------------User Blogs---------------- */}
               <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/blogs'><li className="flex flex-row gap-2 items-center text-base "><IoNewspaperOutline className="text-xl p-0" />Blogs</li></NavLink>
               {/* -------------------About Us----------------- */}
@@ -145,7 +172,7 @@ const Header = () => {
                             <div className='flex items-center gap-2 lg:gap-3'>
                                    {/* --------------------Login/Register/Logout Routes---------------- */}
                                    {user ? (
-                                          <button className='font-bold hover:text-Radical cursor-pointer hidden lg:block' onClick={handleLogOut}> Sign Out</button>
+                                          <div className='border-r px-3 border-gray-300'><button className='font-bold hover:text-Radical cursor-pointer hidden lg:block' onClick={handleLogOut}> Sign Out</button></div>
                                    ) : (
                                           <div className='border-r px-3 border-gray-300 hidden lg:block'>
                                                  <Link className='font-bold hover:text-Radical' to='/login'>Login</Link> /
@@ -153,14 +180,8 @@ const Header = () => {
                                           </div>
                                    )}
                                    {/* --------------------Header Icons------------------ */}
-                                   <div className='flex gap-2 lg:gap-3'>
-                                          <div className='lg:hidden'>
-                                                 <LiaUserSolid className='text-2xl' />
-                                          </div>
-                                          <div className="indicator">
-                                                 <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">0</span>
-                                                 <button className='text-2xl'><IoIosGitCompare /></button>
-                                          </div>
+                                   <div className='flex gap-2 lg:gap-2.5'>
+                                          {!userInfoPending && userInfo ? (<Link to='/userProfile/userHome' className='cursor-pointer'><img className='w-6 h-6 rounded-full object-cover border-2 border-gray-300' src={userInfo?.image[0]} alt="" /></Link>) : (<Link to='/login'><PiUserCircleLight className='text-2xl' /></Link>)}
                                           <div className="indicator">
                                                  <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">{wishlist.length}</span>
                                                  <Link to='/addToWishlist' className="text-2xl"><IoIosHeartEmpty /></Link>
