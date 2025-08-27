@@ -16,7 +16,7 @@ import AddProducts from "../Pages/DashBoard/AddProducts/AddProducts";
 import AllProducts from "../Pages/DashBoard/AllProducts/AllProducts";
 import Orders from "../Pages/DashBoard/Orders/Orders";
 import Users from "../Pages/DashBoard/Users/Users";
-import Blogs from "../Pages/Blogs/Blogs";
+// import Blogs from "../Pages/Blogs/Blogs";
 import AuthProviders from "../Providers/AuthProviders";
 import UpdateProducts from "../Pages/DashBoard/UpdateProducts/UpdateProducts";
 import AddToWishlist from "../Pages/AddToWishlist/AddToWishlist";
@@ -26,6 +26,9 @@ import UserProfile from "../Layouts/UserProfile/UserProfile";
 import UserHome from "../Pages/UserProfile/UserHome/UserHome";
 import UserOrder from "../Pages/UserProfile/UserOrder/UserOrder";
 import EditProfile from "../Pages/UserProfile/EditProfile/EditProfile";
+import Blogs from "../Pages/Blogs/Blogs/Blogs";
+import SingleBLog from "../Pages/Blogs/SingleBLog/SingleBLog";
+// import Blogs from "../Pages/Home/Blogs/Blogs";
 
 
 
@@ -62,6 +65,10 @@ const Routes = createBrowserRouter([
                      {
                             path: '/blogs',
                             element: <Blogs></Blogs>
+                     },
+                     {
+                            path: '/singleBlog/:id',
+                            element: <SingleBLog></SingleBLog>,
                      },
                      {
                             path: '/contactUs',
