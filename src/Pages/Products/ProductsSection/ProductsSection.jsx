@@ -399,8 +399,18 @@ const ProductsSection = ({ categoryFromLink }) => {
                                           </div>
                                    </div>
                                    {/* -----------Products Sent To ProductCard------------ */}
-                                   {allProductsLoading ? (<div className="flex items-center justify-center min-h-[200px]"><span className="loading loading-spinner text-error text-4xl"></span></div>) : allProducts.length === 0 ? (<div className="flex items-center justify-center min-h-[200px]"><p className="text-gray-500 text-lg font-medium">No Products Found</p></div>) : (<div className={`grid ${rowButton ? 'grid-cols-2 md:grid-cols-4 lg:grid-cols-4' : 'grid-cols-1 md:grid-cols-1 lg:grid-cols-1'} ${!allProductsLoading && allProducts.length >= 5 ? 'border border-b-0 border-l-0 border-gray-400' : ''} ${allProducts.length > 1 && allProducts.length < 5 ? 'border-l border-gray-400' : ''}`}>
-                                          {allProducts.map((allProduct, index) => (<div key={allProduct._id || index} className={`border-b ${index === 0 ? 'border-l border-gray-400' : 'border-l border-gray-400'} ${allProducts.length > 0 && allProducts.length < 5 ? 'border-t border-r border-b' : ''}  ${allProducts.length > 1 && allProducts.length < 5 ? 'border-l-0' : ''}`}><ProductCard fromSlider="allProducts" isColumn={colButton} product={allProduct} /></div>))}</div>)}
+                                   {allProductsLoading ? (<div className="flex items-center justify-center min-h-[200px]"> <span className="loading loading-spinner text-error text-4xl"></span> </div>) : allProducts.length === 0 ? (
+                                          <div className="flex items-center justify-center min-h-[200px]">
+                                                 <p className="text-gray-500 text-lg font-medium">No Products Found</p>
+                                          </div>) : (
+                                          <div className={`grid  ${rowButton ? 'grid-cols-2 md:grid-cols-4 lg:grid-cols-4' : 'grid-cols-1 md:grid-cols-1 lg:grid-cols-1'} border-l border-t border-gray-400 ${allProducts.length < 4 && 'border-t-0'} }`}>
+                                                 {allProducts.map((allProduct, index) => (
+                                                        <div key={allProduct._id || index} className={`border-r border-b border-gray-400 ${allProducts.length < 4 && 'border-t border-gray-400'}`}>
+                                                               <ProductCard fromSlider="allProducts" isColumn={colButton} product={allProduct} />
+                                                        </div>
+                                                 ))}
+                                          </div>
+                                   )};
                                    {/* ------------------Pagination Section--------------- */}
                                    <div className="flex items-center justify-between pt-5">
                                           <p className="text-sm text-gray-600 ">Showing {start} To  {end} Of {totalPages * productsPerPage} Products</p>
