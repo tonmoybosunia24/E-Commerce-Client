@@ -27,7 +27,6 @@ const Blogs = () => {
                      {/* ------------------Blogs Section----------------- */}
                      {blogsLoading ? (<span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>) : (
                             <div className={`flex flex-col-reverse md:flex-row lg:flex-row gap-5 px-5 md:px-10 lg:px-20 ${totalBlogs > blogs.length ? 'mt-5' : 'my-5'} md:my-7 lg:my-10`}>
-
                                    {/* ------------------Advertise & Categories Container---------------- */}
                                    <div className="h-fit flex-3/12 hidden md:block lg:block bg-aliceBlue p-5 space-y-2 rounded-md">
                                           <div><img className="w-full border border-gray-300 rounded-md" src={advertiseImg1} alt="" /></div>
