@@ -149,7 +149,7 @@ const AddProducts = () => {
                                                         <label className="label">
                                                                <span className="label-text text-sm font-medium">OfferPrice : </span>
                                                         </label>
-                                                        <input type="tel" required {...register('OfferPrice', { valueAsNumber: true })} placeholder="Enter Your OfferPrice" className="w-full input input-bordered focus:outline-0" />
+                                                        <input type="tel" {...register('OfferPrice', { valueAsNumber: true })} placeholder="Enter Your OfferPrice" className="w-full input input-bordered focus:outline-0" />
                                                  </div>
                                                  {/* -------------------Rating Input------------------ */}
                                                  <div className="form-control space-y-1.5">

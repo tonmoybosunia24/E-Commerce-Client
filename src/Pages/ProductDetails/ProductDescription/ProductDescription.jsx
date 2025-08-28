@@ -105,10 +105,11 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
                                                         <div className='hidden lg:block'><img className='p-3 border border-gray-400 rounded-md' src={brandImg1} alt="" /></div>
                                                  </div>
                                                  {/* -------------Price/OfferPrice/Discount--------------- */}
-                                                 <div className='flex items-center gap-3 '>
-                                                        <del className='lg:text-xl text-gray-400'>{Price} Tk,</del>
-                                                        <p className='text-Radical font-semibold lg:text-xl'>{OfferPrice} Tk,</p>
-                                                        <p className='text-Radical font-semibold'><span>SAVE </span>{DiscountPercentage} % </p>
+                                                 <div className="flex gap-2">
+                                                        {OfferPrice > 0 ? (<><del className={`text-gray-300 text-lg lg:text-2xl font-medium`}>{Price} Tk</del>
+                                                               <p className={`text-Radical text-lg lg:text-2xl font-semibold`} >{OfferPrice} Tk</p></>
+                                                        ) : (<p className={`text-Radical text-lg lg:text-2xl font-semibold`} >{Price} Tk</p>)}
+                                                        {OfferPrice > 0 && <p className='text-Radical font-semibold'><span>SAVE </span>{DiscountPercentage} % </p>}
                                                  </div>
                                                  {/* -------------------Shipping Info--------------------- */}
                                                  <div>

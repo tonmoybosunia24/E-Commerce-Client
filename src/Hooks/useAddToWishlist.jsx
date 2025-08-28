@@ -23,7 +23,7 @@ const useAddToWishlist = () => {
                             Images: [product.Images?.[0]],
                             Title: product?.Title,
                             Stock: product?.Stock,
-                            Price: product?.Price,
+                            Price: product?.OfferPrice > 0 ? product.OfferPrice : product?.Price,
                      }
                      saveWishlist(wishlistInfo, {
                             onSuccess: () => {

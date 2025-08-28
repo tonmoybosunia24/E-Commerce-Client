@@ -77,9 +77,10 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
                                                  <p className='font-semibold text-sm line-clamp-1'>{SellerInformation?.name}</p>
                                                  <Rating style={{ maxWidth: 80 }} value={ProductRating} />
                                                  {/* ------------------Price---------------- */}
-                                                 <div className='flex gap-2'>
-                                                        <del className={`text-gray-300 text-xs ${fromSlider === 'allProducts' ? 'lg:text-base' : 'lg:text-lg'} font-medium`}>{Price} Tk </del>
-                                                        <p className={`text-Radical text-xs ${fromSlider === 'allProducts' ? 'line-clamp-1 text-xs lg:text-base' : 'lg:text-lg'} font-semibold`}>{OfferPrice} Tk </p>
+                                                 <div className="flex gap-2">
+                                                        {OfferPrice > 0 ? (<><del className={`text-gray-300 text-xs ${fromSlider === "allProducts" ? "lg:text-base" : "lg:text-lg"} font-medium`}>{Price} Tk</del>
+                                                               <p className={`text-Radical text-xs ${fromSlider === "allProducts" ? "line-clamp-1 text-xs lg:text-base" : "lg:text-lg"} font-semibold`} >{OfferPrice} Tk</p></>
+                                                        ) : (<p className={`text-Radical text-xs ${fromSlider === "allProducts" ? "line-clamp-1 text-xs lg:text-base" : "lg:text-lg"} font-semibold`} >{Price} Tk</p>)}
                                                  </div>
                                                  {/* ------------------Timer For Deal Of The Day----------------- */}
                                                  <div>
@@ -199,10 +200,11 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
                                                         <div className='hidden lg:block'><img className='p-3 border border-gray-400 rounded-md' src={brandImg1} alt="" /></div>
                                                  </div>
                                                  {/* -------------Price/OfferPrice/Discount--------------- */}
-                                                 <div className='flex items-center gap-3 '>
-                                                        <del className='lg:text-2xl text-gray-400'>{Price} Tk,</del>
-                                                        <p className='text-Radical font-semibold lg:text-2xl'>{OfferPrice} Tk,</p>
-                                                        <p className='text-Radical font-semibold'><span>SAVE </span>{DiscountPercentage} % </p>
+                                                 <div className="flex gap-2">
+                                                        {OfferPrice > 0 ? (<><del className={`text-gray-300 text-lg ${fromSlider === "allProducts" ? "lg:text-2xl" : "lg:text-2xl"} font-medium`}>{Price} Tk</del>
+                                                               <p className={`text-Radical text-lg ${fromSlider === "allProducts" ? "line-clamp-1 text-lg lg:text-2xl" : "lg:text-2xl"} font-semibold`} >{OfferPrice} Tk</p></>
+                                                        ) : (<p className={`text-Radical text-lg ${fromSlider === "allProducts" ? "line-clamp-1 text-lg lg:text-2xl" : "lg:text-2xl"} font-semibold`} >{Price} Tk</p>)}
+                                                        {OfferPrice > 0 && <p className='text-Radical font-semibold'><span>SAVE </span>{DiscountPercentage} % </p>}
                                                  </div>
                                                  {/* -------------------Shipping Info--------------------- */}
                                                  <div>

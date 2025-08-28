@@ -37,7 +37,7 @@ const useAddToCarts = () => {
                             Images: [product.Images?.[0]],
                             Title: product.Title,
                             Quantity: value,
-                            Price: product.Price,
+                            Price: product?.OfferPrice > 0 ? product.OfferPrice : product?.Price
                      }
                      saveCart(cartInfo, {
                             onSuccess: () => {
