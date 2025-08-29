@@ -87,7 +87,7 @@ const CheckOutSection = () => {
                      paymentStatus: 'Pending',
                      transactionId: '',
                      orderItems: carts.map((cart) => ({
-                            productId: cart?._id,
+                            productId: cart?.productId,
                             productName: cart.Title,
                             quantity: cart.Quantity,
                             price: cart.Price,

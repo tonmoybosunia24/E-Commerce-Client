@@ -75,7 +75,7 @@ const AddToWishlist = () => {
                                                                       <td className="font-semibold text-xs md:text-base lg:text-base px-1 md:px-0 lg:px-5 truncate">{product?.Title}</td>
                                                                       <td className="px-14 text-center hidden md:table-cell lg:table-cell font-bold text-green-700">{product?.Stock}</td>
                                                                       <td className="font-bold text-Radical px-2">{product?.Price}</td>
-                                                                      <td><Link onClick={() => handleAddToCart(product, 1)}><FaCartShopping className="mx-auto bg-Radical hover:bg-aliceBlue text-3xl text-white hover:text-black rounded-xs p-2 cursor-pointer" /></Link></td>
+                                                                      <td><Link onClick={() => product.Stock > 0 && handleAddToCart(product, 1)}><FaCartShopping className={`mx-auto bg-Radical text-3xl text-white rounded-xs p-2 hover:bg-aliceBlue hover:text-black ${product.Stock === 0 ? 'cursor-not-allowed' : 'cursor-pointer'}`} /></Link></td>
                                                                       <td><FaTrashAlt onClick={() => { handleDelete(product._id) }} className="mx-auto bg-Radical hover:bg-aliceBlue text-3xl text-white hover:text-black rounded-xs p-2 cursor-pointer"></FaTrashAlt></td>
                                                                </tr>
                                                         ))}

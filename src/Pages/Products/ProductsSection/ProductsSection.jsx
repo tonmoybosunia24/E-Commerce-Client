@@ -23,12 +23,9 @@ const ProductsSection = ({ categoryFromLink }) => {
        const navigate = useNavigate()
        /* ----------------Handle Checkbox Functionality--------------- */
        const handleCheckboxChange = (type, value, checked) => {
-              setFilter((prev) => {
-                     const updatedValues = checked
-                            ? [...prev[type], value]
-                            : prev[type].filter((item) => item !== value);
-                     return { ...prev, [type]: updatedValues };
-              });
+              setFilter(prev => ({
+                     ...prev, [type]: checked ? [...prev[type], value] : prev[type].filter(item => item !== value)
+              }));
        };
        /* --------------------Dynamically Update The Category------------------ */
        useEffect(() => {
@@ -58,21 +55,21 @@ const ProductsSection = ({ categoryFromLink }) => {
                                                         <input type="checkbox" id="in-stock" value="In Stock" checked={filter.availability?.includes("In Stock")} onChange={(e) => handleCheckboxChange("availability", e.target.value, e.target.checked)} />
                                                         <label htmlFor="in-stock" className="w-full flex justify-between cursor-pointer">
                                                                <p className="font-medium">In Stock</p>
-                                                               <p className="text-sm">{counts.availability?.['In Stock'] || 0}</p>
+                                                               <p className="text-sm">{counts.stockCounts?.['In Stock'] || 0}</p>
                                                         </label>
                                                  </div>
                                                  <div className="flex gap-2">
                                                         <input type="checkbox" id="available" value="Limited Stock" checked={filter.availability?.includes("Limited Stock")} onChange={(e) => handleCheckboxChange("availability", e.target.value, e.target.checked)} />
                                                         <label htmlFor="available" className="w-full flex justify-between cursor-pointer">
                                                                <p className="font-medium">Limited Stock</p>
-                                                               <p className="text-sm">{counts.availability?.['Limited Stock'] || 0}</p>
+                                                               <p className="text-sm">{counts.stockCounts?.['Limited Stock'] || 0}</p>
                                                         </label>
                                                  </div>
                                                  <div className="flex gap-2">
                                                         <input type="checkbox" id="not-available" value="Not Available" checked={filter.availability?.includes("Not Available")} onChange={(e) => handleCheckboxChange("availability", e.target.value, e.target.checked)} />
                                                         <label htmlFor="not-available" className="w-full flex justify-between cursor-pointer">
                                                                <p className="font-medium">Not Available</p>
-                                                               <p className="text-sm">{counts.availability?.['Not Available'] || 0}</p>
+                                                               <p className="text-sm">{counts.stockCounts?.['Not Available'] || 0}</p>
                                                         </label>
                                                  </div>
                                           </div>
@@ -258,21 +255,21 @@ const ProductsSection = ({ categoryFromLink }) => {
                                                                              <input type="checkbox" id="in-stock" value="In Stock" checked={filter.availability?.includes("In Stock")} onChange={(e) => handleCheckboxChange("availability", e.target.value, e.target.checked)} />
                                                                              <label htmlFor="in-stock" className="w-full flex justify-between cursor-pointer">
                                                                                     <p className="font-medium">In Stock</p>
-                                                                                    <p className="text-sm">{counts.availability?.['In Stock'] || 0}</p>
+                                                                                    <p className="text-sm">{counts.stockCounts?.['In Stock'] || 0}</p>
                                                                              </label>
                                                                       </div>
                                                                       <div className="flex gap-2">
                                                                              <input type="checkbox" id="available" value="Limited Stock" checked={filter.availability?.includes("Limited Stock")} onChange={(e) => handleCheckboxChange("availability", e.target.value, e.target.checked)} />
                                                                              <label htmlFor="available" className="w-full flex justify-between cursor-pointer">
                                                                                     <p className="font-medium">Limited Stock</p>
-                                                                                    <p className="text-sm">{counts.availability?.['Limited Stock'] || 0}</p>
+                                                                                    <p className="text-sm">{counts.stockCounts?.['Limited Stock'] || 0}</p>
                                                                              </label>
                                                                       </div>
                                                                       <div className="flex gap-2">
                                                                              <input type="checkbox" id="not-available" value="Not Available" checked={filter.availability?.includes("Not Available")} onChange={(e) => handleCheckboxChange("availability", e.target.value, e.target.checked)} />
                                                                              <label htmlFor="not-available" className="w-full flex justify-between cursor-pointer">
                                                                                     <p className="font-medium">Not Available</p>
-                                                                                    <p className="text-sm">{counts.availability?.['Not Available'] || 0}</p>
+                                                                                    <p className="text-sm">{counts.stockCounts?.['Not Available'] || 0}</p>
                                                                              </label>
                                                                       </div>
                                                                </div>
@@ -410,7 +407,7 @@ const ProductsSection = ({ categoryFromLink }) => {
                                                         </div>
                                                  ))}
                                           </div>
-                                   )};
+                                   )}
                                    {/* ------------------Pagination Section--------------- */}
                                    <div className="flex items-center justify-between pt-5">
                                           <p className="text-sm text-gray-600 ">Showing {start} To  {end} Of {totalPages * productsPerPage} Products</p>

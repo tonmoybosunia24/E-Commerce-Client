@@ -56,7 +56,6 @@ const AddProducts = () => {
                                           Second: data.Second,
                                    },
                                    Condition: data.Condition,
-                                   AvailabilityStatus: data.AvailabilityStatus,
                                    isNewArrival: data.isNewArrival === 'true',
                                    isBestSeller: data.isBestSeller === 'true',
                                    isOnSale: data.isOnSale === 'true',
@@ -114,7 +113,7 @@ const AddProducts = () => {
                                                         <label className="label">
                                                                <span className="label-text text-sm font-medium">Description : </span>
                                                         </label>
-                                                        <textarea required {...register('Description', { required: true })} className="textarea  w-full input input-bordered focus:outline-0" placeholder="Enter Your Description"></textarea>
+                                                        <textarea required {...register('Description', { required: true })} className="textarea w-full  focus:outline-0" placeholder="Enter Your Description"></textarea>
                                                  </div>
                                                  {/* --------------------Category Input------------------- */}
                                                  <div className="form-control space-y-1.5">
@@ -226,16 +225,6 @@ const AddProducts = () => {
                                                         </label>
                                                         <input type="text" {...register('Condition')} placeholder="Enter Your Product Condition" className="w-full input input-bordered focus:outline-0" />
                                                  </div>
-                                                 {/* --------------AvailabilityStatus Input-------------- */}
-                                                 <div className="form-control space-y-1.5">
-                                                        <label className="label"><span className="label-text">Availability Status : </span></label>
-                                                        <select required {...register('AvailabilityStatus', { required: true })} className="w-full select select-bordered focus:outline-0">
-                                                               <option disabled value="">Select Availability Status</option>
-                                                               <option value="In Stock">In Stock</option>
-                                                               <option value="Limited Stock">Limited Stock</option>
-                                                               <option value="Not Available">Not Available</option>
-                                                        </select>
-                                                 </div>
                                                  {/* ------------------Is NewArrival Input--------------- */}
                                                  <div className="form-control space-y-1.5">
                                                         <label className="label"><span className="label-text">New Arrival : </span></label>
@@ -299,7 +288,10 @@ const AddProducts = () => {
                                                         <input type="tel" required {...register('contact', { required: true, valueAsNumber: true })} placeholder="Enter Your Seller Number" className="w-full input input-bordered focus:outline-0" />
                                                  </div>
                                                  {/* --------------------Product Images--------------------- */}
-                                                 <div className="lg:col-span-3">
+                                                 <div className="form-control space-y-1.5">
+                                                        <label className="label">
+                                                               <span className="label-text text-sm font-medium"> Product Images : </span>
+                                                        </label>
                                                         <input type="file" {...register('Images', { required: true })} multiple className="file-input file-input-ghost" />
                                                  </div>
                                                  {/* ---------------------Submit Button------------------- */}

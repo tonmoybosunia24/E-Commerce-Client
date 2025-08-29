@@ -87,7 +87,7 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
                                                         <div className='space-y-1.5'>
                                                                <p><span className='font-bold'>Brand : </span>{Brand}</p>
                                                                <p><span className='font-bold'>Condition : </span>{Condition}</p>
-                                                               <p className='font-bold'>Available In Stock : <span className='font-semibold text-green-700'>{Stock} Items</span></p>
+                                                               <p className='font-bold'>Available In Stock : <span className={`font-semibold ${Stock <= 10 ? 'text-red-700' : Stock <= 50 ? 'text-yellow-700' : 'text-green-700'}`}>{Stock} Items</span></p>
                                                                {/* ----------------Variant/Size/Storage----------------- */}
                                                                <div className='flex gap-1'>
                                                                       <span className='font-bold'>{((Category === 'Electronics' || Category === 'Smart Home') && 'Variant :') || ((Category === 'Fashion' || Category === 'Kitchenware' || Category === 'Personal Care') && 'Size :') || (Category === 'Home Appliances' && 'Storage :')}</span>
@@ -125,7 +125,7 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
                                                                       <div className='flex-1 text-sm' onClick={() => value > 1 && setValue(value - 1)}><FaAngleDown /></div>
                                                                </div>
                                                         </div>
-                                                        <div><button onClick={() => handleAddToCart(product, value)} className='px-7 py-1.5 bg-Radical text-white rounded-sm hover:bg-black cursor-pointer'>Add To Card</button></div>
+                                                        <div><button onClick={() => handleAddToCart(product, value)} disabled={product.Stock === 0 || value > product.Stock} className={`px-7 py-1.5 rounded-sm text-white ${product.Stock === 0 || value > product.Stock ? 'bg-Radical hover:bg-black cursor-not-allowed' : 'bg-Radical hover:bg-black'}`}>{product.Stock === 0 || value > product.Stock ? 'Out of Stock' : 'Add To Cart'}</button></div>
                                                  </div>
                                                  {/* -----------------Wishlist And Compare---------------- */}
                                                  <div className='flex gap-2'>
@@ -138,7 +138,7 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
                                                                <p>Add To Compare</p>
                                                         </div>
                                                  </div>
-                                                 <p className={AvailabilityStatus === 'Limited Stock' ? 'w-max flex items-center text-yellow-700 bg-yellow-200 border border-yellow-500 px-2' : AvailabilityStatus === 'Not Available' ? 'w-max flex items-center text-red-700 bg-red-200 border border-red-500 px-2' : 'w-max flex items-center text-green-700 bg-green-200 border border-green-700 px-2'}>{AvailabilityStatus}</p>
+                                                 <p><span className={Stock === 0 ? 'w-max flex items-center text-red-700 bg-red-200 border border-red-500 px-2' : Stock <= 50 ? 'w-max flex items-center text-yellow-700 bg-yellow-200 border border-yellow-500 px-2' : 'w-max flex items-center text-green-700 bg-green-200 border border-green-700 px-2'}>{Stock === 0 ? 'Out Of Stock' : Stock <= 50 ? 'Limited Stock' : 'In Stock'}</span></p>
                                                  {/* --------------Icons Of Social Media----------------- */}
                                                  <div className='flex gap-2 mt-2'>
                                                         <div className='border border-black px-5 py-2 text-blue-700'><FaFacebookF /></div>
