@@ -19,6 +19,7 @@ import categoryProduct5 from '../../../assets/Category-Products/Category-Product
 import categoryProduct6 from '../../../assets/Category-Products/Category-Product-6.jpg'
 import categoryProduct7 from '../../../assets/Category-Products/Category-Product-7.jpg'
 import categoryProduct8 from '../../../assets/Category-Products/Category-Product-8.jpg'
+import { Link } from 'react-router';
 
 const Banner = () => {
        return (
@@ -126,36 +127,52 @@ const Banner = () => {
                             >
                                    {/* ---------------------Category Slider------------------ */}
                                    <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
-                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct1} alt="" />
-                                          <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical '><p>Smart Tablet</p></div>
+                                          <Link to='/products'>
+                                                 <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct1} alt="" />
+                                                 <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical '><p>Smart Tablet</p></div>
+                                          </Link>
                                    </SwiperSlide>
                                    <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
-                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct2} alt="" />
-                                          <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>Crape T-Shirt</p></div>
+                                          <Link to='/products'>
+                                                 <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct2} alt="" />
+                                                 <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>Crape T-Shirt</p></div>
+                                          </Link>
                                    </SwiperSlide>
                                    <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
-                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct3} alt="" />
-                                          <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>Leather Watch</p></div>
+                                          <Link to='/products'>
+                                                 <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct3} alt="" />
+                                                 <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>Leather Watch</p></div>
+                                          </Link>
                                    </SwiperSlide>
                                    <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
-                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct4} alt="" />
-                                          <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>Rolling Diamond</p></div>
+                                          <Link to='/products'>
+                                                 <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct4} alt="" />
+                                                 <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>Rolling Diamond</p></div>
+                                          </Link>
                                    </SwiperSlide>
                                    <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
-                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct5} alt="" />
-                                          <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>Wooden Chair</p></div>
+                                          <Link to='/products'>
+                                                 <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct5} alt="" />
+                                                 <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>Wooden Chair</p></div>
+                                          </Link>
                                    </SwiperSlide>
                                    <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
-                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct6} alt="" />
-                                          <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>Sneakers Shoes</p></div>
+                                          <Link to='/products'>
+                                                 <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct6} alt="" />
+                                                 <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>Sneakers Shoes</p></div>
+                                          </Link>
                                    </SwiperSlide>
                                    <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
-                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct7} alt="" />
-                                          <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>Purse</p></div>
+                                          <Link to='/products'>
+                                                 <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct7} alt="" />
+                                                 <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>Purse</p></div>
+                                          </Link>
                                    </SwiperSlide>
                                    <SwiperSlide className='relative overflow-hidden group cursor-pointer'>
-                                          <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct8} alt="" />
-                                          <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>X-Box Controller</p></div>
+                                          <Link to='/products'>
+                                                 <img className='rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110' src={categoryProduct8} alt="" />
+                                                 <div className='absolute bottom-5 left-1/2 -translate-x-1/2 w-full font-medium text-lg text-center hover:text-Radical'><p>X-Box Controller</p></div>
+                                          </Link>
                                    </SwiperSlide>
                             </Swiper>
                      </div>
