@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { HiOutlineRocketLaunch } from "react-icons/hi2";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp, IoMdClose } from "react-icons/io";
 import useCategory from "../../../Hooks/useCategory";
 import useAdmin from "../../../Hooks/useAdmin";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import useModerator from "../../../Hooks/useModerator";
 
 const Navbar = () => {
 
        const [isAdmin, isAdminLoading] = useAdmin();
        const [isModerator, isModeratorLoading] = useModerator();
-       const [drawerOpen, setDrawerOpen] = useState(false)
+       const [open, setOpen] = useState(false);
        const [shadow, setShadow] = useState(false);
        const [categories, categoriesLoading] = useCategory();
        // Handle The Shadow States By Scroll
@@ -39,14 +39,25 @@ const Navbar = () => {
               <nav className={`hidden lg:flex justify-between items-center sticky top-0 bg-white px-5 md:px-10 lg:px-20 py-3 border-b transition-shadow duration-100 ease-in-out border-gray-300 ${shadow ? 'shadow-md' : ''} relative z-30`}>
                      {/* ----------------Shop By Categories--------------- */}
                      {<div className="relative">
-                            <div onClick={() => setDrawerOpen(!drawerOpen)} className="flex items-center gap-2 cursor-pointer border-r border-gray-300 pr-3">
+                            <div onClick={() => setOpen(true)} className="flex items-center gap-2 cursor-pointer border-r border-gray-300 pr-3">
                                    <h3 className="font-semibold">SHOP BY CATEGORIES </h3>
-                                   {drawerOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                                   {open ? <IoIosArrowUp /> : <IoIosArrowDown />}
                             </div>
                             {/* -----------------All Categories----------------- */}
-                            {/* <ul tabIndex={0} className={absolute left-0 z-10 w-full p-2 shadow-md mt-3 transition-all delay-75 duration-500 ease-in-out bg-white ${drawerOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"} border border-gray-300 space-y-1}>{categoriesLoading ? (<span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>) : (categories.map((category, index) => (
-                                   <li key={index} className="hover:text-Radical">{category}</li>
-                            )))}</ul> */}
+                            {open && (<div onClick={() => setOpen(false)} className="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300"></div>)}
+                            {/* ----------------Shopping Cart Container---------------- */}
+                            <div className={`fixed top-0 left-0 h-screen bg-aliceBlue w-70 z-50 transform transition-transform duration-300 ease-in-out shadow-lg flex flex-col ${open ? "translate-x-0" : "-translate-x-full"}`}>
+                                   <div className="flex items-center justify-between px-5 py-3 border-b border-gray-300">
+                                          <h2 className="font-semibold text-lg">All Categories</h2>
+                                          <IoMdClose onClick={() => setOpen(false)} className="text-2xl cursor-pointer" />
+                                   </div>
+                                   <div className="space-y-1 p-5">
+                                          {categoriesLoading ? (<span className="loading loading-spinner text-error flex items-center m-auto min-h-screen"></span>) : (
+                                                 categories.map((category, index) => (
+                                                        <p key={index} className="font-semibold text-lg underline hover:text-Radical cursor-pointer"><Link to={`/products?category=${category}`}>{category}</Link></p>
+                                                 )))}
+                                   </div>
+                            </div>
                      </div>}
                      {/* --------------------NavBer links------------------ */}
                      <div>
