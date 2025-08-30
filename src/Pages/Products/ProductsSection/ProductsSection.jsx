@@ -7,6 +7,7 @@ import { RxCross2 } from "react-icons/rx";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import PriceRangeSlider from "../../../Components/PriceRangeSlider/PriceRangeSlider";
 import { useNavigate } from "react-router";
+import useCategory from "../../../Hooks/useCategory";
 
 
 const ProductsSection = ({ categoryFromLink }) => {
@@ -15,7 +16,8 @@ const ProductsSection = ({ categoryFromLink }) => {
        const [rowButton, setRowButton] = useState(true);
        const [colButton, setColButton] = useState(false);
        const [sortBy, setSortBy] = useState('name-asc');
-       const [filter, setFilter] = useState({ availability: [], size: [], color: [], brands: [], price: [0, 300000], category: categoryFromLink ? [categoryFromLink] : [] });
+       const [categories, categoriesLoading] = useCategory();
+       const [filter, setFilter] = useState({ availability: [], size: [], brands: [], price: [0, 300000], category: categoryFromLink ? [categoryFromLink] : [] });
        const { searchInput } = useContext(AuthContext);
        const { allProducts, totalPages, currentPage, limit: productsPerPage, allProductsLoading, counts } = useProducts(page, sortBy, filter, searchInput);
        const start = (currentPage - 1) * productsPerPage + 1;
@@ -44,7 +46,7 @@ const ProductsSection = ({ categoryFromLink }) => {
                                    <h2 className="font-bold px-5 py-2 text-lg border-b border-b-gray-300">Filter By</h2>
                                    {/* ----------------------Clear Filter Section--------------------- */}
                                    <div className="px-5 pt-3">
-                                          {(filter.availability.length > 0 || filter.size.length > 0 || filter.color.length > 0 || filter.brands.length > 0 || filter?.category?.length > 0) && (<div onClick={() => { navigate('/products'); setFilter({ availability: [], size: [], color: [], brands: [], category: [], price: [0, 300000], }) }} className="flex items-center gap-1 w-fit px-2 py-1.5 rounded-sm border cursor-pointer"><RxCross2 /> <span className="text-sm font-semibold">Clear All</span></div>)}
+                                          {(filter.availability.length > 0 || filter.size.length > 0 || filter.brands.length > 0 || filter?.category?.length > 0) && (<div onClick={() => { navigate('/products'); setFilter({ availability: [], size: [], brands: [], category: [], price: [0, 300000], }) }} className="flex items-center gap-1 w-fit px-2 py-1.5 rounded-sm border cursor-pointer"><RxCross2 /> <span className="text-sm font-semibold">Clear All</span></div>)}
                                    </div>
                                    {/* -----------------Filter Section Container For Pc--------------- */}
                                    <div>
@@ -112,49 +114,18 @@ const ProductsSection = ({ categoryFromLink }) => {
                                                         </label>
                                                  </div>
                                           </div>
-                                          {/* ---------------------Colors Section--------------------- */}
+                                          {/* ---------------------Categories Section--------------------- */}
                                           <div className="px-5 pb-2 space-y-1.5">
-                                                 <h3 className="font-semibold text-lg">Colors</h3>
-                                                 <div className="flex gap-2">
-                                                        <input type="checkbox" id="red" value="#FF0000" checked={filter.color?.includes("#FF0000")} onChange={(e) => handleCheckboxChange("color", e.target.value, e.target.checked)} />
-                                                        <label htmlFor="red" className="w-full flex justify-between cursor-pointer">
-                                                               <div className="flex items-center gap-1">
-                                                                      <div className="w-3 h-3 rounded-full border" style={{ backgroundColor: "#FF0000" }}></div>
-                                                                      <p className="font-medium">Red</p>
-                                                               </div>
-                                                               <p className="text-sm">{counts.color?.["#FF0000"] || 0}</p>
-                                                        </label>
-                                                 </div>
-                                                 <div className="flex gap-2">
-                                                        <input type="checkbox" id="black" value="#000000" checked={filter.color?.includes("#000000")} onChange={(e) => handleCheckboxChange("color", e.target.value, e.target.checked)} />
-                                                        <label htmlFor="black" className="w-full flex justify-between cursor-pointer">
-                                                               <div className="flex items-center gap-1">
-                                                                      <div className="w-3 h-3 rounded-full border" style={{ backgroundColor: "#000000" }}></div>
-                                                                      <p className="font-medium">BLack</p>
-                                                               </div>
-                                                               <p className="text-sm">{counts.color?.["#000000"] || 0}</p>
-                                                        </label>
-                                                 </div>
-                                                 <div className="flex gap-2">
-                                                        <input type="checkbox" id="white" value="#FFFFFF" checked={filter.color?.includes("#FFFFFF")} onChange={(e) => handleCheckboxChange("color", e.target.value, e.target.checked)} />
-                                                        <label htmlFor="white" className="w-full flex justify-between cursor-pointer">
-                                                               <div className="flex items-center gap-1">
-                                                                      <div className="w-3 h-3 rounded-full border" style={{ backgroundColor: "#FFFFFF" }}></div>
-                                                                      <p className="font-medium">White</p>
-                                                               </div>
-                                                               <p className="text-sm">{counts.color?.["#FFFFFF"] || 0}</p>
-                                                        </label>
-                                                 </div>
-                                                 <div className="flex gap-2">
-                                                        <input type="checkbox" id="gray" value="#CCCCCC" checked={filter.color?.includes("#CCCCCC")} onChange={(e) => handleCheckboxChange("color", e.target.value, e.target.checked)} />
-                                                        <label htmlFor="gray" className="w-full flex justify-between cursor-pointer">
-                                                               <div className="flex items-center gap-1">
-                                                                      <div className="w-3 h-3 rounded-full border" style={{ backgroundColor: "#CCCCCC" }}></div>
-                                                                      <p className="font-medium">Gray</p>
-                                                               </div>
-                                                               <p className="text-sm">{counts.color?.["#CCCCCC"] || 0}</p>
-                                                        </label>
-                                                 </div>
+                                                 <h3 className="font-semibold text-lg">Categories</h3>
+                                                 {categories.map((category, index) => (
+                                                        <div key={category} className="flex gap-2">
+                                                               <input type="checkbox" id={`category-${index}`} value={category} checked={filter.category?.includes(category)} onChange={(e) => handleCheckboxChange("category", e.target.value, e.target.checked)} />
+                                                               <label htmlFor={`category-${index}`} className="w-full flex justify-between cursor-pointer">
+                                                                      <p className="font-medium">{category}</p>
+                                                                      <p className="text-sm">{counts.category?.[category] || 0}</p>
+                                                               </label>
+                                                        </div>
+                                                 ))}
                                           </div>
                                           {/* --------------------Price Range Section------------------ */}
                                           <PriceRangeSlider filter={filter} setFilter={setFilter}></PriceRangeSlider>
@@ -220,12 +191,11 @@ const ProductsSection = ({ categoryFromLink }) => {
                                           </div>
                                    </div>
                                    {/* -------------------Filter Tag Section------------------- */}
-                                   {(filter.availability.length > 0 || filter.size.length > 0 || filter.color.length > 0 || filter.brands.length > 0 || filter.category.length > 0) && (
+                                   {(filter.availability.length > 0 || filter.size.length > 0 || filter.brands.length > 0 || filter.category.length > 0) && (
                                           <div className="flex items-center gap-2 pb-2 md:pb-3 lg:pb-5">
                                                  <h4 className="text-lg font-semibold">Active Filter : </h4>
                                                  {filter.availability.map((available, index) => (<div key={index} onClick={() => setFilter(prev => ({ ...prev, availability: prev.availability.filter(item => item !== available) }))} className="flex items-center  gap-0.5 px-2 py-1 rounded-xs text-sm font-bold border cursor-pointer"><RxCross2 className="text-base" />{available}</div>))}
                                                  {filter.size.map((sizes, index) => (<div key={index} onClick={() => setFilter(prev => ({ ...prev, size: prev.size.filter(item => item !== sizes) }))} className="flex items-center gap-0.5  px-2 py-1 rounded-xs text-sm font-bold border cursor-pointer"><RxCross2 className="text-base" />({sizes})</div>))}
-                                                 {filter.color.map((col, index) => (<div key={index} onClick={() => setFilter(prev => ({ ...prev, color: prev.color.filter(item => item !== col) }))} className="flex items-center gap-0.5  px-2 py-1 rounded-xs text-sm font-bold border cursor-pointer"><RxCross2 className="text-base" />({col})</div>))}
                                                  {filter.brands.map((brand, index) => (<div key={index} onClick={() => setFilter(prev => ({ ...prev, brands: prev.brands.filter(item => item !== brand) }))} className="flex items-center gap-0.5  px-2 py-1 rounded-xs text-sm font-bold border cursor-pointer"><RxCross2 className="text-base" />{brand}</div>))}
                                                  {filter.category.map((cat, index) => (<div key={index} onClick={() => { navigate('/products'); setFilter(prev => ({ ...prev, category: prev.category.filter(item => item !== cat) })) }} className="flex items-center gap-0.5  px-2 py-1 rounded-xs text-sm font-bold border cursor-pointer"><RxCross2 className="text-base" />{cat}</div>))}
                                           </div>
@@ -314,47 +284,16 @@ const ProductsSection = ({ categoryFromLink }) => {
                                                                </div>
                                                                {/* ---------------------Colors Section For Mobile--------------------- */}
                                                                <div className="space-y-1.5">
-                                                                      <h3 className="font-semibold text-lg">Colors</h3>
-                                                                      <div className="flex gap-2">
-                                                                             <input type="checkbox" id="red" value="#FF0000" checked={filter.color?.includes("#FF0000")} onChange={(e) => handleCheckboxChange("color", e.target.value, e.target.checked)} />
-                                                                             <label htmlFor="red" className="w-full flex justify-between cursor-pointer">
-                                                                                    <div className="flex items-center gap-1">
-                                                                                           <div className="w-3 h-3 rounded-full border" style={{ backgroundColor: "#FF0000" }}></div>
-                                                                                           <p className="font-medium">Red</p>
-                                                                                    </div>
-                                                                                    <p className="text-sm">{counts.color?.["#FF0000"] || 0}</p>
-                                                                             </label>
-                                                                      </div>
-                                                                      <div className="flex gap-2">
-                                                                             <input type="checkbox" id="black" value="#000000" checked={filter.color?.includes("#000000")} onChange={(e) => handleCheckboxChange("color", e.target.value, e.target.checked)} />
-                                                                             <label htmlFor="black" className="w-full flex justify-between cursor-pointer">
-                                                                                    <div className="flex items-center gap-1">
-                                                                                           <div className="w-3 h-3 rounded-full border" style={{ backgroundColor: "#000000" }}></div>
-                                                                                           <p className="font-medium">BLack</p>
-                                                                                    </div>
-                                                                                    <p className="text-sm">{counts.color?.["#000000"] || 0}</p>
-                                                                             </label>
-                                                                      </div>
-                                                                      <div className="flex gap-2">
-                                                                             <input type="checkbox" id="white" value="#FFFFFF" checked={filter.color?.includes("#FFFFFF")} onChange={(e) => handleCheckboxChange("color", e.target.value, e.target.checked)} />
-                                                                             <label htmlFor="white" className="w-full flex justify-between cursor-pointer">
-                                                                                    <div className="flex items-center gap-1">
-                                                                                           <div className="w-3 h-3 rounded-full border" style={{ backgroundColor: "#FFFFFF" }}></div>
-                                                                                           <p className="font-medium">White</p>
-                                                                                    </div>
-                                                                                    <p className="text-sm">{counts.color?.["#FFFFFF"] || 0}</p>
-                                                                             </label>
-                                                                      </div>
-                                                                      <div className="flex gap-2">
-                                                                             <input type="checkbox" id="gray" value="#CCCCCC" checked={filter.color?.includes("#CCCCCC")} onChange={(e) => handleCheckboxChange("color", e.target.value, e.target.checked)} />
-                                                                             <label htmlFor="gray" className="w-full flex justify-between cursor-pointer">
-                                                                                    <div className="flex items-center gap-1">
-                                                                                           <div className="w-3 h-3 rounded-full border" style={{ backgroundColor: "#CCCCCC" }}></div>
-                                                                                           <p className="font-medium">Gray</p>
-                                                                                    </div>
-                                                                                    <p className="text-sm">{counts.color?.["#CCCCCC"] || 0}</p>
-                                                                             </label>
-                                                                      </div>
+                                                                      <h3 className="font-semibold text-lg">Categories</h3>
+                                                                      {categories.map((category, index) => (
+                                                                             <div key={category} className="flex gap-2">
+                                                                                    <input type="checkbox" id={`category-${index}`} value={category} checked={filter.category?.includes(category)} onChange={(e) => handleCheckboxChange("category", e.target.value, e.target.checked)} />
+                                                                                    <label htmlFor={`category-${index}`} className="w-full flex justify-between cursor-pointer">
+                                                                                           <p className="font-medium">{category}</p>
+                                                                                           <p className="text-sm">{counts.category?.[category] || 0}</p>
+                                                                                    </label>
+                                                                             </div>
+                                                                      ))}
                                                                </div>
                                                                {/* --------------------Price Range Section For Mobile----------------- */}
                                                                <PriceRangeSlider filter={filter} setFilter={setFilter}></PriceRangeSlider>
