@@ -64,48 +64,60 @@ const Orders = () => {
                                           </div>
                                           {/* -------------------Table Body Section-------------- */}
                                           {orders.map((order, index) => (
-                                                 <div key={order._id} className={`grid p-2 gap-2 text-xs text-gray-600 border-b border-gray-200 ${index % 2 === 0 ? "bg-white" : "bg-aliceBlue"}`} style={{ gridTemplateColumns: "minmax(130px, 2fr) repeat(6, 1fr)" }}>
+                                                 <div key={order._id} className={`grid p-2 items-center gap-3 text-xs text-gray-600 border-b border-gray-200 ${index % 2 === 0 ? "bg-white" : "bg-aliceBlue"}`} style={{ gridTemplateColumns: "minmax(130px, 2fr) repeat(6, 1fr)" }}>
                                                         {/* ------------------Product Name--------------- */}
                                                         <div className="p-2">
                                                                <ul className="space-y-1">
                                                                       {order?.orderItems?.map((item, idx) => (
-                                                                             <li key={idx}>{item.productName} ({item?.quantity})</li>
+                                                                             <li key={idx} className="flex"><p className="truncate">{item.productName}</p> ({item?.quantity})</li>
                                                                       ))}
                                                                </ul>
                                                         </div>
                                                         {/* ----------------Product Payment Method------------- */}
                                                         <div className="p-2 flex items-center">{order?.paymentMethod}</div>
                                                         {/* ----------------Product Payment Status------------- */}
-                                                        <select
-                                                               value={order.paymentStatus}
-                                                               onChange={(e) => handleUpdateStatus(order?._id, "paymentStatus", e.target.value)}
-                                                               className="h-fit border my-auto rounded px-2 py-1 text-xs"
-                                                        >
-                                                               <option value="Pending">Pending</option>
-                                                               <option value="Paid">Paid</option>
-                                                               <option value="Failed">Failed</option>
-                                                        </select>
+                                                        <div className="dropdown dropdown-bottom dropdown-center">
+                                                               <div tabIndex={0} role="button" className={`btn w-full text-xs h-fit my-auto py-1.5 border ${order.paymentStatus === "Pending" ? "bg-yellow-100 text-yellow-600 border-yellow-400" : order.paymentStatus === "Paid" ? "bg-green-100 text-green-600 border-green-400" : "bg-red-100 text-red-600 border-red-400"}`}>
+                                                                      {order.paymentStatus}
+                                                               </div>
+                                                               <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-10 w-40 p-2 shadow-md" >
+                                                                      {["Pending", "Paid", "Failed"].map((status) => (
+                                                                             <li key={status}>
+                                                                                    <a onClick={() => handleUpdateStatus(order?._id, "paymentStatus", status)} className={`${status === order.paymentStatus ? "font-bold" : ""} ${status === "Pending" ? "text-yellow-600 hover:bg-yellow-50" : status === "Paid" ? "text-green-600 hover:bg-green-50" : "text-red-600 hover:bg-red-50"}`}> {status} </a>
+                                                                             </li>
+                                                                      ))}
+                                                               </ul>
+                                                        </div>
                                                         {/* -----------------Product Order Status-------------- */}
-                                                        <select
-                                                               value={order?.orderStatus}
-                                                               onChange={(e) => handleUpdateStatus(order?._id, "orderStatus", e.target.value)}
-                                                               className="h-fit border my-auto rounded px-2 py-1 text-xs"
-                                                        >
-                                                               <option value="Pending">Pending</option>
-                                                               <option value="Processing">Processing</option>
-                                                               <option value="Shipped">Shipped</option>
-                                                               <option value="Completed">Completed</option>
-                                                        </select>
+                                                        <div className="dropdown dropdown-bottom dropdown-center">
+                                                               <div tabIndex={0} role="button" className={`btn w-full text-xs h-fit my-auto py-1.5 border ${order.orderStatus === "Pending" ? "bg-yellow-100 text-yellow-600 border-yellow-400" : order.orderStatus === "Processing" ? "bg-blue-100 text-blue-600 border-blue-400" : order.orderStatus === "Shipped" ? "bg-purple-100 text-purple-600 border-purple-400" : "bg-green-100 text-green-600 border-green-400"}`}>
+                                                                      {order.orderStatus}
+                                                               </div>
+                                                               <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-10 w-44 p-2 shadow-md">
+                                                                      {["Pending", "Processing", "Shipped", "Completed"].map((status) => (
+                                                                             <li key={status}>
+                                                                                    <a onClick={() => handleUpdateStatus(order?._id, "orderStatus", status)} className={`${status === order.orderStatus ? "font-bold" : ""} ${status === "Pending" ? "text-yellow-600 hover:bg-yellow-50" : status === "Processing" ? "text-blue-600 hover:bg-blue-50" : status === "Shipped" ? "text-purple-600 hover:bg-purple-50" : "text-green-600 hover:bg-green-50"}`}>
+                                                                                           {status}
+                                                                                    </a>
+                                                                             </li>
+                                                                      ))}
+                                                               </ul>
+                                                        </div>
                                                         {/* --------------Product Delivery Status-------------- */}
-                                                        <select
-                                                               value={order?.deliveryStatus}
-                                                               onChange={(e) => handleUpdateStatus(order?._id, "deliveryStatus", e.target.value)}
-                                                               className="h-fit border my-auto rounded px-1 py-1 text-xs"
-                                                        >
-                                                               <option value="Pending">Pending</option>
-                                                               <option value="Shipped">Shipped</option>
-                                                               <option value="Delivered">Delivered</option>
-                                                        </select>
+                                                        <div className="dropdown dropdown-bottom dropdown-center">
+                                                               <div tabIndex={0} role="button" className={`btn w-full text-xs h-fit my-auto py-1.5 border ${order.deliveryStatus === "Pending" ? "bg-yellow-100 text-yellow-600 border-yellow-400" : order.deliveryStatus === "Shipped" ? "bg-purple-100 text-purple-600 border-purple-400" : "bg-green-100 text-green-600 border-green-400"}`}>
+                                                                      {order.deliveryStatus}
+                                                               </div>
+                                                               <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-10 w-44 p-2 shadow-md">
+                                                                      {["Pending", "Shipped", "Delivered"].map((status) => (
+                                                                             <li key={status}>
+                                                                                    <a onClick={() => handleUpdateStatus(order?._id, "deliveryStatus", status)} className={`${status === order.deliveryStatus ? "font-bold" : ""} ${status === "Pending" ? "text-yellow-600 hover:bg-yellow-50" : status === "Shipped" ? "text-purple-600 hover:bg-purple-50" : "text-green-600 hover:bg-green-50"}`}>
+                                                                                           {status}
+                                                                                    </a>
+                                                                             </li>
+                                                                      ))}
+                                                               </ul>
+                                                        </div>
                                                         {/* ----------------Product Price Status---------------- */}
                                                         <div className="p-2 flex items-center justify-center font-medium">{order?.totalAmount} Tk</div>
                                                         {/* ---------------Product Invoice Status--------------- */}

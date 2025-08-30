@@ -34,18 +34,18 @@ const UserOrder = () => {
                                                         <div className="p-2">
                                                                <ul className="space-y-1">
                                                                       {order?.orderItems?.map((item, idx) => (
-                                                                             <li key={idx}>{item.productName} ({item?.quantity})</li>
+                                                                             <li key={idx} className="flex"><p className="truncate">{item.productName}</p> ({item?.quantity})</li>
                                                                       ))}
                                                                </ul>
                                                         </div>
                                                         {/* ----------------Product Payment Method------------- */}
                                                         <div className="p-2 flex items-center">{order?.paymentMethod}</div>
                                                         {/* ----------------Product Payment Status------------- */}
-                                                        <div className="p-2 flex items-center justify-center font-medium">{order?.paymentStatus}</div>
+                                                        <div className={`text-xs h-fit my-auto px-2 py-1.5 rounded text-center font-semibold ${order.paymentStatus === "Pending" ? "bg-yellow-100 text-yellow-600 border border-yellow-400" : order.paymentStatus === "Paid" ? "bg-green-100 text-green-600 border border-green-400" : "bg-red-100 text-red-600 border border-red-400"}`}>{order.paymentStatus}</div>
                                                         {/* -----------------Product Order Status-------------- */}
-                                                        <div className="p-2 flex items-center justify-center font-medium">{order?.orderStatus}</div>
+                                                        <div className={`text-xs h-fit my-auto px-2 py-1.5 rounded text-center font-semibold ${order.orderStatus === "Pending" ? "bg-yellow-100 text-yellow-600 border border-yellow-400" : order.orderStatus === "Processing" ? "bg-blue-100 text-blue-600 border border-blue-400" : order.orderStatus === "Shipped" ? "bg-purple-100 text-purple-600 border border-purple-400" : "bg-green-100 text-green-600 border border-green-400"}`}>{order.orderStatus}</div>
                                                         {/* --------------Product Delivery Status-------------- */}
-                                                        <div className="p-2 flex items-center justify-center font-medium">{order?.deliveryStatus}</div>
+                                                        <div className={`text-xs h-fit my-auto px-2 py-1.5 rounded text-center font-semibold ${order.deliveryStatus === "Pending" ? "bg-yellow-100 text-yellow-600 border border-yellow-400" : order.deliveryStatus === "Shipped" ? "bg-purple-100 text-purple-600 border border-purple-400" : "bg-green-100 text-green-600 border border-green-400"}`}>{order.deliveryStatus}</div>
                                                         {/* ----------------Product Price Status---------------- */}
                                                         <div className="p-2 flex items-center justify-center font-medium">{order?.totalAmount} Tk</div>
                                                         {/* ---------------Product Invoice Status--------------- */}
