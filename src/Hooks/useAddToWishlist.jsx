@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
 import useSaveWishlist from "./useSaveWishlist";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import useWishlist from "./useWishlist";
 
 const useAddToWishlist = () => {

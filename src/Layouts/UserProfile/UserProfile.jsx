@@ -12,7 +12,7 @@ import { IoNewspaperOutline } from "react-icons/io5";
 import { PiPhoneCallBold, PiSignOutBold } from "react-icons/pi";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const UserProfile = () => {
 

@@ -4,7 +4,7 @@ import advertiseImg1 from '../../../assets/Advertise/Advertise1.jpg'
 import { useForm } from "react-hook-form";
 import AdminSectionTitle from "../../../Components/AdminSectionTitle/AdminSectionTitle";
 import useSendEmail from "../../../Hooks/useSendEmail";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const ContactUsSection = () => {
 

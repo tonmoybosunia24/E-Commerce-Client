@@ -3,7 +3,7 @@ import { AuthContext } from "../../Providers/AuthProviders";
 import { TiSocialFacebook } from "react-icons/ti";
 import { BiLogoGoogle } from "react-icons/bi";
 import { IoLogoGithub } from "react-icons/io";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import useSaveUsers from "../../Hooks/useSaveUsers";
 import { useLocation, useNavigate } from "react-router";
 

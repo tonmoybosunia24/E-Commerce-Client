@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import MultiValueInput from "../../../Components/MultiValueInput/MultiValueInput";
 import useUploadImage from "../../../Hooks/useUploadImage";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import useAdminSaveProducts from "../../../Hooks/useAdminSaveProducts";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 

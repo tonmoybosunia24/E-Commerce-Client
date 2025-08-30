@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import useUploadImage from "../../../Hooks/useUploadImage";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import useUploadUpdatedProducts from "../../../Hooks/useUploadUpdatedProducts";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const UpdateProducts = () => {
 

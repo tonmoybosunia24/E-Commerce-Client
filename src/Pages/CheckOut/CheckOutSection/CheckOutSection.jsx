@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import useUserInfo from "../../../Hooks/useUserInfo";
 import useSaveOrderInfo from "../../../Hooks/useSaveOrderInfo";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import useDeleteCarts from "../../../Hooks/useDeleteCarts";
 

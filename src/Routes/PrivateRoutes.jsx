@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
 import { Navigate, useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const PrivateRoutes = ({ children }) => {
 

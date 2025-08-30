@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router";
 import { useRef, useState } from "react";
 import { FiEdit } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 const AllProducts = () => {
 

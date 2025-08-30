@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import useUserInfo from "../../../Hooks/useUserInfo";
 import useUploadImage from "../../../Hooks/useUploadImage";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { useEffect } from "react";
 import useUploadUpdtedUserInfo from "../../../Hooks/useUploadUpdtedUserInfo";
 import AdminSectionTitle from "../../../Components/AdminSectionTitle/AdminSectionTitle";

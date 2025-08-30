@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Providers/AuthProviders";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import useSaveUsers from "../../../Hooks/useSaveUsers";
 import useCategory from "../../../Hooks/useCategory";

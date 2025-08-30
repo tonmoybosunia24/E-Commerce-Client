@@ -3,7 +3,7 @@ import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import useUpdateQuantity from "../../../Hooks/useUpdateQuantity";
 import Swal from "sweetalert2";
 import useDeleteCart from "../../../Hooks/useDeleteCart";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { FaTrashAlt } from "react-icons/fa";
 
 const ShoppingCart = ({ cart, isLast, refetch }) => {

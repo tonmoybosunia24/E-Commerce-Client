@@ -6,7 +6,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoIosArrowDown, IoIosHeartEmpty, IoMdClose } from 'react-icons/io';
 import { AuthContext } from '../../../Providers/AuthProviders';
 import { useContext, useEffect, useRef, useState, } from 'react';
-import { toast } from 'react-toastify';
+import toast from "react-hot-toast";
 import useCarts from '../../../Hooks/useCarts';
 import useAdmin from '../../../Hooks/useAdmin';
 import { FiEdit, FiShoppingBag } from 'react-icons/fi';

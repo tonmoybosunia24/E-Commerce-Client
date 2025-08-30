@@ -9,6 +9,7 @@ import Footer from "../Home/Footer/Footer";
 import { FaCartShopping } from "react-icons/fa6";
 import useAddToCarts from "../../Hooks/useAddToCarts";
 import useDeleteWishlist from "../../Hooks/useDeleteWishlist";
+import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const AddToWishlist = () => {

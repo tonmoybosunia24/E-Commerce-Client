@@ -8,6 +8,7 @@ import useDeleteUser from "../../../Hooks/useDeleteUser";
 import Swal from "sweetalert2";
 import { BsPeopleFill } from "react-icons/bs";
 import useUpdateRole from "../../../Hooks/useUpdateRole";
+import toast from "react-hot-toast";
 
 
 const Users = () => {

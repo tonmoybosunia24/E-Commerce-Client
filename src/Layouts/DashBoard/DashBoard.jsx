@@ -6,7 +6,7 @@ import { LuCalendarClock, LuFolderPlus } from "react-icons/lu";
 import { PiPhoneCallBold, PiSignOutBold, PiUsersThreeBold } from "react-icons/pi";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import Navbar from "../../Pages/Shared/Navbar/Navbar";
 import Header from "../../Pages/Shared/Header/Header";
 import HeaderTop from "../../Pages/Shared/HeaderTop/HeaderTop";

@@ -4,7 +4,7 @@ import useOrders from "../../../Hooks/useOrders";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { useRef, useState } from "react";
 import useUpdateStatus from "../../../Hooks/useUpdateStatus";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { FaFileInvoiceDollar } from "react-icons/fa6";
 
 const Orders = () => {

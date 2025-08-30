@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Providers/AuthProviders";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router";
 import advertiseImg1 from '../../../assets/Advertise/Advertise1.jpg'
 import useCategory from "../../../Hooks/useCategory";

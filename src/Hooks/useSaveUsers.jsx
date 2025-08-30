@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const useSaveUsers = () => {
 
