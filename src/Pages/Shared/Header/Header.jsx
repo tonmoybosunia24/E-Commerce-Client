@@ -95,9 +95,9 @@ const Header = () => {
 
        const Links = <>
               {/* -------------------User Home---------------- */}
-              <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/'><li className="flex flex-row gap-2 items-center text-base "><AiOutlineHome className="text-xl p-0" />Home</li></NavLink>
+              <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/'><p className="flex flex-row gap-2 items-center text-base "><AiOutlineHome className="text-xl p-0" />Home</p></NavLink>
               {/* -----------------User Products-------------- */}
-              <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/products'><li className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" />Products</li></NavLink>
+              <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/products'><p className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" />Products</p></NavLink>
               {/* ---------------Admin DashBoard-------------- */}
               {!isAdminLoading && !isModeratorLoading && (isAdmin || isModerator) &&
                      <div className="w-full">
@@ -113,18 +113,18 @@ const Header = () => {
                                           <ul className="space-y-0">
                                                  <li className="cursor-pointer">
                                                         {/* ------------------Admin Home---------------- */}
-                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/adminHome'><li className="flex flex-row gap-2 items-center text-base"><AiOutlineHome className="text-xl p-0" /> Admin Home</li></NavLink>}
+                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/adminHome'><p className="flex flex-row gap-2 items-center text-base"><AiOutlineHome className="text-xl p-0" /> Admin Home</p></NavLink>}
                                                         {/* -----------------Add Products--------------- */}
-                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/addProducts'><li className="flex flex-row gap-2 items-center text-base "><LuFolderPlus className="text-xl p-0" /> Add Products</li></NavLink>}
-                                                        {!isModeratorLoading && isModerator && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/addProducts'><li className="flex flex-row gap-2 items-center text-base "><LuFolderPlus className="text-xl p-0" /> Add Products</li></NavLink>}
+                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/addProducts'><p className="flex flex-row gap-2 items-center text-base "><LuFolderPlus className="text-xl p-0" /> Add Products</p></NavLink>}
+                                                        {!isModeratorLoading && isModerator && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/addProducts'><p className="flex flex-row gap-2 items-center text-base "><LuFolderPlus className="text-xl p-0" /> Add Products</p></NavLink>}
                                                         {/* -------------------Products----------------- */}
-                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/products'><li className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" /> Products</li></NavLink>}
-                                                        {!isModeratorLoading && isModerator && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/products'><li className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" /> Products</li></NavLink>}
-                                                        {/* -------------------Bookings----------------- */}
-                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/orders'><li className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" /> Orders</li></NavLink>}
+                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/products'><p className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" /> Products</p></NavLink>}
+                                                        {!isModeratorLoading && isModerator && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/products'><p className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" /> Products</p></NavLink>}
+                                                        {/* -------------------Orders----------------- */}
+                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/orders'><p className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" /> Orders</p></NavLink>}
                                                         {!isModeratorLoading && isModerator && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/orders'><li className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" /> Orders</li></NavLink>}
                                                         {/* --------------------Users------------------- */}
-                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/users'><li className="flex flex-row gap-2 items-center text-base "><PiUsersThreeBold className="text-xl p-0" />Users</li></NavLink>}
+                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/users'><p className="flex flex-row gap-2 items-center text-base "><PiUsersThreeBold className="text-xl p-0" />Users</p></NavLink>}
                                                  </li>
                                           </ul>
                                    </div>
@@ -145,22 +145,22 @@ const Header = () => {
                                    <ul className="space-y-0">
                                           <li className="cursor-pointer">
                                                  {/* -------------------Home Page----------------- */}
-                                                 <NavLink className={({ isActive }) => `!bg-transparent py-0.5 ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/userProfile/userHome'><li className="flex flex-row gap-2 items-center text-base "><AiOutlineHome className="text-xl p-0" />Home</li></NavLink>
+                                                 <NavLink className={({ isActive }) => `!bg-transparent py-0.5 ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/userProfile/userHome'><p className="flex flex-row gap-2 items-center text-base "><AiOutlineHome className="text-xl p-0" />Home</p></NavLink>
                                                  {/* -------------------Order Page----------------- */}
-                                                 <NavLink className={({ isActive }) => `!bg-transparent py-0.5 ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/userProfile/userOrder'><li className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" />Orders</li></NavLink>
+                                                 <NavLink className={({ isActive }) => `!bg-transparent py-0.5 ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/userProfile/userOrder'><p className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" />Orders</p></NavLink>
                                                  {/* ---------------Edit Profile Page-------------- */}
-                                                 <NavLink className={({ isActive }) => `!bg-transparent py-0.5 ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/userProfile/editProfile'><li className="flex flex-row gap-2 items-center text-base "><FiEdit className="text-xl p-0" />Edit Profile</li></NavLink>
+                                                 <NavLink className={({ isActive }) => `!bg-transparent py-0.5 ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/userProfile/editProfile'><p className="flex flex-row gap-2 items-center text-base "><FiEdit className="text-xl p-0" />Edit Profile</p></NavLink>
                                           </li>
                                    </ul>
                             </div>
                      </div>
               </div>
               {/* ------------------User Blogs---------------- */}
-              <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/blogs'><li className="flex flex-row gap-2 items-center text-base "><IoNewspaperOutline className="text-xl p-0" />Blogs</li></NavLink>
+              <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/blogs'><p className="flex flex-row gap-2 items-center text-base "><IoNewspaperOutline className="text-xl p-0" />Blogs</p></NavLink>
               {/* -------------------About Us----------------- */}
-              <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/contactUs'><li className="flex flex-row gap-2 items-center text-base "><PiPhoneCallBold className="text-xl p-0" />Contact Us</li></NavLink>
+              <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/contactUs'><p className="flex flex-row gap-2 items-center text-base "><PiPhoneCallBold className="text-xl p-0" />Contact Us</p></NavLink>
               {/* --------------Sign In/Sign Out-------------- */}
-              {user ? <div onClick={handleLogOut} className="flex flex-row gap-2 items-center font-semibold text-base text-black cursor-pointer"><PiSignOutBold className="text-xl p-0" />Sign Out</div> : <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/login'><li className="flex flex-row gap-2 items-center text-base "><PiSignInBold className="text-xl p-0" />Login</li></NavLink>}
+              {user ? <div onClick={handleLogOut} className="flex flex-row gap-2 items-center font-semibold text-base text-black cursor-pointer"><PiSignOutBold className="text-xl p-0" />Sign Out</div> : <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/login'><p className="flex flex-row gap-2 items-center text-base "><PiSignInBold className="text-xl p-0" />Login</p></NavLink>}
        </>
 
        return (
