@@ -31,9 +31,6 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
        const { _id, Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, OfferTime, Condition, AvailabilityStatus, SellerInformation } = product;
        const [thumbsSwiper, setThumbsSwiper] = useState(null);
        const [value, setValue] = useState(1);
-       // const handleProductsDetails = () => {
-       //        useProductDetails(_id)
-       // }
        const handleAddToWishlist = useAddToWishlist();
        const handleAddToCart = useAddToCarts();
        /* ---------------Count Total Milliseconds-------------- */
@@ -50,7 +47,7 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
                                    <div className='flex-9/12 space-y-2'>
                                           <p className={`text-gray-500 text-sm md:text-base lg:text-base hover:text-Radical line-clamp-1 ${fromSlider === 'isOnSale' ? 'mt-10' : ''}`}>{SubCategory}</p>
                                           <h4 className='font-bold line-clamp-1 hover:text-Radical'>{Title}</h4>
-                                          <Rating style={{ maxWidth: 80 }} value={ProductRating} />
+                                          <Rating fractions={10} style={{ maxWidth: 80 }} readOnly value={Number(ProductRating)} />
                                           <div className='flex gap-2'>
                                                  <del className={`text-gray-300 text-xs md:text-base lg:text-lg font-medium`}>{Price} Tk </del>
                                                  <p className={`text-Radical text-xs md:text-base lg:text-lg font-semibold`}>{OfferPrice} Tk </p>
@@ -75,7 +72,7 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
                                                  <p className={`text-gray-500 text-sm md:text-base lg:text-base hover:text-Radical line-clamp-1 ${fromSlider === 'isOnSale' ? 'mt-10' : ''}`}>{SubCategory}</p>
                                                  <h4 className='font-bold line-clamp-1 hover:text-Radical'>{Title}</h4>
                                                  <p className='font-semibold text-sm line-clamp-1'>{SellerInformation?.name}</p>
-                                                 <Rating style={{ maxWidth: 80 }} value={ProductRating} />
+                                                 <Rating fractions={10} style={{ maxWidth: 80 }} readOnly value={Number(ProductRating)} />
                                                  {/* ------------------Price---------------- */}
                                                  <div className="flex gap-2">
                                                         {OfferPrice > 0 ? (<><del className={`text-gray-300 text-xs ${fromSlider === "allProducts" ? "lg:text-base" : "lg:text-lg"} font-medium`}>{Price} Tk</del>

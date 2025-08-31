@@ -45,7 +45,7 @@ const AdminHome = () => {
                                           <div className="font-semibold">Total Revenue</div>
                                           <div><AiOutlineDollar className="text-xl" /></div>
                                    </div>
-                                   <h3 className="font-semibold text-gray-600">{adminStats?.totalRevenue} Tk</h3>
+                                   <h3 className="font-semibold text-gray-600">{adminStats?.totalRevenue ? adminStats.totalRevenue.toFixed(2) : 0} Tk</h3>
                             </div>
                             {/* -------------------Total Users----------------- */}
                             <div className="border border-gray-300 border-b-3 border-b-Radical rounded-md p-3 bg-aliceBlue">
@@ -79,7 +79,7 @@ const AdminHome = () => {
                                                         <div className="font-semibold">{paymentStatus?._id}</div>
                                                         <div>{paymentStatus._id === "OnlinePayment" ? (<BsCreditCard2Front className="text-xl" />) : (<PiMoneyWavy className="text-xl" />)}</div>
                                                  </div>
-                                                 <h3 className="font-semibold text-gray-600">{paymentStatus?.totalRevenue} Tk</h3>
+                                                 <h3 className="font-semibold text-gray-600">{paymentStatus?.totalRevenue ? paymentStatus.totalRevenue.toFixed(2) : 0} Tk</h3>
                                           </div>
                                    ))}
                             </div>

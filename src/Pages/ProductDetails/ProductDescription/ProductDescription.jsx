@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CiHeart } from "react-icons/ci";
 import { MdContentCopy } from "react-icons/md";
-import { FaFacebookF } from "react-icons/fa";
+import { FaFacebookF, FaUserCircle } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { AiFillPinterest } from "react-icons/ai";
 import { FaAngleUp } from "react-icons/fa6";
@@ -28,8 +28,8 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
 
        const [thumbsSwiper, setThumbsSwiper] = useState(null);
        const [value, setValue] = useState(1);
-       const [activeTab, setActiveTab] = useState('Description')
-       const { _id, Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, Condition, AvailabilityStatus, SellerInformation } = product;
+       const [activeTab, setActiveTab] = useState('Product Details')
+       const { _id, Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, Condition, AvailabilityStatus, SellerInformation, Reviews } = product;
        const handleAddToCart = useAddToCarts();
 
        return (
@@ -77,7 +77,7 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
                                           {/* ------------------Product Details Side---------------- */}
                                           <div className='w-full text-sm md:text-xs lg:text-base space-y-1.5'>
                                                  <div className="flex gap-2">
-                                                        <Rating style={{ maxWidth: 80 }} value={ProductRating} />
+                                                        <Rating fractions={10} style={{ maxWidth: 80 }} readOnly value={Number(ProductRating)} />
                                                         <p>{ProductRating} Review(s)</p>
                                                  </div>
                                                  <h5 className='font-semibold text-3xl'>{Title}</h5>
@@ -151,17 +151,11 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
                                    <div className='pt-5 md:pt-7 lg:pt-10'>
                                           <Tabs>
                                                  <TabList className='flex gap-3 space-y-2 '>
-                                                        <Tab onClick={() => setActiveTab('Description')} className={activeTab === 'Description' ? "font-bold text-lg outline-none cursor-pointer" : "font-semibold text-lg text-black cursor-pointer"}>Description</Tab>
                                                         <Tab onClick={() => setActiveTab('Product Details')} className={activeTab === 'Product Details' ? "font-bold text-lg outline-none cursor-pointer" : "font-semibold text-lg text-black  cursor-pointer"}>Product Details</Tab>
+                                                        <Tab onClick={() => setActiveTab('Description')} className={activeTab === 'Description' ? "font-bold text-lg outline-none cursor-pointer" : "font-semibold text-lg text-black cursor-pointer"}>Description</Tab>
+                                                        <Tab onClick={() => setActiveTab('Comments')} className={activeTab === 'Comments' ? "font-bold text-lg outline-none cursor-pointer" : "font-semibold text-lg text-black cursor-pointer"}>Comments</Tab>
                                                  </TabList>
                                                  <TabPanel className='border border-gray-300 p-5 pb-0 border-b-0'>
-                                                        <p><span className='font-bold'>Delivery Inside Dhaka : </span>{ShippingInformation?.InsideDhaka} Tk</p>
-                                                        <p><span className='font-bold'>Delivery Outside Dhaka : </span>{ShippingInformation?.OutsideDhaka} Tk</p>
-                                                        <p><span className='font-bold'>DeliveryTime Inside Dhaka : </span>{ShippingInformation?.EstimatedDeliveryTime?.InsideDhaka}</p>
-                                                        <p><span className='font-bold'>DeliveryTime Inside Dhaka : </span>{ShippingInformation?.EstimatedDeliveryTime?.OutsideDhaka}</p>
-                                                        <p><span className='font-bold'>Description : </span>{Description}</p>
-                                                 </TabPanel>
-                                                 <TabPanel className='border border-gray-300 p-5 pt-0 border-t-0 space-y-0.5'>
                                                         <img src={productBrandImage} alt="" />
                                                         <p><span className='font-bold'>Brand : </span>{Brand}</p>
                                                         <p><span className='font-bold'>SubCategory : </span>{SubCategory}</p>
@@ -171,6 +165,26 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
                                                         <p><span className='font-bold'>Location : </span>{SellerInformation.location}</p>
                                                         <p><span className='font-bold'>Rating : </span>{SellerInformation.rating}</p>
                                                         <p><span className='font-bold'>Contact : </span>{SellerInformation.contact}</p>
+                                                 </TabPanel>
+                                                 <TabPanel className='border border-gray-300 p-5 pt-0 pb-0 border-t-0 border-b-0'>
+                                                        <p><span className='font-bold'>Delivery Inside Dhaka : </span>{ShippingInformation?.InsideDhaka} Tk</p>
+                                                        <p><span className='font-bold'>Delivery Outside Dhaka : </span>{ShippingInformation?.OutsideDhaka} Tk</p>
+                                                        <p><span className='font-bold'>DeliveryTime Inside Dhaka : </span>{ShippingInformation?.EstimatedDeliveryTime?.InsideDhaka}</p>
+                                                        <p><span className='font-bold'>DeliveryTime Inside Dhaka : </span>{ShippingInformation?.EstimatedDeliveryTime?.OutsideDhaka}</p>
+                                                        <p><span className='font-bold'>Description : </span>{Description}</p>
+                                                 </TabPanel>
+                                                 <TabPanel className='border border-gray-300 p-5 pt-0 border-t-0'>
+                                                        <div className='space-y-1.5'>
+                                                               {Reviews.map((Review, index) => (
+                                                                      <div key={index} className='flex gap-2 items-start'>
+                                                                             <div><FaUserCircle className='text-3xl text-gray-200' /></div>
+                                                                             <div>
+                                                                                    <p className='flex'><span className='font-bold pr-1'>Name :</span> {Review?.name} (<Rating fractions={10} style={{ maxWidth: 80 }} readOnly value={Number(Review?.rating)} />)</p>
+                                                                                    <p><span className='font-bold pr-1'>Comment :</span> {Review?.comment}</p>
+                                                                             </div>
+                                                                      </div>
+                                                               ))}
+                                                        </div>
                                                  </TabPanel>
                                           </Tabs>
                                    </div>
