@@ -33,7 +33,7 @@ const Routes = createBrowserRouter([
        {
               path: '/',
               element: <AuthProviders><Root></Root></AuthProviders>,
-              errorElement: <ErrorPage></ErrorPage>,
+              errorElement: <AuthProviders><ErrorPage></ErrorPage></AuthProviders>,
               children: [
                      {
                             path: '/',

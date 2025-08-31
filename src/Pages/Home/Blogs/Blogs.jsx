@@ -10,6 +10,7 @@ import useBlogs from '../../../Hooks/useBlogs';
 import { FiClock } from "react-icons/fi";
 import { IoIosSearch, IoMdSettings } from "react-icons/io";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
+import { Link } from 'react-router';
 
 const Blogs = () => {
 
@@ -60,7 +61,7 @@ const Blogs = () => {
                                                         </div>
                                                         <h3 className='font-bold line-clamp-1'>{blog.title}</h3>
                                                         <p className='text-sm line-clamp-4'>{blog.content}</p>
-                                                        <button className='font-bold text-Radical cursor-pointer text-sm underline hover:no-underline'>Read More</button>
+                                                        <Link to={`/SingleBLog/${blog?._id}`} className='font-bold text-Radical cursor-pointer text-sm underline hover:no-underline'>Read More</Link>
                                                  </div>
                                           </SwiperSlide>))}
                             </Swiper>

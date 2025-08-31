@@ -38,7 +38,8 @@ const Header = () => {
        const taxAmount = parseFloat((subTotalPrice * taxRate).toFixed(2));
        const totalWIthTax = parseFloat((totalWithoutTax + taxAmount).toFixed(2));
        const { deleteCardItem, isLoading } = useDeleteCart();
-       const [profileOpen, setProfileOpen] = useState(false)
+       const [profileOpen, setProfileOpen] = useState(false);
+       const [adminOpen, setAdminOpen] = useState(false);
 
        useEffect(() => {
               if (open) {
@@ -93,27 +94,43 @@ const Header = () => {
        }
 
        const Links = <>
-              {/* ------------------Admin Home---------------- */}
-              {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/adminHome'><li className="flex flex-row gap-2 items-center text-base"><AiOutlineHome className="text-xl p-0" /> Admin Home</li></NavLink>}
-              {/* -----------------Add Products--------------- */}
-              {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/addProducts'><li className="flex flex-row gap-2 items-center text-base "><LuFolderPlus className="text-xl p-0" /> Add Products</li></NavLink>}
-              {!isModeratorLoading && isModerator && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/addProducts'><li className="flex flex-row gap-2 items-center text-base "><LuFolderPlus className="text-xl p-0" /> Add Products</li></NavLink>}
-              {/* -------------------Products----------------- */}
-              {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/products'><li className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" /> Products</li></NavLink>}
-              {!isModeratorLoading && isModerator && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/products'><li className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" /> Products</li></NavLink>}
-              {/* -------------------Bookings----------------- */}
-              {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/bookings'><li className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" /> Bookings</li></NavLink>}
-              {!isModeratorLoading && isModerator && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/bookings'><li className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" /> Bookings</li></NavLink>}
-              {/* --------------------Users------------------- */}
-              {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/users'><li className="flex flex-row gap-2 items-center text-base "><PiUsersThreeBold className="text-xl p-0" />Users</li></NavLink>}
-              {/* -------------------Divider------------------ */}
-              {!isAdminLoading && !isModeratorLoading && (isAdmin || isModerator) && <hr className="border-gray-300" />}
               {/* -------------------User Home---------------- */}
               <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/'><li className="flex flex-row gap-2 items-center text-base "><AiOutlineHome className="text-xl p-0" />Home</li></NavLink>
               {/* -----------------User Products-------------- */}
               <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/products'><li className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" />Products</li></NavLink>
-              {/* -----------------User Admin----------------- */}
-              {!isAdminLoading && !isModeratorLoading && (isAdmin || isModerator) && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to={isModerator && !isAdmin ? '/dashboard/addProducts' : '/dashboard/adminHome'}><li className="flex flex-row gap-2 items-center text-base "><LuLayoutDashboard className="text-xl p-0" />DashBoard</li></NavLink>}
+              {/* ---------------Admin DashBoard-------------- */}
+              {!isAdminLoading && !isModeratorLoading && (isAdmin || isModerator) &&
+                     <div className="w-full">
+                            <div>
+                                   <button onClick={() => setAdminOpen(!adminOpen)} className="flex justify-between items-center w-full focus:outline-none">
+                                          <div className='flex items-center gap-2'>
+                                                 <LuLayoutDashboard className='text-xl p-0' />
+                                                 <span className="font-semibold text-base text-black">DashBoard</span>
+                                          </div>
+                                          <IoIosArrowDown className={`transition-transform duration-300 ${adminOpen ? "rotate-180" : ""}`} size={20} />
+                                   </button>
+                                   <div className={`overflow-hidden transition-all duration-500 ease-in-out ${adminOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
+                                          <ul className="space-y-0">
+                                                 <li className="cursor-pointer">
+                                                        {/* ------------------Admin Home---------------- */}
+                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/adminHome'><li className="flex flex-row gap-2 items-center text-base"><AiOutlineHome className="text-xl p-0" /> Admin Home</li></NavLink>}
+                                                        {/* -----------------Add Products--------------- */}
+                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/addProducts'><li className="flex flex-row gap-2 items-center text-base "><LuFolderPlus className="text-xl p-0" /> Add Products</li></NavLink>}
+                                                        {!isModeratorLoading && isModerator && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/addProducts'><li className="flex flex-row gap-2 items-center text-base "><LuFolderPlus className="text-xl p-0" /> Add Products</li></NavLink>}
+                                                        {/* -------------------Products----------------- */}
+                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/products'><li className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" /> Products</li></NavLink>}
+                                                        {!isModeratorLoading && isModerator && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/products'><li className="flex flex-row gap-2 items-center text-base "><FiShoppingBag className="text-xl p-0" /> Products</li></NavLink>}
+                                                        {/* -------------------Bookings----------------- */}
+                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/orders'><li className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" /> Orders</li></NavLink>}
+                                                        {!isModeratorLoading && isModerator && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/orders'><li className="flex flex-row gap-2 items-center text-base "><LuCalendarClock className="text-xl p-0" /> Orders</li></NavLink>}
+                                                        {/* --------------------Users------------------- */}
+                                                        {!isAdminLoading && isAdmin && <NavLink className={({ isActive }) => `!bg-transparent ${isActive ? 'font-semibold text-Radical' : 'font-semibold text-black'}`} to='/dashboard/users'><li className="flex flex-row gap-2 items-center text-base "><PiUsersThreeBold className="text-xl p-0" />Users</li></NavLink>}
+                                                 </li>
+                                          </ul>
+                                   </div>
+                            </div>
+                     </div>
+              }
               {/* -----------------User Profile--------------- */}
               <div className="lg:hidden w-full">
                      <div>
