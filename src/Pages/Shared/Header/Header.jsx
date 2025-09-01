@@ -199,14 +199,13 @@ const Header = () => {
                                    {/* --------------------Header Icons------------------ */}
                                    <div className='flex gap-2 lg:gap-2.5'>
                                           {!userInfoPending && userInfo ? (<Link to='/userProfile/userHome' className='cursor-pointer'><img className='w-6 h-6 rounded-full object-cover border-2 border-gray-300' src={userInfo?.image[0]} alt="" /></Link>) : (<Link to='/login'><PiUserCircleLight className='text-2xl' /></Link>)}
-                                          <div className="indicator">
-                                                 <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">{wishlist.length}</span>
+                                          <Link to='/addToWishlist' className="indicator">
+                                                 <Link to='/addToWishlist' className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">{wishlist.length}</Link>
                                                  <Link to='/addToWishlist' className="text-2xl"><IoIosHeartEmpty /></Link>
-                                                 <button className="text-2xl"></button>
-                                          </div>
+                                          </Link>
                                           <div onClick={() => setOpen(true)} className="relative indicator">
-                                                 <span className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">{carts.length} </span>
-                                                 <button className="text-2xl cursor-pointer"><PiShoppingCartLight /></button>
+                                                 <span onClick={() => setOpen(true)} className="indicator-item bg-Radical text-xs text-white p-1 px-2 rounded-full">{carts.length} </span>
+                                                 <button onClick={() => setOpen(true)} className="text-2xl cursor-pointer"><PiShoppingCartLight /></button>
                                           </div>
                                           {open && (<div onClick={() => setOpen(false)} className="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300"></div>)}
                                           {/* ----------------Shopping Cart Container---------------- */}
@@ -215,7 +214,7 @@ const Header = () => {
                                                         <h2 className="font-semibold text-lg">Shopping Cart ({carts?.length})</h2>
                                                         <IoMdClose onClick={() => setOpen(false)} className="text-2xl cursor-pointer" />
                                                  </div>
-                                                 <div className='flex-1 overflow-y-auto'>
+                                                 <div className=' overflow-y-auto flex-3/5 lg:flex-1'>
                                                         {carts.map((cart) => (
                                                                <div key={cart?._id} className={`flex justify-between gap-2 px-5 py-3 border-b border-gray-300`}>
                                                                       <div className='flex gap-3'>
@@ -231,7 +230,7 @@ const Header = () => {
                                                                </div>
                                                         ))}
                                                  </div>
-                                                 <div className='px-5 py-5'>
+                                                 <div className='px-5 py-5 overflow-y-auto flex-2/5 lg:flex-none'>
                                                         {/* ----------------Products Total Price------------- */}
                                                         <div className="flex justify-between items-center">
                                                                <p className="font-semibold">{carts.length} Products</p>

@@ -35,7 +35,7 @@ const CategoryProducts = () => {
                 }}>
                     {/* -------------------Tablist For Tabs ---------------- */}
                     <div className='flex justify-between items-center mb-3'>
-                        <TabList className="flex gap-3 relative active:border-none text-xs md:text-lg lg:text-lg overflow-x-auto lg:overflow-visible max-w-full">
+                        <TabList className="flex gap-3 relative active:border-none text-base md:text-lg lg:text-lg overflow-x-auto lg:overflow-visible max-w-full">
                             {categories.map((category, index) => (
                                 <Tab key={index} className={category === activeCategory ? "font-bold outline-none whitespace-nowrap cursor-pointer" : "font-semibold text-black whitespace-nowrap cursor-pointer"}>{category}</Tab>
                             ))}

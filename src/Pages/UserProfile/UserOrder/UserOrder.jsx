@@ -49,7 +49,7 @@ const UserOrder = () => {
                                                         {/* ----------------Product Price Status---------------- */}
                                                         <div className="p-2 flex items-center justify-center font-medium">{order?.totalAmount} Tk</div>
                                                         {/* ---------------Product Invoice Status--------------- */}
-                                                        <button onClick={() => window.open(`http://localhost:5000/invoice/${order?._id}`, "_blank")} className="h-fit m-auto bg-Radical hover:bg-aliceBlue text-white hover:text-black rounded-xs p-2 cursor-pointer"><FaFileInvoiceDollar /></button>
+                                                        <button onClick={() => window.open(`https://e-commerce-server-zeta-eight.vercel.app/invoice/${order?._id}`, "_blank")} className="h-fit m-auto bg-Radical hover:bg-aliceBlue text-white hover:text-black rounded-xs p-2 cursor-pointer"><FaFileInvoiceDollar /></button>
                                                  </div>
                                           ))}
                                    </div>

@@ -23,6 +23,7 @@ import ProductCard from "../../Shared/ProductCard/ProductCard";
 import productBrandImage from '../../../assets/Brands/Brands2.jpg'
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
 import useAddToCarts from '../../../Hooks/useAddToCarts';
+import useAddToWishlist from '../../../Hooks/useAddToWishlist';
 
 const ProductDescription = ({ product, relatedProducts, productDetailsLoading }) => {
 
@@ -31,6 +32,7 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
        const [activeTab, setActiveTab] = useState('Product Details')
        const { _id, Title, Description, Category, SubCategory, Price, OfferPrice, DiscountPercentage, Rating: ProductRating, Stock, Brand, Images, Colors, Variant, ShippingInformation, Condition, AvailabilityStatus, SellerInformation, Reviews } = product;
        const handleAddToCart = useAddToCarts();
+       const handleAddToWishlist = useAddToWishlist();
 
        return (
               <div className="px-5 md:px-10 lg:px-20 my-5 md:my-7 lg:my-10">
@@ -127,15 +129,11 @@ const ProductDescription = ({ product, relatedProducts, productDetailsLoading })
                                                         </div>
                                                         <div><button onClick={() => handleAddToCart(product, value)} disabled={product.Stock === 0 || value > product.Stock} className={`px-7 py-1.5 rounded-sm text-white ${product.Stock === 0 || value > product.Stock ? 'bg-Radical hover:bg-black cursor-not-allowed' : 'bg-Radical hover:bg-black'}`}>{product.Stock === 0 || value > product.Stock ? 'Out of Stock' : 'Add To Cart'}</button></div>
                                                  </div>
-                                                 {/* -----------------Wishlist And Compare---------------- */}
+                                                 {/* ----------------------Wishlist-------------------- */}
                                                  <div className='flex gap-2'>
-                                                        <div className='flex items-center gap-0.5 hover:text-Radical cursor-pointer'>
+                                                        <div onClick={() => handleAddToWishlist(product)} className='flex items-center gap-0.5 hover:text-Radical cursor-pointer'>
                                                                <CiHeart className='text-2xl' />
                                                                <p>Add To Wishlist</p>
-                                                        </div>
-                                                        <div className='flex items-center gap-0.5 hover:text-Radical cursor-pointer'>
-                                                               <MdContentCopy className='text-xl' />
-                                                               <p>Add To Compare</p>
                                                         </div>
                                                  </div>
                                                  <p><span className={Stock === 0 ? 'w-max flex items-center text-red-700 bg-red-200 border border-red-500 px-2' : Stock <= 50 ? 'w-max flex items-center text-yellow-700 bg-yellow-200 border border-yellow-500 px-2' : 'w-max flex items-center text-green-700 bg-green-200 border border-green-700 px-2'}>{Stock === 0 ? 'Out Of Stock' : Stock <= 50 ? 'Limited Stock' : 'In Stock'}</span></p>

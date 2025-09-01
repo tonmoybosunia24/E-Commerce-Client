@@ -48,7 +48,7 @@ const CheckOutSection = () => {
                             showCancelButton: false
                      }).then((result) => {
                             if (result.isConfirmed) {
-                                   window.open(`http://localhost:5000/invoice/${orderId}`, "_blank");
+                                   window.open(`https://e-commerce-server-zeta-eight.vercel.app/invoice/${orderId}`, "_blank");
                             }
                      });
                      if (userInfo?.email) {
@@ -111,7 +111,7 @@ const CheckOutSection = () => {
                                                         confirmButtonColor: ' #ff5252',
                                                         showCancelButton: false
                                                  }).then(() => {
-                                                        window.location.href = `http://localhost:5000/invoice/${data.insertedId}`;
+                                                        window.location.href = `https://e-commerce-server-zeta-eight.vercel.app/invoice/${data.insertedId}`;
                                                  });
                                                  refetch();
                                                  navigate('/')

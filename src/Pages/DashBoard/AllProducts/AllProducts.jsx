@@ -21,7 +21,6 @@ const AllProducts = () => {
                      title: "Are You Sure?",
                      icon: "warning",
                      showCancelButton: true,
-                     confirmButtonColor: "#3085d6",
                      confirmButtonColor: ' #ff5252',
                      cancelButtonColor: "#d33",
                      confirmButtonText: "Yes, Delete"

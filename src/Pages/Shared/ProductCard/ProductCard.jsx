@@ -126,7 +126,7 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
                             {DiscountPercentage && <p className='bg-red-600 text-white text-xs px-2 py-1 rounded-xs'> - {DiscountPercentage} %</p>}
                             {Condition && (<p className="bg-green-600 text-center text-white text-xs p-1 rounded-xs font-medium">{Condition}</p>)}
                      </div>
-                     <div className={`flex flex-col gap-2 absolute right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 text-3xl ${fromSlider === 'allProducts' && isColumn ? 'top-[10px] right-5 group-hover:top-5 lg:left-32 lg:group-hover:top-1/2 lg:transform lg:-translate-y-1/2' : 'top-0 group-hover:top-5'}`}>
+                     <div className={`flex flex-col gap-2 absolute right-3 text-3xl opacity-100 top-3 ${fromSlider === 'allProducts' && isColumn ? 'lg:opacity-0 lg:group-hover:opacity-100 lg:left-32 lg:top-1/2 lg:transform lg:-translate-y-1/2' : 'lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:top-5'} transition-all duration-500`}>
                             <CiHeart onClick={() => handleAddToWishlist(product)} className='text-4xl border border-gray-400 p-2 bg-white cursor-pointer hover:bg-Radical hover:text-white rounded-full' />
                             <PiShoppingCartSimpleThin onClick={() => product.Stock > 0 && handleAddToCart(product, value)} className={`text-4xl border p-2 rounded-full ${product.Stock === 0 ? 'cursor-not-allowed bg-white' : 'border-gray-400 bg-white cursor-pointer hover:bg-Radical hover:text-white'}`} />
                             {/* -----------------Product Details Icon-------------- */}
@@ -224,10 +224,6 @@ const ProductCard = ({ product, fromSlider = '', isColumn }) => {
                                                         <div onClick={() => handleAddToWishlist(product)} className='flex items-center gap-0.5 hover:text-Radical cursor-pointer'>
                                                                <CiHeart className='text-2xl' />
                                                                <p>Add To Wishlist</p>
-                                                        </div>
-                                                        <div className='flex items-center gap-0.5 hover:text-Radical cursor-pointer'>
-                                                               <MdContentCopy className='text-xl' />
-                                                               <p>Add To Compare</p>
                                                         </div>
                                                  </div>
                                                  <p><span className={Stock === 0 ? 'w-max flex items-center text-red-700 bg-red-200 border border-red-500 px-2' : Stock <= 50 ? 'w-max flex items-center text-yellow-700 bg-yellow-200 border border-yellow-500 px-2' : 'w-max flex items-center text-green-700 bg-green-200 border border-green-700 px-2'}>{Stock === 0 ? 'Out Of Stock' : Stock <= 50 ? 'Limited Stock' : 'In Stock'}</span></p>

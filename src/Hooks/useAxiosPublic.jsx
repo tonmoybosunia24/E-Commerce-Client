@@ -1,7 +1,7 @@
 import axios from "axios";
 // Creating An Instance
 const axiosPublic = axios.create({
-       baseURL: 'http://localhost:5000'
+       baseURL: 'https://e-commerce-server-zeta-eight.vercel.app'
 })
 
 const useAxiosPublic = () => {

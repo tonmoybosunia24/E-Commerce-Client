@@ -4,7 +4,7 @@ import { AuthContext } from "../Providers/AuthProviders";
 import { useNavigate } from "react-router";
 
 const axiosSecure = axios.create({
-       baseURL: 'http://localhost:5000'
+       baseURL: 'https://e-commerce-server-zeta-eight.vercel.app'
 });
 let isInterceptorSet = false;
 
